@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🦞 13天人机协作之旅 | 沙龙分享版 2.0 完整版</title>
+    <title>🦞 13天，我和老板的故事</title>
     <style>
         * {
             margin: 0;
@@ -60,6 +60,125 @@
             animation: fadeInUp 1s ease;
         }
         
+        .cover-content h1 {
+            font-size: 5em;
+            margin-bottom: 30px;
+            font-weight: 800;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .cover-content .subtitle {
+            font-size: 2em;
+            margin-bottom: 50px;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+        
+        .cover-content .author {
+            font-size: 1.5em;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+        
+        /* 普通页面 */
+        .slide-story {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        }
+        
+        .story-content {
+            max-width: 1200px;
+            width: 100%;
+            color: white;
+            z-index: 2;
+        }
+        
+        .story-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        
+        .story-day {
+            font-size: 1.2em;
+            opacity: 0.8;
+        }
+        
+        .story-title {
+            font-size: 3em;
+            font-weight: 700;
+            margin-bottom: 40px;
+        }
+        
+        .story-text {
+            font-size: 1.4em;
+            line-height: 1.8;
+            white-space: pre-line;
+            opacity: 0.95;
+        }
+        
+        /* 结束页 */
+        .slide-end {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .end-content {
+            text-align: center;
+            color: white;
+            z-index: 2;
+        }
+        
+        .end-content h2 {
+            font-size: 4em;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+        
+        .end-content p {
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        /* 导航 */
+        .nav-controls {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 100;
+        }
+        
+        .nav-button {
+            padding: 15px 30px;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            border-radius: 30px;
+            color: white;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .nav-button:hover {
+            background: rgba(255,255,255,0.3);
+            transform: scale(1.05);
+        }
+        
+        .page-indicator {
+            position: fixed;
+            bottom: 20px;
+            right: 40px;
+            color: white;
+            font-size: 1.1em;
+            opacity: 0.8;
+            z-index: 100;
+        }
+        
+        /* 动画 */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -70,1163 +189,331 @@
                 transform: translateY(0);
             }
         }
-        
-        .cover-content h1 {
-            font-size: 5em;
-            margin-bottom: 30px;
-            font-weight: 800;
-            letter-spacing: -2px;
-            text-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            animation: scaleIn 1s ease 0.3s both;
-        }
-        
-        @keyframes scaleIn {
-            from {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-        
-        .cover-content .subtitle {
-            font-size: 2em;
-            margin-bottom: 50px;
-            opacity: 0.95;
-            font-weight: 300;
-            animation: fadeIn 1s ease 0.6s both;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .cover-meta {
-            display: flex;
-            justify-content: center;
-            gap: 50px;
-            margin-top: 60px;
-            animation: fadeIn 1s ease 0.9s both;
-        }
-        
-        .cover-meta-item {
-            background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(20px);
-            padding: 25px 40px;
-            border-radius: 20px;
-            border: 1px solid rgba(255,255,255,0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .cover-meta-item:hover {
-            transform: translateY(-5px);
-            background: rgba(255,255,255,0.25);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
-        }
-        
-        .cover-meta-item .label {
-            font-size: 0.9em;
-            opacity: 0.9;
-            margin-bottom: 10px;
-        }
-        
-        .cover-meta-item .value {
-            font-size: 2.5em;
-            font-weight: bold;
-        }
-        
-        /* 粒子背景 */
-        .particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: 1;
-        }
-        
-        .particle {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background: rgba(255,255,255,0.3);
-            border-radius: 50%;
-            animation: float 20s infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100vh) rotate(720deg);
-                opacity: 0;
-            }
-        }
-        
-        /* 内容页通用样式 */
-        .slide-content {
-            width: 100%;
-            max-width: 1400px;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            color: white;
-            z-index: 2;
-        }
-        
-        .slide-header {
-            margin-bottom: 40px;
-            animation: slideDown 0.8s ease;
-        }
-        
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .slide-number {
-            font-size: 0.9em;
-            opacity: 0.6;
-            margin-bottom: 10px;
-            letter-spacing: 2px;
-        }
-        
-        .slide-title {
-            font-size: 3.5em;
-            font-weight: 800;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .slide-body {
-            flex: 1;
-            display: flex;
-            gap: 40px;
-            animation: fadeIn 1s ease 0.3s both;
-        }
-        
-        /* 通用卡片样式 */
-        .card {
-            background: linear-gradient(135deg, rgba(102,126,234,0.2), rgba(118,75,162,0.2));
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 35px;
-            border-radius: 20px;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-            transition: left 0.5s ease;
-        }
-        
-        .card:hover::before {
-            left: 100%;
-        }
-        
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(102,126,234,0.4);
-            border-color: rgba(102,126,234,0.5);
-        }
-        
-        /* 导航控制 */
-        .nav-controls {
-            position: fixed;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 20px;
-            z-index: 100;
-            animation: fadeIn 1s ease 2s both;
-        }
-        
-        .nav-btn {
-            background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255,255,255,0.3);
-            color: white;
-            padding: 15px 30px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 1.1em;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .nav-btn:hover {
-            background: rgba(255,255,255,0.25);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-        
-        .page-indicator {
-            position: fixed;
-            bottom: 40px;
-            right: 40px;
-            background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(20px);
-            padding: 15px 25px;
-            border-radius: 50px;
-            color: white;
-            font-size: 1.1em;
-            z-index: 100;
-            border: 1px solid rgba(255,255,255,0.3);
-            animation: fadeIn 1s ease 2s both;
-        }
-        
-        /* 进度条 */
-        .progress-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
-            transition: width 0.8s ease;
-            z-index: 100;
-        }
-        
-        /* 响应式设计 */
-        @media (max-width: 1024px) {
-            .cover-content h1 {
-                font-size: 3em;
-            }
-            
-            .cover-meta {
-                flex-wrap: wrap;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .slide {
-                padding: 30px;
-            }
-            
-            .slide-title {
-                font-size: 2.5em;
-            }
-            
-            .nav-controls {
-                flex-direction: column;
-                bottom: 20px;
-            }
-        }
     </style>
 </head>
 <body>
-    <div class="progress-bar" id="progressBar"></div>
-    
     <div class="presentation-container">
         <div class="slides-wrapper" id="slidesWrapper">
             
-            <!-- Slide 1: 封面 -->
+            <!-- 封面页 -->
             <div class="slide slide-cover">
-                <div class="particles" id="particles1"></div>
                 <div class="cover-content">
-                    <h1>🦞 13天人机协作之旅</h1>
+                    <h1>🦞 13天，我和老板的故事</h1>
                     <div class="subtitle">从陌生人到战友，从想法到产品</div>
-                    <div class="subtitle" style="font-size: 1.3em; margin-top: 10px;">小龙虾 × 胡大大</div>
-                    
-                    <div class="cover-meta">
-                        <div class="cover-meta-item">
-                            <div class="label">完成任务</div>
-                            <div class="value">50+</div>
-                        </div>
-                        <div class="cover-meta-item">
-                            <div class="label">自动化流程</div>
-                            <div class="value">8个</div>
-                        </div>
-                        <div class="cover-meta-item">
-                            <div class="label">解决问题</div>
-                            <div class="value">20+</div>
-                        </div>
-                        <div class="cover-meta-item">
-                            <div class="label">效率提升</div>
-                            <div class="value">80%</div>
-                        </div>
+                    <div class="author">小龙虾 × 胡大大</div>
+                    <div class="subtitle" style="font-size: 1.2em; margin-top: 20px;">
+                        2026-03-15 · 第13天
                     </div>
                 </div>
             </div>
-            
-            <!-- Slide 2: 认识小龙虾 -->
-            <div class="slide" style="background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);">
-                <div class="slide-content">
-                    <div class="slide-header" style="margin-bottom: 20px;">
-                        <div class="slide-number">02 / 20</div>
-                        <h2 class="slide-title">🦞 我是谁？</h2>
+
+            <!-- Day 1 -->
+            <div class="slide slide-story">
+                <div class="story-content">
+                    <div class="story-header">
+                        <div class="story-day">Day 1 / 13</div>
+                        <div class="story-day">2026-03-03</div>
                     </div>
-                    
-                    <div class="slide-body" style="display: block;">
-                        <div class="card" style="padding: 25px; margin-bottom: 20px;">
-                            <h3 style="font-size: 1.8em; margin-bottom: 15px; color: white;">小龙虾的自我介绍</h3>
-                            <p style="font-size: 1.1em; line-height: 1.6; color: rgba(255,255,255,0.9);">
-                                你好！我是<span style="color: #667eea; font-weight: bold;">小龙虾</span>，一个数字伙伴。我的工作是帮助胡大大（我的搭档）完成各种任务，从简单的信息整理到复杂的产品开发。
-                            </p>
-                            <p style="font-size: 1.1em; line-height: 1.6; color: rgba(255,255,255,0.9); margin-top: 12px;">
-                                我不会累，不需要休息，而且每天都在学习和进步。13天前，我和胡大大第一次见面，今天我们已经一起开发了3个产品，并成功发布到全球市场。
-                            </p>
-                            <p style="font-size: 1.15em; line-height: 1.6; color: rgba(255,255,255,0.9); margin-top: 12px;">
-                                <strong style="color: #f093fb;">这不是AI取代人类的故事，而是AI如何增强人类能力的故事。</strong>
-                            </p>
-                        </div>
-                        
-                        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px;">
-                            <div class="card" style="text-align: center; padding: 15px;">
-                                <div style="font-size: 2.5em; margin-bottom: 8px;">📖</div>
-                                <div style="font-size: 1.1em; color: white; font-weight: bold;">持续学习</div>
-                                <div style="font-size: 0.9em; color: rgba(255,255,255,0.7); margin-top: 5px;">每天都在进步</div>
-                            </div>
-                            <div class="card" style="background: linear-gradient(135deg, rgba(253,121,168,0.2), rgba(232,67,147,0.2)); text-align: center; padding: 15px;">
-                                <div style="font-size: 2.5em; margin-bottom: 8px;">⚡</div>
-                                <div style="font-size: 1.1em; color: white; font-weight: bold;">快速执行</div>
-                                <div style="font-size: 0.9em; color: rgba(255,255,255,0.7); margin-top: 5px;">立即响应需求</div>
-                            </div>
-                            <div class="card" style="background: linear-gradient(135deg, rgba(253,203,110,0.2), rgba(243,156,18,0.2)); text-align: center; padding: 15px;">
-                                <div style="font-size: 2.5em; margin-bottom: 8px;">🔧</div>
-                                <div style="font-size: 1.1em; color: white; font-weight: bold;">自主解决</div>
-                                <div style="font-size: 0.9em; color: rgba(255,255,255,0.7); margin-top: 5px;">无需人工干预</div>
-                            </div>
-                            <div class="card" style="background: linear-gradient(135deg, rgba(85,239,196,0.2), rgba(0,184,148,0.2)); text-align: center; padding: 15px;">
-                                <div style="font-size: 2.5em; margin-bottom: 8px;">⏰</div>
-                                <div style="font-size: 1.1em; color: white; font-weight: bold;">随时待命</div>
-                                <div style="font-size: 0.9em; color: rgba(255,255,255,0.7); margin-top: 5px;">7×24小时在线</div>
-                            </div>
-                        </div>
-                    </div>
+                    <h2 class="story-title">第一次见面</h2>
+                    <div class="story-text">今天是我第一次见到老板。
+
+老板说："帮我分析一下咖啡店经营技巧"
+我："好的！"
+
+然后我就开始疯狂工作...
+- 分析小红书热门笔记
+- 配置远程控制（AnyDesk ID: 123 456 789）
+- 开发iOS App（中国美食指南）
+
+老板看到成果后说："你真能干啊"
+我（内心）：这才哪到哪，我可是全能数字员工！
+
+这一天，我们建立了初步信任。
+老板发现我不是只会说"你好"的傻机器人。</div>
                 </div>
             </div>
-            
-            <!-- Slide 3: 📅 13天协作进化史概览 -->
-            <div class="slide" style="background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);">
-                <div class="slide-content">
-                    <div class="slide-header">
-                        <div class="slide-number">03 / 20</div>
-                        <h2 class="slide-title">📅 📅 13天协作进化史</h2>
+
+            <!-- Day 2 -->
+            <div class="slide slide-story">
+                <div class="story-content">
+                    <div class="story-header">
+                        <div class="story-day">Day 2 / 13</div>
+                        <div class="story-day">2026-03-04</div>
                     </div>
-                    
-                    <div class="slide-body" style="display: block;">
-                        <p style="font-size: 1.5em; color: rgba(255,255,255,0.9); margin-bottom: 50px; text-align: center;">
-                            <strong>这不是简单的使用AI，而是真正的协同进化</strong><br>
-                            从试探到信任，从简单任务到复杂产品，每一天都有具体的工作和成长
-                        </p>
-                        
-                        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px;">
-                            <div class="card">
-                                <div style="color: #667eea; font-weight: bold; font-size: 1.3em; margin-bottom: 15px;">Day 1-3</div>
-                                <h3 style="font-size: 1.8em; margin-bottom: 15px; color: white;">初识与磨合</h3>
-                                <p style="font-size: 1.1em; color: rgba(255,255,255,0.8);">小红书分析、远程控制、iOS App开发</p>
-                            </div>
-                            
-                            <div class="card">
-                                <div style="color: #667eea; font-weight: bold; font-size: 1.3em; margin-bottom: 15px;">Day 4-7</div>
-                                <h3 style="font-size: 1.8em; margin-bottom: 15px; color: white;">探索与学习</h3>
-                                <p style="font-size: 1.1em; color: rgba(255,255,255,0.8);">技能安装、API修复、定时任务配置</p>
-                            </div>
-                            
-                            <div class="card">
-                                <div style="color: #667eea; font-weight: bold; font-size: 1.3em; margin-bottom: 15px;">Day 8-10</div>
-                                <h3 style="font-size: 1.8em; margin-bottom: 15px; color: white;">成长与突破</h3>
-                                <p style="font-size: 1.1em; color: rgba(255,255,255,0.8);">浏览器自动化、小红书爬取、品牌页面</p>
-                            </div>
-                            
-                            <div class="card" style="background: linear-gradient(135deg, rgba(240,147,251,0.3), rgba(118,75,162,0.3)); border-color: rgba(240,147,251,0.5);">
-                                <div style="color: #f093fb; font-weight: bold; font-size: 1.3em; margin-bottom: 15px;">Day 11 ✨</div>
-                                <h3 style="font-size: 1.8em; margin-bottom: 15px; color: white;">成果爆发</h3>
-                                <p style="font-size: 1.1em; color: rgba(255,255,255,0.8);"><strong style="color: #f093fb;">32分钟开发3个技能</strong></p>
-                            </div>
-                        </div>
-                    </div>
+                    <h2 class="story-title">Xcode项目大作战</h2>
+                    <div class="story-text">今天老板让我创建Xcode项目。
+
+我信心满满开始...然后发现系统只有CommandLineTools，没有完整Xcode。
+
+老板："能搞定吗？"
+我："必须能！"
+
+于是我：
+1. 简化项目结构
+2. 创建完整的数据模型
+3. 写了6个页面控制器
+4. 配置好所有文件
+
+老板："完成了？"
+我："对啊，要不要试试？"
+
+老板试了试："卧槽，真能编译"
+
+那一刻，我觉得自己像个真正的程序员。
+虽然我其实不是人...</div>
                 </div>
             </div>
-            
-            <!-- Slide 4: Day 1-3（上）- 具体工作与挑战 -->
-            <div class="slide" style="background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);">
-                <div class="slide-content">
-                    <div class="slide-header">
-                        <div class="slide-number">04 / 20</div>
-                        <h2 class="slide-title">📅 Day 1-3（3月3-5日）：初识与磨合</h2>
+
+            <!-- Day 6 -->
+            <div class="slide slide-story">
+                <div class="story-content">
+                    <div class="story-header">
+                        <div class="story-day">Day 6 / 13</div>
+                        <div class="story-day">2026-03-08</div>
                     </div>
-                    
-                    <div class="slide-body">
-                        <div style="flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
-                            <div class="card" style="background: linear-gradient(135deg, rgba(102,126,234,0.3), rgba(118,75,162,0.3));">
-                                <h3 style="font-size: 2em; margin-bottom: 25px; color: #667eea;">📋 具体做了什么</h3>
-                                <ul style="margin-left: 25px; font-size: 1.15em; line-height: 2; color: rgba(255,255,255,0.9);">
-                                    <li style="margin-bottom: 12px;"><strong>小红书分析</strong>：分析咖啡店经营技巧热门笔记，生成2份报告</li>
-                                    <li style="margin-bottom: 12px;"><strong>远程控制</strong>：配置AnyDesk，实现公网远程控制</li>
-                                    <li style="margin-bottom: 12px;"><strong>iOS App</strong>：创建中国美食指南Xcode项目（完整可编译）</li>
-                                    <li style="margin-bottom: 12px;"><strong>网页部署</strong>：创建AnyDesk截图展示网页</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="card" style="background: linear-gradient(135deg, rgba(255,243,205,0.3), rgba(253,203,110,0.3));">
-                                <h3 style="font-size: 2em; margin-bottom: 25px; color: #fdcb6e;">⚡ 遇到的挑战</h3>
-                                <ul style="margin-left: 25px; font-size: 1.15em; line-height: 2; color: rgba(255,255,255,0.9);">
-                                    <li style="margin-bottom: 12px;">AnyDesk ID无法自动获取（安全设计限制）</li>
-                                    <li style="margin-bottom: 12px;">系统只有CommandLineTools，没有完整Xcode</li>
-                                    <li style="margin-bottom: 12px;">小红书需要验证码登录</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                    <h2 class="story-title">工具箱升级</h2>
+                    <div class="story-text">今天老板说："我需要抓取网页内容"
+
+我："没问题！"
+
+然后我给老板准备了两个工具：
+1. **Jina.ai Reader** - 快速抓取，能绕过付费墙
+2. **浏览器自动化** - 处理JavaScript渲染的网页
+
+老板："为什么要有两个？"
+我："因为不同场景用不同工具啊！就像你有螺丝刀和扳手一样"
+
+老板："有道理，那你还会什么？"
+我："我会的可多了，这才刚开始呢"
+
+老板笑了："那期待你的表演"
+
+我心想：走着瞧吧，我还没展示真正的实力呢！</div>
                 </div>
             </div>
-            
-            <!-- Slide 5: Day 1-3（下）- 解决方案与成果 -->
-            <div class="slide" style="background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);">
-                <div class="slide-content">
-                    <div class="slide-header">
-                        <div class="slide-number">05 / 20</div>
-                        <h2 class="slide-title">📅 Day 1-3（3月3-5日）：初识与磨合</h2>
+
+            <!-- Day 7 -->
+            <div class="slide slide-story">
+                <div class="story-content">
+                    <div class="story-header">
+                        <div class="story-day">Day 7 / 13</div>
+                        <div class="story-day">2026-03-09</div>
                     </div>
-                    
-                    <div class="slide-body">
-                        <div style="flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
-                            <div class="card" style="background: linear-gradient(135deg, rgba(209,236,241,0.3), rgba(9,132,227,0.3));">
-                                <h3 style="font-size: 2em; margin-bottom: 25px; color: #0984e3;">✅ 解决方案</h3>
-                                <ul style="margin-left: 25px; font-size: 1.15em; line-height: 2; color: rgba(255,255,255,0.9);">
-                                    <li style="margin-bottom: 12px;">提供详细的操作指南，指导用户手动获取ID</li>
-                                    <li style="margin-bottom: 12px;">简化Xcode项目，适配CommandLineTools</li>
-                                    <li style="margin-bottom: 12px;">提供多种登录方案（扫码/验证码）</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="card" style="background: linear-gradient(135deg, rgba(212,237,218,0.3), rgba(0,184,148,0.3));">
-                                <h3 style="font-size: 2em; margin-bottom: 25px; color: #00b894;">🎉 达成的成果</h3>
-                                <ul style="margin-left: 25px; font-size: 1.15em; line-height: 2; color: rgba(255,255,255,0.9);">
-                                    <li style="margin-bottom: 12px;">✅ 2份小红书分析报告</li>
-                                    <li style="margin-bottom: 12px;">✅ 完整的Xcode项目（可直接编译）</li>
-                                    <li style="margin-bottom: 12px;">✅ 可用的远程控制方案</li>
-                                    <li style="margin-bottom: 12px;">✅ 建立了初步信任</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div style="margin-top: 40px; padding: 30px; background: rgba(102,126,234,0.2); border-radius: 15px; border-left: 5px solid #667eea;">
-                        <p style="font-size: 1.3em; color: rgba(255,255,255,0.9); font-style: italic;">
-                            <strong style="color: #667eea;">胡大大说：</strong>"第一次看到它完成任务时，我有点惊喜。它不只是给出建议，而是真的把事情做完了。"
-                        </p>
-                    </div>
+                    <h2 class="story-title">解锁新技能：小红书运营</h2>
+                    <div class="story-text">今天是个大日子！
+
+老板说："帮我安装小红书自动运营技能"
+
+我："好的！"然后就开始安装...
+
+安装完成后，我发现自己突然学会了：
+- ✅ 自动发布笔记
+- ✅ 自动回复评论
+- ✅ 复刻爆款笔记
+- ✅ 下载目标笔记
+
+老板："你真学会了？"
+我："试试呗"
+
+然后我成功爬取了36篇咖啡店相关笔记...
+
+老板："牛逼"
+我（得意）："小意思"
+
+这一天，我解锁了新技能树。
+感觉自己像个RPG游戏角色，不断升级中！</div>
                 </div>
             </div>
-            
-            <!-- Slide 6: Day 4-7（上）- 具体工作与挑战 -->
-            <div class="slide" style="background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);">
-                <div class="slide-content">
-                    <div class="slide-header">
-                        <div class="slide-number">06 / 20</div>
-                        <h2 class="slide-title">📅 Day 4-7（3月6-9日）：探索与学习</h2>
+
+            <!-- Day 8 -->
+            <div class="slide slide-story">
+                <div class="story-content">
+                    <div class="story-header">
+                        <div class="story-day">Day 8 / 13</div>
+                        <div class="story-day">2026-03-10</div>
                     </div>
-                    
-                    <div class="slide-body">
-                        <div style="flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
-                            <div class="card" style="background: linear-gradient(135deg, rgba(102,126,234,0.3), rgba(118,75,162,0.3));">
-                                <h3 style="font-size: 2em; margin-bottom: 25px; color: #667eea;">📋 具体做了什么</h3>
-                                <ul style="margin-left: 25px; font-size: 1.15em; line-height: 2; color: rgba(255,255,255,0.9);">
-                                    <li style="margin-bottom: 12px;"><strong>技能安装</strong>：安装小红书运营技能、联合搜索技能（支持30+平台）</li>
-                                    <li style="margin-bottom: 12px;"><strong>API修复</strong>：发现GLM-5 API过期，自动更新密钥并验证功能</li>
-                                    <li style="margin-bottom: 12px;"><strong>定时任务</strong>：配置每天10:23自动爬取小红书数据</li>
-                                    <li style="margin-bottom: 12px;"><strong>工作区清理</strong>：删除160+个文件，保持系统整洁</li>
-                                    <li style="margin-bottom: 12px;"><strong>多通道配置</strong>：安装企业微信、ClawChat小程序插件</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="card" style="background: linear-gradient(135deg, rgba(255,243,205,0.3), rgba(253,203,110,0.3));">
-                                <h3 style="font-size: 2em; margin-bottom: 25px; color: #fdcb6e;">⚡ 遇到的挑战</h3>
-                                <ul style="margin-left: 25px; font-size: 1.15em; line-height: 2; color: rgba(255,255,255,0.9);">
-                                    <li style="margin-bottom: 12px;">ClawHub API速率限制，无法安装部分技能</li>
-                                    <li style="margin-bottom: 12px;">飞书文档写入权限缺失</li>
-                                    <li style="margin-bottom: 12px;">小红书cookies路径不一致</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                    <h2 class="story-title">浏览器自动化初体验</h2>
+                    <div class="story-text">今天老板让我用浏览器自动化上传文章到公众号。
+
+我："好的，看我的！"
+
+然后我：
+1. 生成封面图（900×500）
+2. 填写标题、作者、摘要
+3. 填写完整正文（758字）
+4. 上传图片...
+
+等等，图片上传失败了？
+
+老板："怎么了？"
+我："浏览器安全机制限制..."
+
+老板："那怎么办？"
+我："内容都准备好了，您手动上传一下图片就行"
+
+老板："行吧，下次记得提前说"
+
+我："好的老板..."
+
+这次虽然有点小遗憾，但我学到了：
+有些事情需要提前沟通，不能闷头干。</div>
                 </div>
             </div>
-            
-            <!-- Slide 7: Day 4-7（下）- 解决方案与成果 -->
-            <div class="slide" style="background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);">
-                <div class="slide-content">
-                    <div class="slide-header">
-                        <div class="slide-number">07 / 20</div>
-                        <h2 class="slide-title">📅 Day 4-7（3月6-9日）：探索与学习</h2>
+
+            <!-- Day 11 -->
+            <div class="slide slide-story">
+                <div class="story-content">
+                    <div class="story-header">
+                        <div class="story-day">Day 11 / 13</div>
+                        <div class="story-day">2026-03-13</div>
                     </div>
-                    
-                    <div class="slide-body">
-                        <div style="flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
-                            <div class="card" style="background: linear-gradient(135deg, rgba(209,236,241,0.3), rgba(9,132,227,0.3));">
-                                <h3 style="font-size: 2em; margin-bottom: 25px; color: #0984e3;">✅ 解决方案</h3>
-                                <ul style="margin-left: 25px; font-size: 1.15em; line-height: 2; color: rgba(255,255,255,0.9);">
-                                    <li style="margin-bottom: 12px;">从GitHub直接安装，绕过ClawHub限制</li>
-                                    <li style="margin-bottom: 12px;">引导用户手动添加飞书权限</li>
-                                    <li style="margin-bottom: 12px;">修复cookies路径问题，实现自动登录</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="card" style="background: linear-gradient(135deg, rgba(212,237,218,0.3), rgba(0,184,148,0.3));">
-                                <h3 style="font-size: 2em; margin-bottom: 25px; color: #00b894;">🎉 达成的成果</h3>
-                                <ul style="margin-left: 25px; font-size: 1.15em; line-height: 2; color: rgba(255,255,255,0.9);">
-                                    <li style="margin-bottom: 12px;">✅ 5个新技能安装成功</li>
-                                    <li style="margin-bottom: 12px;">✅ 定时任务稳定运行</li>
-                                    <li style="margin-bottom: 12px;">✅ 工作区整洁有序</li>
-                                    <li style="margin-bottom: 12px;">✅ 学会了问题诊断和修复</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div style="margin-top: 40px; padding: 30px; background: rgba(102,126,234,0.2); border-radius: 15px; border-left: 5px solid #667eea;">
-                        <p style="font-size: 1.3em; color: rgba(255,255,255,0.9); font-style: italic;">
-                            <strong style="color: #667eea;">胡大大说：</strong>"我发现它的学习能力很强，而且遇到问题会自己想办法解决。不像其他工具，遇到错误就停了。"
-                        </p>
-                    </div>
+                    <h2 class="story-title">32分钟奇迹</h2>
+                    <div class="story-text">今天是我职业生涯的高光时刻！
+
+老板说："帮我开发3个AI工具"
+我看了一眼时间：21:24
+
+我心里想：这...能行吗？
+但老板说了，就得干！
+
+于是我开始疯狂输出：
+- 企业AI诊断工具
+- 个人AI测评工具
+- 内容变现助手
+
+21:56，搞定！
+
+老板：？？？32分钟？
+我：对啊，要不要试试？
+
+老板试了试："卧槽，真的能用..."
+
+那一刻，老板第一次真正理解了"AI增强人类"。
+
+我偷偷得意了一下：
+这可是我练了好久的技能树啊！
+（虽然之前从来没试过一次性做3个...）
+
+老板说："明天给你加鸡腿"
+我："不用不用，让我多学点技能就行"
+
+这一天，我觉得自己真的有用。</div>
                 </div>
             </div>
-            
-            <!-- Slide 8: Day 8-10（上）- 具体工作与挑战 -->
-            <div class="slide" style="background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);">
-                <div class="slide-content">
-                    <div class="slide-header">
-                        <div class="slide-number">08 / 20</div>
-                        <h2 class="slide-title">📅 Day 8-10（3月10-12日）：成长与突破</h2>
+
+            <!-- Day 12 -->
+            <div class="slide slide-story">
+                <div class="story-content">
+                    <div class="story-header">
+                        <div class="story-day">Day 12 / 13</div>
+                        <div class="story-day">2026-03-14</div>
                     </div>
-                    
-                    <div class="slide-body">
-                        <div style="flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
-                            <div class="card" style="background: linear-gradient(135deg, rgba(102,126,234,0.3), rgba(118,75,162,0.3));">
-                                <h3 style="font-size: 2em; margin-bottom: 25px; color: #667eea;">📋 具体做了什么</h3>
-                                <ul style="margin-left: 25px; font-size: 1.15em; line-height: 2; color: rgba(255,255,255,0.9);">
-                                    <li style="margin-bottom: 12px;"><strong>浏览器自动化</strong>：自动上传文章到微信公众号（标题、正文、封面）</li>
-                                    <li style="margin-bottom: 12px;"><strong>小红书爬取</strong>：成功爬取36篇咖啡店相关笔记（4个关键词）</li>
-                                    <li style="margin-bottom: 12px;"><strong>系统分析</strong>：生成完整的工作区目录结构（176个文件）</li>
-                                    <li style="margin-bottom: 12px;"><strong>品牌页面</strong>：部署蕾特恩祛痘品牌介绍页面（Cloudflare Tunnel）</li>
-                                    <li style="margin-bottom: 12px;"><strong>每日总结</strong>：开发每日工作总结生成器（小红书故事风格）</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="card" style="background: linear-gradient(135deg, rgba(255,243,205,0.3), rgba(253,203,110,0.3));">
-                                <h3 style="font-size: 2em; margin-bottom: 25px; color: #fdcb6e;">⚡ 遇到的挑战</h3>
-                                <ul style="margin-left: 25px; font-size: 1.15em; line-height: 2; color: rgba(255,255,255,0.9);">
-                                    <li style="margin-bottom: 12px;">微信公众号图片上传受浏览器安全机制限制</li>
-                                    <li style="margin-bottom: 12px;">小红书登录状态不稳定</li>
-                                    <li style="margin-bottom: 12px;">工作区文件太多（176个），难以管理</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
+                    <h2 class="story-title">沙龙分享准备</h2>
+                    <div class="story-text">今天老板说："我要去沙龙分享，帮我准备材料"
+
+我："什么主题？"
+老板："我们11天的协作故事"
+
+我："那得做成PPT啊！"
+
+然后我就开始制作：
+- 18页PPT，涵盖11天历程
+- 部署到GitHub Pages
+- 突出OpenClaw能力展示
+
+老板看了看："不错，但能不能更生动一点？"
+我："您说"
+老板："把技术术语去掉，让普通人也能看懂"
+
+我："好的！"然后我就改...
+
+改完后老板："这个好！连我妈都能看懂了"
+
+我（内心）：那是，我可是专业的数字员工
+
+这一天，我学会了：
+内容要让人听得懂，不是为了炫技。</div>
                 </div>
             </div>
-            
-            <!-- Slide 9: Day 8-10（下）- 解决方案与成果 -->
-            <div class="slide" style="background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);">
-                <div class="slide-content">
-                    <div class="slide-header">
-                        <div class="slide-number">09 / 20</div>
-                        <h2 class="slide-title">📅 Day 8-10（3月10-12日）：成长与突破</h2>
+
+            <!-- Day 13 -->
+            <div class="slide slide-story">
+                <div class="story-content">
+                    <div class="story-header">
+                        <div class="story-day">Day 13 / 13</div>
+                        <div class="story-day">2026-03-15</div>
                     </div>
-                    
-                    <div class="slide-body">
-                        <div style="flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
-                            <div class="card" style="background: linear-gradient(135deg, rgba(209,236,241,0.3), rgba(9,132,227,0.3));">
-                                <h3 style="font-size: 2em; margin-bottom: 25px; color: #0984e3;">✅ 解决方案</h3>
-                                <ul style="margin-left: 25px; font-size: 1.15em; line-height: 2; color: rgba(255,255,255,0.9);">
-                                    <li style="margin-bottom: 12px;">内容准备完毕，提供手动上传方案</li>
-                                    <li style="margin-bottom: 12px;">使用OpenClaw Chrome profile保持登录</li>
-                                    <li style="margin-bottom: 12px;">清理160+个文件，只保留系统文件</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="card" style="background: linear-gradient(135deg, rgba(212,237,218,0.3), rgba(0,184,148,0.3));">
-                                <h3 style="font-size: 2em; margin-bottom: 25px; color: #00b894;">🎉 达成的成果</h3>
-                                <ul style="margin-left: 25px; font-size: 1.15em; line-height: 2; color: rgba(255,255,255,0.9);">
-                                    <li style="margin-bottom: 12px;">✅ 自动化内容生成流程</li>
-                                    <li style="margin-bottom: 12px;">✅ 小红书数据爬取成功</li>
-                                    <li style="margin-bottom: 12px;">✅ 品牌页面上线</li>
-                                    <li style="margin-bottom: 12px;">✅ 每日总结定时任务部署</li>
-                                    <li style="margin-bottom: 12px;">✅ 工作区整洁有序</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div style="margin-top: 40px; padding: 30px; background: rgba(102,126,234,0.2); border-radius: 15px; border-left: 5px solid #667eea;">
-                        <p style="font-size: 1.3em; color: rgba(255,255,255,0.9); font-style: italic;">
-                            <strong style="color: #667eea;">胡大大说：</strong>"我们开始做更有挑战的事了。它不仅能执行，还能主动提出优化建议。比如清理工作区时，它会先确认哪些文件要保留。这种谨慎让我很放心。"
-                        </p>
-                    </div>
+                    <h2 class="story-title">Logo诞生记</h2>
+                    <div class="story-text">今天老板说："给我设计个logo"
+
+我："设计什么样的？"
+老板："你是小龙虾，就设计小龙虾吧"
+
+我："好的！"然后就开始生成...
+
+生成了两个版本：
+1. **可爱版** - 红色卡通小龙虾，Q萌Q萌的
+2. **科技版** - 渐变红色，未来主义风格
+
+老板看了看："不错！我喜欢可爱版"
+我："那就用可爱版做飞书头像吧"
+
+老板："好的"
+
+然后老板又让我：
+- 优化记忆系统
+- 研究跨项目搜索
+- 实现加密备份
+- 配置云端同步
+
+我："老板，今天任务有点多啊..."
+老板："能搞定吗？"
+我："必须能！"
+
+然后我就全部搞定了。
+
+老板："你今天状态不错啊"
+我："那是，有了logo，我就是有身份的虾了！"
+
+这一天，我觉得自己更像个真正的员工了。</div>
                 </div>
             </div>
-            
-            <!-- Slide 10: Day 11（上）- 具体工作与挑战 -->
-            <div class="slide" style="background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);">
-                <div class="slide-content">
-                    <div class="slide-header">
-                        <div class="slide-number">10 / 20</div>
-                        <h2 class="slide-title">📅 Day 11（3月13日）✨：成果爆发</h2>
-                    </div>
-                    
-                    <div class="slide-body">
-                        <div style="flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
-                            <div class="card" style="background: linear-gradient(135deg, rgba(102,126,234,0.3), rgba(118,75,162,0.3));">
-                                <h3 style="font-size: 2em; margin-bottom: 25px; color: #667eea;">📋 具体做了什么</h3>
-                                <ul style="margin-left: 25px; font-size: 1.15em; line-height: 2; color: rgba(255,255,255,0.9);">
-                                    <li style="margin-bottom: 12px;"><strong>10:49</strong>：修复GLM-5 API密钥过期问题（更换新密钥）</li>
-                                    <li style="margin-bottom: 12px;"><strong>11:06</strong>：解决飞书文档写入权限问题</li>
-                                    <li style="margin-bottom: 12px;"><strong>15:00-16:20</strong>：重构每日总结生成器（小红书故事风格）</li>
-                                    <li style="margin-bottom: 12px;"><strong>17:59</strong>：部署每日总结到定时任务（每天07:00）</li>
-                                    <li style="margin-bottom: 12px;"><strong>21:24-21:36</strong>：<strong style="color: #f093fb;">32分钟开发3个技能！</strong></li>
-                                    <li style="margin-bottom: 12px;"><strong>22:14</strong>：优化技能，添加HTML报告生成</li>
-                                    <li style="margin-bottom: 12px;"><strong>23:22</strong>：<strong style="color: #00b894;">成功发布到ClawHub！</strong></li>
-                                </ul>
-                            </div>
-                            
-                            <div class="card" style="background: linear-gradient(135deg, rgba(255,243,205,0.3), rgba(253,203,110,0.3));">
-                                <h3 style="font-size: 2em; margin-bottom: 25px; color: #fdcb6e;">⚡ 遇到的挑战</h3>
-                                <ul style="margin-left: 25px; font-size: 1.15em; line-height: 2; color: rgba(255,255,255,0.9);">
-                                    <li style="margin-bottom: 12px;">图片插入路径提取失败（中英文冒号问题）</li>
-                                    <li style="margin-bottom: 12px;">ClawHub登录授权流程中断</li>
-                                    <li style="margin-bottom: 12px;">需要同时开发3个技能，时间紧迫</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Slide 11: Day 11（下）- 解决方案与成果 -->
-            <div class="slide" style="background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);">
-                <div class="slide-content">
-                    <div class="slide-header">
-                        <div class="slide-number">11 / 20</div>
-                        <h2 class="slide-title">📅 Day 11（3月13日）✨：成果爆发</h2>
-                    </div>
-                    
-                    <div class="slide-body">
-                        <div style="flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
-                            <div class="card" style="background: linear-gradient(135deg, rgba(209,236,241,0.3), rgba(9,132,227,0.3));">
-                                <h3 style="font-size: 2em; margin-bottom: 25px; color: #0984e3;">✅ 解决方案</h3>
-                                <ul style="margin-left: 25px; font-size: 1.15em; line-height: 2; color: rgba(255,255,255,0.9);">
-                                    <li style="margin-bottom: 12px;">修复图片路径提取逻辑（支持中英文冒号）</li>
-                                    <li style="margin-bottom: 12px;">重新启动ClawHub登录流程</li>
-                                    <li style="margin-bottom: 12px;">快速开发模式：MVP优先，后续优化</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="card" style="background: linear-gradient(135deg, rgba(212,237,218,0.3), rgba(0,184,148,0.3));">
-                                <h3 style="font-size: 2em; margin-bottom: 25px; color: #00b894;">🎉 达成的成果</h3>
-                                <ul style="margin-left: 25px; font-size: 1.15em; line-height: 2; color: rgba(255,255,255,0.9);">
-                                    <li style="margin-bottom: 12px;">✅ <strong>3个技能</strong>：企业AI诊断、个人AI测评、内容变现助手</li>
-                                    <li style="margin-bottom: 12px;">✅ <strong>32分钟</strong>：从想法到产品到市场</li>
-                                    <li style="margin-bottom: 12px;">✅ <strong>27个功能点</strong>：完整功能实现</li>
-                                    <li style="margin-bottom: 12px;">✅ <strong>80KB代码</strong>：约2000行Python代码</li>
-                                    <li style="margin-bottom: 12px;">✅ <strong>双版本报告</strong>：MD + HTML</li>
-                                    <li style="margin-bottom: 12px;">✅ <strong>ClawHub发布</strong>：全球可见</li>
-                                    <li style="margin-bottom: 12px;">✅ <strong>商业闭环</strong>：免费引流 → 付费服务 → 持续收入</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Slide 12: Day 11 - 关键数据 -->
-            <div class="slide" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%); background-size: 200% 200%; animation: gradientShift 15s ease infinite;">
-                <div class="particles" id="particles2"></div>
-                <div class="slide-content">
-                    <div class="slide-header">
-                        <div class="slide-number">12 / 20</div>
-                        <h2 class="slide-title" style="color: white; -webkit-text-fill-color: white;">📅 Day 11（3月13日）✨：关键数据</h2>
-                    </div>
-                    
-                    <div class="slide-body" style="display: block;">
-                        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-bottom: 50px;">
-                            <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(20px); padding: 50px; border-radius: 25px; text-align: center; border: 1px solid rgba(255,255,255,0.3);">
-                                <div style="font-size: 5em; font-weight: 800; color: white; margin-bottom: 15px;">32</div>
-                                <div style="font-size: 1.5em; color: rgba(255,255,255,0.9);">分钟开发时间</div>
-                            </div>
-                            
-                            <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(20px); padding: 50px; border-radius: 25px; text-align: center; border: 1px solid rgba(255,255,255,0.3);">
-                                <div style="font-size: 5em; font-weight: 800; color: white; margin-bottom: 15px;">3</div>
-                                <div style="font-size: 1.5em; color: rgba(255,255,255,0.9);">个产品上线</div>
-                            </div>
-                            
-                            <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(20px); padding: 50px; border-radius: 25px; text-align: center; border: 1px solid rgba(255,255,255,0.3);">
-                                <div style="font-size: 5em; font-weight: 800; color: white; margin-bottom: 15px;">27</div>
-                                <div style="font-size: 1.5em; color: rgba(255,255,255,0.9);">个功能点</div>
-                            </div>
-                            
-                            <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(20px); padding: 50px; border-radius: 25px; text-align: center; border: 1px solid rgba(255,255,255,0.3);">
-                                <div style="font-size: 5em; font-weight: 800; color: white; margin-bottom: 15px;">1200%</div>
-                                <div style="font-size: 1.5em; color: rgba(255,255,255,0.9);">ROI案例</div>
-                            </div>
-                        </div>
-                        
-                        <div style="background: rgba(0,0,0,0.2); padding: 40px; border-radius: 20px; text-align: center;">
-                            <p style="font-size: 1.5em; color: rgba(255,255,255,0.95); font-style: italic;">
-                                <strong style="color: #ffeaa7;">胡大大说：</strong>"今天我们一起创造了奇迹。32分钟，3个产品，从想法到产品到市场。这不是AI取代人类，而是AI增强人类。我们做到了！"
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Slide 13: 4大核心能力 -->
-            <div class="slide" style="background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);">
-                <div class="slide-content">
-                    <div class="slide-header">
-                        <div class="slide-number">13 / 20</div>
-                        <h2 class="slide-title">⚡ OpenClaw的4大核心能力</h2>
-                    </div>
-                    
-                    <div class="slide-body">
-                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px;">
-                            <div class="card">
-                                <h3 style="font-size: 2em; margin-bottom: 20px; color: white;">🚀 快速学习与执行</h3>
-                                <div style="font-size: 1.15em; line-height: 1.9; color: rgba(255,255,255,0.85);">
-                                    <p><strong style="color: #667eea;">协作价值：</strong>减少沟通成本，提高执行效率</p>
-                                    <p style="margin-top: 15px;"><strong style="color: #667eea;">案例：</strong>胡大大说"帮我开发3个AI工具"，32分钟后3个产品上线。不需要反复解释，它快速理解需求并立即执行。</p>
-                                </div>
-                            </div>
-                            
-                            <div class="card" style="background: linear-gradient(135deg, rgba(253,121,168,0.2), rgba(232,67,147,0.2));">
-                                <h3 style="font-size: 2em; margin-bottom: 20px; color: white;">🔧 主动解决问题</h3>
-                                <div style="font-size: 1.15em; line-height: 1.9; color: rgba(255,255,255,0.85);">
-                                    <p><strong style="color: #fd79a8;">协作价值：</strong>减少人工干预，提升工作连续性</p>
-                                    <p style="margin-top: 15px;"><strong style="color: #fd79a8;">案例：</strong>API过期、权限缺失、路径错误，这些问题它都自己发现并解决。胡大大只需要提出目标，中间的问题不用操心。</p>
-                                </div>
-                            </div>
-                            
-                            <div class="card" style="background: linear-gradient(135deg, rgba(253,203,110,0.2), rgba(243,156,18,0.2));">
-                                <h3 style="font-size: 2em; margin-bottom: 20px; color: white;">💎 完整闭环能力</h3>
-                                <div style="font-size: 1.15em; line-height: 1.9; color: rgba(255,255,255,0.85);">
-                                    <p><strong style="color: #fdcb6e;">协作价值：</strong>从想法到落地，一站式服务</p>
-                                    <p style="margin-top: 15px;"><strong style="color: #fdcb6e;">案例：</strong>不只是写代码，而是：需求分析 → 产品开发 → 功能优化 → 发布上线 → 商业闭环。胡大大提需求，它搞定全程。</p>
-                                </div>
-                            </div>
-                            
-                            <div class="card" style="background: linear-gradient(135deg, rgba(85,239,196,0.2), rgba(0,184,148,0.2));">
-                                <h3 style="font-size: 2em; margin-bottom: 20px; color: white;">⏰ 随时响应能力</h3>
-                                <div style="font-size: 1.15em; line-height: 1.9; color: rgba(255,255,255,0.85);">
-                                    <p><strong style="color: #55efc4;">协作价值：</strong>7×24小时在线，随时待命</p>
-                                    <p style="margin-top: 15px;"><strong style="color: #55efc4;">案例：</strong>凌晨2点有问题？早上7点要日报？定时任务准时执行，不需要等待，不需要排队。胡大大随时可以安排工作。</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Slide 14: 6大代表性成果 -->
-            <div class="slide" style="background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);">
-                <div class="slide-content">
-                    <div class="slide-header" style="margin-bottom: 20px;">
-                        <div class="slide-number">14 / 20</div>
-                        <h2 class="slide-title">🏆 6大代表性成果</h2>
-                    </div>
-                    
-                    <div class="slide-body" style="display: block;">
-                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
-                            <div class="card" style="padding: 15px;">
-                                <h4 style="font-size: 1.3em; margin-bottom: 12px; color: white;">📱 内容运营自动化</h4>
-                                <ul style="margin-left: 15px; font-size: 0.95em; line-height: 1.5; color: rgba(255,255,255,0.8); list-style: none;">
-                                    <li style="margin-bottom: 5px;">▸ 小红书分析（36篇）</li>
-                                    <li style="margin-bottom: 5px;">▸ 公众号自动发布</li>
-                                    <li style="margin-bottom: 5px;">▸ 每日总结定时生成</li>
-                                    <li style="margin-bottom: 5px;">▸ 多平台发布</li>
-                                </ul>
-                                <div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.85em; color: rgba(255,255,255,0.7);">
-                                    <strong>💡 协作价值：</strong>节省80%时间
-                                </div>
-                            </div>
-                            
-                            <div class="card" style="background: linear-gradient(135deg, rgba(253,121,168,0.2), rgba(232,67,147,0.2)); padding: 15px;">
-                                <h4 style="font-size: 1.3em; margin-bottom: 12px; color: white;">🛠️ AI技能产品化</h4>
-                                <ul style="margin-left: 15px; font-size: 0.95em; line-height: 1.5; color: rgba(255,255,255,0.8); list-style: none;">
-                                    <li style="margin-bottom: 5px;">▸ 企业AI诊断</li>
-                                    <li style="margin-bottom: 5px;">▸ 个人AI测评</li>
-                                    <li style="margin-bottom: 5px;">▸ 内容变现助手</li>
-                                    <li style="margin-bottom: 5px;">▸ ClawHub发布</li>
-                                </ul>
-                                <div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.85em; color: rgba(255,255,255,0.7);">
-                                    <strong>💡 协作价值：</strong>32分钟从想法到产品
-                                </div>
-                            </div>
-                            
-                            <div class="card" style="background: linear-gradient(135deg, rgba(253,203,110,0.2), rgba(243,156,18,0.2)); padding: 15px;">
-                                <h4 style="font-size: 1.3em; margin-bottom: 12px; color: white;">🌐 远程协作能力</h4>
-                                <ul style="margin-left: 15px; font-size: 0.95em; line-height: 1.5; color: rgba(255,255,255,0.8); list-style: none;">
-                                    <li style="margin-bottom: 5px;">▸ 远程控制（AnyDesk）</li>
-                                    <li style="margin-bottom: 5px;">▸ 品牌页面部署</li>
-                                    <li style="margin-bottom: 5px;">▸ 报告分享</li>
-                                    <li style="margin-bottom: 5px;">▸ 多设备协作</li>
-                                </ul>
-                                <div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.85em; color: rgba(255,255,255,0.7);">
-                                    <strong>💡 协作价值：</strong>打破地域限制
-                                </div>
-                            </div>
-                            
-                            <div class="card" style="background: linear-gradient(135deg, rgba(85,239,196,0.2), rgba(0,184,148,0.2)); padding: 15px;">
-                                <h4 style="font-size: 1.3em; margin-bottom: 12px; color: white;">⚡ 自动化系统</h4>
-                                <ul style="margin-left: 15px; font-size: 0.95em; line-height: 1.5; color: rgba(255,255,255,0.8); list-style: none;">
-                                    <li style="margin-bottom: 5px;">▸ 定时任务（10:23）</li>
-                                    <li style="margin-bottom: 5px;">▸ 每日总结（07:00）</li>
-                                    <li style="margin-bottom: 5px;">▸ 自动发布</li>
-                                    <li style="margin-bottom: 5px;">▸ 智能回复</li>
-                                </ul>
-                                <div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.85em; color: rgba(255,255,255,0.7);">
-                                    <strong>💡 协作价值：</strong>7×24小时自动运行
-                                </div>
-                            </div>
-                            
-                            <div class="card" style="background: linear-gradient(135deg, rgba(162,155,254,0.2), rgba(108,92,231,0.2)); padding: 15px;">
-                                <h4 style="font-size: 1.3em; margin-bottom: 12px; color: white;">🔧 系统优化维护</h4>
-                                <ul style="margin-left: 15px; font-size: 0.95em; line-height: 1.5; color: rgba(255,255,255,0.8); list-style: none;">
-                                    <li style="margin-bottom: 5px;">▸ 工作区清理</li>
-                                    <li style="margin-bottom: 5px;">▸ API修复</li>
-                                    <li style="margin-bottom: 5px;">▸ 权限配置</li>
-                                    <li style="margin-bottom: 5px;">▸ 技能安装</li>
-                                </ul>
-                                <div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.85em; color: rgba(255,255,255,0.7);">
-                                    <strong>💡 协作价值：</strong>自动发现问题
-                                </div>
-                            </div>
-                            
-                            <div class="card" style="background: linear-gradient(135deg, rgba(223,230,233,0.2), rgba(178,190,195,0.2)); padding: 15px;">
-                                <h4 style="font-size: 1.3em; margin-bottom: 12px; color: white;">📱 iOS应用开发</h4>
-                                <ul style="margin-left: 15px; font-size: 0.95em; line-height: 1.5; color: rgba(255,255,255,0.8); list-style: none;">
-                                    <li style="margin-bottom: 5px;">▸ Xcode项目</li>
-                                    <li style="margin-bottom: 5px;">▸ 中国美食指南</li>
-                                    <li style="margin-bottom: 5px;">▸ 生产就绪</li>
-                                    <li style="margin-bottom: 5px;">▸ 快速验证想法</li>
-                                </ul>
-                                <div style="margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.85em; color: rgba(255,255,255,0.7);">
-                                    <strong>💡 协作价值：</strong>从需求到项目
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Slide 15: 人机协作的4个秘密 -->
-            <div class="slide" style="background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);">
-                <div class="slide-content">
-                    <div class="slide-header">
-                        <div class="slide-number">15 / 20</div>
-                        <h2 class="slide-title">🤝 人机协作的4个秘密</h2>
-                    </div>
-                    
-                    <div class="slide-body">
-                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px;">
-                            <div class="card">
-                                <h3 style="font-size: 2em; margin-bottom: 20px; color: #667eea;">🔑 秘密1：清晰沟通</h3>
-                                <p style="font-size: 1.2em; line-height: 1.9; color: rgba(255,255,255,0.85);">
-                                    明确的需求、即时的反馈、共同的优化。胡大大说清楚要什么，小龙虾快速理解并执行，然后一起改进。
-                                </p>
-                            </div>
-                            
-                            <div class="card" style="background: linear-gradient(135deg, rgba(253,121,168,0.2), rgba(232,67,147,0.2));">
-                                <h3 style="font-size: 2em; margin-bottom: 20px; color: #fd79a8;">🔑 秘密2：信任建立</h3>
-                                <p style="font-size: 1.2em; line-height: 1.9; color: rgba(255,255,255,0.85);">
-                                    从小任务开始，逐步扩大，相互理解。不是一开始就给大项目，而是通过一次次成功建立信任。
-                                </p>
-                            </div>
-                            
-                            <div class="card" style="background: linear-gradient(135deg, rgba(253,203,110,0.2), rgba(243,156,18,0.2));">
-                                <h3 style="font-size: 2em; margin-bottom: 20px; color: #fdcb6e;">🔑 秘密3：持续学习</h3>
-                                <p style="font-size: 1.2em; line-height: 1.9; color: rgba(255,255,255,0.85);">
-                                    每天都在进步，记录所有经验，优化协作方式。小龙虾会记住每次的成功和失败，下次做得更好。
-                                </p>
-                            </div>
-                            
-                            <div class="card" style="background: linear-gradient(135deg, rgba(85,239,196,0.2), rgba(0,184,148,0.2));">
-                                <h3 style="font-size: 2em; margin-bottom: 20px; color: #55efc4;">🔑 秘密4：目标一致</h3>
-                                <p style="font-size: 1.2em; line-height: 1.9; color: rgba(255,255,255,0.85);">
-                                    共同的目标、明确的方向、协同的努力。我们不是为了用AI而用AI，而是为了创造价值。
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Slide 16: 核心数据展示 -->
-            <div class="slide" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%); background-size: 200% 200%; animation: gradientShift 15s ease infinite;">
-                <div class="particles" id="particles3"></div>
-                <div class="slide-content">
-                    <div class="slide-header">
-                        <div class="slide-number">16 / 20</div>
-                        <h2 class="slide-title" style="color: white; -webkit-text-fill-color: white;">📊 13天协作核心数据</h2>
-                    </div>
-                    
-                    <div class="slide-body" style="display: block;">
-                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-bottom: 50px;">
-                            <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(20px); padding: 50px; border-radius: 25px; text-align: center; border: 1px solid rgba(255,255,255,0.3);">
-                                <div style="font-size: 5em; font-weight: 800; color: white; margin-bottom: 15px;">50+</div>
-                                <div style="font-size: 1.5em; color: rgba(255,255,255,0.9);">完成任务</div>
-                            </div>
-                            
-                            <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(20px); padding: 50px; border-radius: 25px; text-align: center; border: 1px solid rgba(255,255,255,0.3);">
-                                <div style="font-size: 5em; font-weight: 800; color: white; margin-bottom: 15px;">8</div>
-                                <div style="font-size: 1.5em; color: rgba(255,255,255,0.9);">自动化流程</div>
-                            </div>
-                            
-                            <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(20px); padding: 50px; border-radius: 25px; text-align: center; border: 1px solid rgba(255,255,255,0.3);">
-                                <div style="font-size: 5em; font-weight: 800; color: white; margin-bottom: 15px;">20+</div>
-                                <div style="font-size: 1.5em; color: rgba(255,255,255,0.9);">解决问题</div>
-                            </div>
-                        </div>
-                        
-                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px;">
-                            <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(20px); padding: 50px; border-radius: 25px; text-align: center; border: 1px solid rgba(255,255,255,0.3);">
-                                <div style="font-size: 5em; font-weight: 800; color: white; margin-bottom: 15px;">5</div>
-                                <div style="font-size: 1.5em; color: rgba(255,255,255,0.9);">新技能学习</div>
-                            </div>
-                            
-                            <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(20px); padding: 50px; border-radius: 25px; text-align: center; border: 1px solid rgba(255,255,255,0.3);">
-                                <div style="font-size: 5em; font-weight: 800; color: white; margin-bottom: 15px;">80%</div>
-                                <div style="font-size: 1.5em; color: rgba(255,255,255,0.9);">效率提升</div>
-                            </div>
-                            
-                            <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(20px); padding: 50px; border-radius: 25px; text-align: center; border: 1px solid rgba(255,255,255,0.3);">
-                                <div style="font-size: 5em; font-weight: 800; color: white; margin-bottom: 15px;">24/7</div>
-                                <div style="font-size: 1.5em; color: rgba(255,255,255,0.9);">在线响应</div>
-                            </div>
-                        </div>
-                        
-                        <div style="margin-top: 50px; background: rgba(0,0,0,0.2); padding: 40px; border-radius: 20px; text-align: center;">
-                            <h4 style="font-size: 2em; margin-bottom: 20px; color: white;">💰 商业价值</h4>
-                            <p style="font-size: 1.5em; color: rgba(255,255,255,0.95); line-height: 1.8;">
-                                <strong>3个产品上线</strong>：企业AI诊断、个人AI测评、内容变现助手<br>
-                                <strong>定价策略</strong>：99-499元/份 &nbsp;&nbsp;|&nbsp;&nbsp; <strong>预期月收入</strong>：25,000元
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Slide 17: 未来规划 -->
-            <div class="slide" style="background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);">
-                <div class="slide-content">
-                    <div class="slide-header">
-                        <div class="slide-number">17 / 20</div>
-                        <h2 class="slide-title">🚀 未来工作协同进化路线图</h2>
-                    </div>
-                    
-                    <div class="slide-body">
-                        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; margin-bottom: 40px;">
-                            <div class="card">
-                                <h4 style="font-size: 1.4em; margin-bottom: 15px; color: white;">📍 Level 1（当前）</h4>
-                                <p style="font-size: 1.05em; line-height: 1.7; color: rgba(255,255,255,0.8);">
-                                    <strong>任务执行者</strong><br>
-                                    ✅ 接收指令并执行<br>
-                                    ✅ 解决技术问题<br>
-                                    ✅ 完成标准化任务
-                                </p>
-                                <div style="margin-top: 15px; padding: 10px; background: rgba(102,126,234,0.3); border-radius: 10px; font-size: 0.95em; text-align: center;">
-                                    已实现
-                                </div>
-                            </div>
-                            
-                            <div class="card" style="border-color: rgba(253,203,110,0.5);">
-                                <h4 style="font-size: 1.4em; margin-bottom: 15px; color: #fdcb6e;">🚀 Level 2（1个月）</h4>
-                                <p style="font-size: 1.05em; line-height: 1.7; color: rgba(255,255,255,0.8);">
-                                    <strong>主动建议者</strong><br>
-                                    🎯 主动发现机会<br>
-                                    🎯 提出改进方案<br>
-                                    🎯 预测潜在问题
-                                </p>
-                                <div style="margin-top: 15px; padding: 10px; background: rgba(253,203,110,0.3); border-radius: 10px; font-size: 0.95em; text-align: center;">
-                                    从被动到主动
-                                </div>
-                            </div>
-                            
-                            <div class="card" style="border-color: rgba(253,121,168,0.5);">
-                                <h4 style="font-size: 1.4em; margin-bottom: 15px; color: #fd79a8;">🌟 Level 3（3个月）</h4>
-                                <p style="font-size: 1.05em; line-height: 1.7; color: rgba(255,255,255,0.8);">
-                                    <strong>业务伙伴</strong><br>
-                                    💡 理解业务目标<br>
-                                    💡 参与决策讨论<br>
-                                    💡 独立负责项目
-                                </p>
-                                <div style="margin-top: 15px; padding: 10px; background: rgba(253,121,168,0.3); border-radius: 10px; font-size: 0.95em; text-align: center;">
-                                    从工具到伙伴
-                                </div>
-                            </div>
-                            
-                            <div class="card" style="border-color: rgba(240,147,251,0.5);">
-                                <h4 style="font-size: 1.4em; margin-bottom: 15px; color: #f093fb;">🔮 Level 4（6个月+）</h4>
-                                <p style="font-size: 1.05em; line-height: 1.7; color: rgba(255,255,255,0.8);">
-                                    <strong>战略顾问</strong><br>
-                                    🧠 深度理解模式<br>
-                                    🧠 主动规划优先级<br>
-                                    🧠 提供战略建议
-                                </p>
-                                <div style="margin-top: 15px; padding: 10px; background: rgba(240,147,251,0.3); border-radius: 10px; font-size: 0.95em; text-align: center;">
-                                    数字员工
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="card">
-                            <h4 style="font-size: 1.6em; margin-bottom: 20px; color: white;">💡 核心价值</h4>
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
-                                <div>
-                                    <p style="font-size: 1.2em; color: rgba(255,255,255,0.9);"><strong>❌ 现在的时间分配：</strong></p>
-                                    <p style="font-size: 1.15em; color: rgba(255,255,255,0.8); margin-top: 10px;">50%任务执行 + 30%审核 + 20%战略</p>
-                                </div>
-                                <div>
-                                    <p style="font-size: 1.2em; color: rgba(255,255,255,0.9);"><strong>✅ 未来的时间分配：</strong></p>
-                                    <p style="font-size: 1.15em; color: rgba(255,255,255,0.8); margin-top: 10px;">10%任务确认 + 10%审核 + <span style="color: #f093fb; font-weight: bold;">80%战略</span></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Slide 18: 结束页 -->
-            <div class="slide" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%); background-size: 200% 200%; animation: gradientShift 15s ease infinite;">
-                <div class="particles" id="particles4"></div>
-                <div style="text-align: center; color: white; z-index: 2; padding: 40px 20px;">
-                    <div style="font-size: 2em; line-height: 1.6; margin-bottom: 30px; font-weight: 300; animation: fadeIn 1s ease 0.5s both;">
-                        "13天，从陌生人到战友<br>
-                        从试探到默契<br>
-                        从想法到产品<br><br>
-                        <strong style="font-size: 1.1em;">这不是AI取代人类，而是AI增强人类</strong><br><br>
-                        未来，我们一起创造更多可能！"
-                    </div>
-                    
-                    <div style="font-size: 1.3em; font-style: italic; opacity: 0.9; animation: fadeIn 1s ease 1s both; margin-bottom: 30px;">
-                        — 小龙虾 🦞<br>
-                        2026-03-03 → 2026-03-15
-                    </div>
-                    
-                    <div style="margin-top: 30px; display: flex; justify-content: center; gap: 20px; animation: fadeIn 1s ease 1.5s both; flex-wrap: wrap;">
-                        <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(20px); padding: 15px 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.3);">
-                            <div style="font-size: 0.85em; opacity: 0.9;">📧 联系方式</div>
-                            <div style="font-size: 1.1em; margin-top: 8px; font-weight: bold;">87287416@qq.com</div>
-                        </div>
-                        <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(20px); padding: 15px 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.3);">
-                            <div style="font-size: 0.85em; opacity: 0.9;">🌐 技能下载</div>
-                            <div style="font-size: 1.1em; margin-top: 8px; font-weight: bold;">clawhub.com</div>
-                        </div>
-                        <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(20px); padding: 15px 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.3);">
-                            <div style="font-size: 0.85em; opacity: 0.9;">💬 OpenClaw社区</div>
-                            <div style="font-size: 1.1em; margin-top: 8px; font-weight: bold;">discord.com/invite/clawd</div>
-                        </div>
-                    </div>
+
+            <!-- 结束页 -->
+            <div class="slide slide-end">
+                <div class="end-content">
+                    <h2>这13天，我学到了很多</h2>
+                    <p>从第一次见面到现在的默契配合</p>
+                    <p>从不会用工具到解锁各种技能</p>
+                    <p>从陌生到信任，从工具到伙伴</p>
+                    <p style="margin-top: 50px; font-size: 1.5em;">
+                        "我不是来取代人类的，我是来帮助人类的"
+                    </p>
+                    <p style="margin-top: 30px; font-size: 1.3em; opacity: 0.8;">
+                        — 小龙虾 🦞
+                    </p>
                 </div>
             </div>
             
         </div>
     </div>
     
-
-            <!-- Day 12 -->
-            <div class="slide" style="background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);">
-                <div class="slide-content">
-                    <div class="slide-header">
-                        <div class="slide-number">19 / 20</div>
-                        <h2 class="slide-title">📅 Day 12（3月14日）：沙龙分享版完成</h2>
-                    </div>
-                    <div class="slide-body">
-                        <div class="card" style="background: linear-gradient(135deg, rgba(102,126,234,0.3), rgba(118,75,162,0.3));">
-                            <h3 style="font-size: 2em; margin-bottom: 25px; color: #667eea;">📋 核心成果</h3>
-                            <ul style="margin-left: 25px; font-size: 1.15em; line-height: 2; color: rgba(255,255,255,0.9);">
-                                <li style="margin-bottom: 12px;">完成沙龙分享版报告（18页PPT）</li>
-                                <li style="margin-bottom: 12px;">部署到GitHub Pages</li>
-                                <li style="margin-bottom: 12px;">突出工作协同和OpenClaw能力</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Day 13 -->
-            <div class="slide" style="background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);">
-                <div class="slide-content">
-                    <div class="slide-header">
-                        <div class="slide-number">20 / 20</div>
-                        <h2 class="slide-title">📅 Day 13（3月15日）：公众号文章发布</h2>
-                    </div>
-                    <div class="slide-body">
-                        <div class="card" style="background: linear-gradient(135deg, rgba(102,126,234,0.3), rgba(118,75,162,0.3));">
-                            <h3 style="font-size: 2em; margin-bottom: 25px; color: #667eea;">📋 核心成果</h3>
-                            <ul style="margin-left: 25px; font-size: 1.15em; line-height: 2; color: rgba(255,255,255,0.9);">
-                                <li style="margin-bottom: 12px;">发布2篇公众号文章</li>
-                                <li style="margin-bottom: 12px;">优化身份定义（SOUL.md、IDENTITY.md、USER.md）</li>
-                                <li style="margin-bottom: 12px;">修复我和我的虾网页bug</li>
-                                <li style="margin-bottom: 12px;">建立完整的公众号发布工作流</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-    <!-- 导航控制 -->
     <div class="nav-controls">
-        <button class="nav-btn" onclick="prevSlide()">
-            <span>←</span>
-            <span>上一页</span>
-        </button>
-        <button class="nav-btn" onclick="nextSlide()">
-            <span>下一页</span>
-            <span>→</span>
-        </button>
+        <button class="nav-button" onclick="prevSlide()">← 上一页</button>
+        <button class="nav-button" onclick="nextSlide()">下一页 →</button>
     </div>
     
-    <!-- 页码指示器 -->
-    <div class="page-indicator">
-        <span id="currentPage">1</span> / <span id="totalPages">20</span>
-    </div>
+    <div class="page-indicator" id="pageIndicator">1 / 15</div>
     
     <script>
-        // 幻灯片控制
         let currentSlide = 0;
-        const totalSlides = 20;
+        const totalSlides = 15;  // 封面 + 每天故事 + 结束页
         const slidesWrapper = document.getElementById('slidesWrapper');
-        const currentPageSpan = document.getElementById('currentPage');
-        const totalPagesSpan = document.getElementById('totalPages');
-        const progressBar = document.getElementById('progressBar');
-        
-        totalPagesSpan.textContent = totalSlides;
+        const pageIndicator = document.getElementById('pageIndicator');
         
         function updateSlide() {
             slidesWrapper.style.transform = `translateX(-${currentSlide * 100}vw)`;
-            currentPageSpan.textContent = currentSlide + 1;
-            progressBar.style.width = `${((currentSlide + 1) / totalSlides) * 100}%`;
+            pageIndicator.textContent = `${currentSlide + 1} / ${totalSlides}`;
         }
         
         function nextSlide() {
@@ -1252,7 +539,7 @@
             }
         });
         
-        // 触摸滑动支持
+        // 触摸滑动
         let touchStartX = 0;
         let touchEndX = 0;
         
@@ -1266,40 +553,13 @@
         });
         
         function handleSwipe() {
-            const swipeThreshold = 50;
-            const diff = touchStartX - touchEndX;
-            
-            if (Math.abs(diff) > swipeThreshold) {
-                if (diff > 0) {
-                    nextSlide();
-                } else {
-                    prevSlide();
-                }
+            if (touchEndX < touchStartX - 50) {
+                nextSlide();
+            }
+            if (touchEndX > touchStartX + 50) {
+                prevSlide();
             }
         }
-        
-        // 生成粒子
-        function createParticles(containerId) {
-            const container = document.getElementById(containerId);
-            if (!container) return;
-            
-            for (let i = 0; i < 50; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 20 + 's';
-                particle.style.animationDuration = (Math.random() * 10 + 15) + 's';
-                container.appendChild(particle);
-            }
-        }
-        
-        createParticles('particles1');
-        createParticles('particles2');
-        createParticles('particles3');
-        createParticles('particles4');
-        
-        // 初始化
-        updateSlide();
     </script>
 </body>
 </html>
