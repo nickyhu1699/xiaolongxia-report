@@ -7,14 +7,14 @@
     <style>
         * {
             margin: 0;
-            padding:0;
+            padding: 0;
             box-sizing: border-box;
         }
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
             overflow: hidden;
-            background: #000;
+            background: #f5f5f5;
         }
         
         .presentation {
@@ -30,23 +30,18 @@
             position: absolute;
             top: 0;
             left: 0;
-            display: flex;
-            flex-direction: column;
+            display: none;
             padding: 80px 100px;
-            transform: translateX(100%);
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            background: white;
             opacity: 0;
+            transition: opacity 0.5s ease-in-out;
         }
         
         .slide.active {
-            transform: translateX(0);
+            display: flex;
+            flex-direction: column;
             opacity: 1;
             z-index: 10;
-        }
-        
-        .slide.prev {
-            transform: translateX(-100%);
-            opacity: 0;
         }
         
         /* 封面页样式 */
@@ -79,18 +74,6 @@
         .slide-cover .content {
             position: relative;
             z-index: 1;
-            animation: fadeInUp 1s ease-out;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
         
         .slide-cover .emoji {
@@ -109,18 +92,6 @@
             margin-bottom: 30px;
             font-weight: 700;
             text-shadow: 0 4px 20px rgba(0,0,0,0.3);
-            animation: slideInLeft 0.8s ease-out;
-        }
-        
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
         }
         
         .slide-cover .subtitle {
@@ -128,29 +99,11 @@
             margin-bottom: 50px;
             opacity: 0.95;
             font-weight: 300;
-            animation: slideInRight 0.8s ease-out 0.2s both;
-        }
-        
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
         }
         
         .slide-cover .meta {
             font-size: 24px;
             opacity: 0.8;
-            animation: fadeIn 1s ease-out 0.4s both;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
         }
         
         /* 内容页样式 */
@@ -214,8 +167,6 @@
             line-height: 2;
             color: #555;
             margin-bottom: 12px;
-            position: relative;
-            padding-left: 10px;
         }
         
         li::marker {
@@ -309,38 +260,6 @@
             background-clip: text;
             margin: 30px 0;
             line-height: 1;
-        }
-        
-        /* 表格样式 */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 40px 0;
-            font-size: 24px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        
-        th {
-            background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
-            color: white;
-            font-weight: 600;
-            padding: 20px;
-            text-align: left;
-        }
-        
-        td {
-            padding: 20px;
-            border-bottom: 1px solid #e0e0e0;
-        }
-        
-        tr:nth-child(even) {
-            background: #f8f9fa;
-        }
-        
-        tr:hover {
-            background: #e9ecef;
         }
         
         /* 结束页样式 */
@@ -457,34 +376,10 @@
             cursor: not-allowed;
         }
         
-        /* 动画延迟类 */
-        .delay-1 { animation-delay: 0.1s; }
-        .delay-2 { animation-delay: 0.2s; }
-        .delay-3 { animation-delay: 0.3s; }
-        .delay-4 { animation-delay: 0.4s; }
-        .delay-5 { animation-delay: 0.5s; }
-        
-        /* 淡入动画 */
-        @keyframes fadeInScale {
-            from {
-                opacity: 0;
-                transform: scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-        
-        .fade-in {
-            animation: fadeInScale 0.6s ease-out;
-        }
-        
-        /* 打印样式 */
         @media print {
             .slide {
                 page-break-after: always;
-                transform: none !important;
+                display: flex !important;
                 opacity: 1 !important;
             }
             .nav {
@@ -519,7 +414,7 @@
         <div class="slide slide-content">
             <h2>🤔 破冰问题</h2>
             
-            <p style="font-size: 32px; margin-top: 80px; font-weight: 600;">
+            <p style="font-size: 32px; margin-top: 60px; font-weight: 600;">
                 "在座的各位，你们每天花多少时间做重复工作？"
             </p>
             <p style="font-size: 32px; font-weight: 600;">
@@ -529,14 +424,10 @@
                 "如果有个AI助手能帮你省下3小时，你会用来做什么？"
             </p>
             
-            <div class="highlight" style="margin-top: 80px; font-size: 32px;">
+            <div class="highlight" style="margin-top: 60px;">
                 <strong>今天要分享的工具，可以让重复工作时间从2小时缩短到5分钟</strong>
             </div>
-            
-            <p style="font-size: 32px; text-align: center; margin-top: 50px; font-weight: 700; color: #0066cc;">
-                相当于每年多出45天假期
-            </p>
-            
+            <p style="font-size: 28px; text-align: center; margin-top: 40px;"><strong>相当于每年多出45天假期</strong></p>
             <div class="slide-number">2 / 12</div>
         </div>
         
@@ -561,7 +452,6 @@
             <div class="info">
                 <strong>OpenClaw的AI：</strong>就像Siri、小爱同学，但更强大，可以帮你完成复杂的工作任务
             </div>
-            
             <div class="slide-number">3 / 12</div>
         </div>
         
@@ -584,7 +474,6 @@
             <div class="success">
                 <strong>核心价值：</strong>一句话就能让AI帮你做事
             </div>
-            
             <div class="slide-number">4 / 12</div>
         </div>
         
@@ -618,10 +507,9 @@
                 </div>
             </div>
             
-            <div class="highlight" style="margin-top: 40px;">
+            <div class="highlight" style="margin-top: 30px;">
                 <strong>5. 多渠道接入：</strong>微信、飞书、钉钉、Telegram、Discord，随时随地使用
             </div>
-            
             <div class="slide-number">5 / 12</div>
         </div>
         
@@ -645,7 +533,6 @@
             <div class="success">
                 <strong>效果：</strong>报表生成时间从1天→1小时，财务风险降低90%
             </div>
-            
             <div class="slide-number">6 / 12</div>
         </div>
         
@@ -669,7 +556,6 @@
                 <strong>效果：</strong>报告生成时间从2小时→5分钟<br>
                 <strong>节省：</strong>每年180小时（22.5个工作日）
             </div>
-            
             <div class="slide-number">7 / 12</div>
         </div>
         
@@ -693,10 +579,9 @@
                 <strong>效果：</strong>简历质量提升100%，求职成功率提升50%
             </div>
             
-            <div class="highlight" style="margin-top: 50px;">
+            <div class="highlight" style="margin-top: 40px;">
                 <strong>总结：</strong>每天省3小时，准时下班率从30%→90%
             </div>
-            
             <div class="slide-number">8 / 12</div>
         </div>
         
@@ -724,7 +609,6 @@
                 <strong>效果：</strong>每天节省3小时，准时下班率从30%→90%<br>
                 <strong>生活质量大幅提升</strong>
             </div>
-            
             <div class="slide-number">9 / 12</div>
         </div>
         
@@ -748,12 +632,11 @@
                 <li>ROI高达217%</li>
             </ul>
             
-            <div class="highlight" style="margin-top: 50px;">
+            <div class="highlight" style="margin-top: 40px;">
                 <strong>投资回报率：</strong><br>
                 假设月薪10,000元，每天省3小时 = 每天375元<br>
-                <strong style="font-size: 36px; color: #0066cc;">每月节省：7,500元 | 每年节省：90,000元 | ROI：900%</strong>
+                <strong style="font-size: 32px; color: #0066cc;">每月节省：7,500元 | 每年节省：90,000元 | ROI：900%</strong>
             </div>
-            
             <div class="slide-number">10 / 12</div>
         </div>
         
@@ -786,7 +669,6 @@
             <div class="success" style="margin-top: 40px;">
                 <strong>支持：</strong>提供免费培训 • 提供技术支持 • 提供定制服务
             </div>
-            
             <div class="slide-number">11 / 12</div>
         </div>
         
@@ -832,15 +714,13 @@
         const progress = document.getElementById('progress');
         
         function showSlide(index) {
-            slides.forEach((slide, i) => {
-                slide.classList.remove('active', 'prev');
-                
-                if (i < index) {
-                    slide.classList.add('prev');
-                } else if (i === index) {
-                    slide.classList.add('active');
-                }
+            // 隐藏所有幻灯片
+            slides.forEach((slide) => {
+                slide.classList.remove('active');
             });
+            
+            // 显示当前幻灯片
+            slides[index].classList.add('active');
             
             // 更新进度条
             const progressWidth = ((index + 1) / totalSlides) * 100;
@@ -912,11 +792,6 @@
         
         // 初始化
         showSlide(0);
-        
-        // 预加载优化
-        window.addEventListener('load', () => {
-            document.body.style.opacity = '1';
-        });
     </script>
 </body>
 </html>
