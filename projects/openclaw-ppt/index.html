@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OpenClaw分享PPT - 企业管理版</title>
+    <title>OpenClaw AI助手技术分享</title>
     <style>
         * {
             margin: 0;
@@ -12,11 +12,12 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            font-family: 'Microsoft YaHei', 'Source Han Sans CN', -apple-system, BlinkMacSystemFont, sans-serif;
             overflow: hidden;
-            background: #f5f5f5;
+            background: #f8f9fa;
         }
         
+        /* 主容器 */
         .presentation {
             width: 100vw;
             height: 100vh;
@@ -24,6 +25,7 @@
             overflow: hidden;
         }
         
+        /* 幻灯片基础样式 */
         .slide {
             width: 100%;
             height: 100%;
@@ -31,10 +33,10 @@
             top: 0;
             left: 0;
             display: none;
-            padding: 80px 100px;
-            background: white;
+            padding: 80px 120px;
             opacity: 0;
-            transition: opacity 0.5s ease-in-out;
+            transition: opacity 0.6s ease-in-out;
+            background: #ffffff;
         }
         
         .slide.active {
@@ -44,31 +46,27 @@
             z-index: 10;
         }
         
-        /* 封面页样式 */
+        /* ========== 封面页样式 ========== */
         .slide-cover {
-            background: linear-gradient(135deg, #0066cc 0%, #004499 100%);
-            color: white;
+            background: linear-gradient(135deg, #1a237e 0%, #283593 50%, #3949ab 100%);
+            color: #ffffff;
             justify-content: center;
             align-items: center;
             text-align: center;
             position: relative;
-            overflow: hidden;
         }
         
         .slide-cover::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
-        }
-        
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255,255,255,0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255,255,255,0.03) 0%, transparent 50%);
+            pointer-events: none;
         }
         
         .slide-cover .content {
@@ -76,60 +74,100 @@
             z-index: 1;
         }
         
-        .slide-cover .emoji {
-            font-size: 120px;
-            margin-bottom: 40px;
-            animation: bounce 2s ease-in-out infinite;
+        .slide-cover .logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 50px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            animation: logoFadeIn 1s ease-out;
         }
         
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+        @keyframes logoFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
         }
         
         .slide-cover h1 {
-            font-size: 72px;
+            font-size: 68px;
             margin-bottom: 30px;
             font-weight: 700;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            letter-spacing: 2px;
+            animation: titleFadeIn 0.8s ease-out 0.2s both;
+        }
+        
+        @keyframes titleFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .slide-cover .subtitle {
-            font-size: 36px;
-            margin-bottom: 50px;
-            opacity: 0.95;
+            font-size: 32px;
+            margin-bottom: 60px;
             font-weight: 300;
+            opacity: 0.95;
+            letter-spacing: 1px;
+            animation: subtitleFadeIn 0.8s ease-out 0.4s both;
+        }
+        
+        @keyframes subtitleFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .slide-cover .meta {
-            font-size: 24px;
-            opacity: 0.8;
+            font-size: 22px;
+            opacity: 0.85;
+            font-weight: 300;
+            animation: metaFadeIn 0.8s ease-out 0.6s both;
         }
         
-        /* 内容页样式 */
+        @keyframes metaFadeIn {
+            from { opacity: 0; }
+            to { opacity: 0.85; }
+        }
+        
+        .slide-cover .meta p {
+            margin-bottom: 10px;
+        }
+        
+        /* ========== 内容页样式 ========== */
         .slide-content {
-            background: white;
+            background: #ffffff;
             position: relative;
         }
         
-        .slide-content::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 300px;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 102, 204, 0.03));
-            pointer-events: none;
-        }
-        
+        /* 页面标题 */
         h2 {
-            font-size: 56px;
-            color: #0066cc;
-            margin-bottom: 50px;
+            font-size: 52px;
+            color: #1a237e;
+            margin-bottom: 60px;
             font-weight: 700;
             position: relative;
             padding-bottom: 20px;
+            letter-spacing: 1px;
         }
         
         h2::after {
@@ -137,151 +175,194 @@
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(90deg, #0066cc, #0052a3);
-            border-radius: 2px;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #1a237e 0%, #3949ab 100%);
         }
         
+        h2 .icon {
+            display: inline-block;
+            margin-right: 15px;
+            font-weight: 400;
+        }
+        
+        /* 副标题 */
         h3 {
-            font-size: 36px;
-            color: #333;
+            font-size: 34px;
+            color: #283593;
             margin: 40px 0 25px 0;
             font-weight: 600;
+            letter-spacing: 0.5px;
         }
         
+        /* 正文段落 */
         p {
-            font-size: 28px;
-            line-height: 1.8;
-            color: #555;
+            font-size: 26px;
+            line-height: 1.9;
+            color: #424242;
             margin-bottom: 25px;
+            font-weight: 400;
         }
         
-        ul {
-            margin-left: 50px;
+        /* 列表 */
+        ul, ol {
+            margin-left: 40px;
             margin-bottom: 30px;
         }
         
         li {
-            font-size: 28px;
+            font-size: 26px;
             line-height: 2;
-            color: #555;
+            color: #424242;
             margin-bottom: 12px;
+            font-weight: 400;
         }
         
         li::marker {
-            color: #0066cc;
-            font-weight: bold;
-        }
-        
-        /* 卡片样式 */
-        .card {
-            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-            padding: 35px;
-            border-radius: 15px;
-            border-left: 5px solid #0066cc;
-            box-shadow: 0 4px 20px rgba(0, 102, 204, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(0, 102, 204, 0.15);
-        }
-        
-        .card h4 {
-            font-size: 32px;
-            color: #0066cc;
-            margin-bottom: 20px;
+            color: #1a237e;
             font-weight: 600;
         }
         
-        .card p {
+        /* ========== 信息卡片样式 ========== */
+        .info-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #ffffff 100%);
+            padding: 35px 40px;
+            border-left: 4px solid #1a237e;
+            margin: 25px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            transition: all 0.3s ease;
+        }
+        
+        .info-card:hover {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transform: translateY(-2px);
+        }
+        
+        .info-card h4 {
+            font-size: 30px;
+            color: #1a237e;
+            margin-bottom: 18px;
+            font-weight: 600;
+        }
+        
+        .info-card p {
             font-size: 24px;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
+            line-height: 1.7;
         }
         
-        /* 高亮框 */
-        .highlight {
-            background: linear-gradient(135deg, #fff3cd 0%, #ffe69c 100%);
-            padding: 30px 40px;
-            border-left: 5px solid #ffc107;
+        /* ========== 强调框样式 ========== */
+        .highlight-box {
+            padding: 30px 35px;
             margin: 30px 0;
-            font-size: 28px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(255, 193, 7, 0.2);
+            border-radius: 8px;
+            font-size: 26px;
+            line-height: 1.7;
         }
         
-        .success {
-            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
-            padding: 30px 40px;
-            border-left: 5px solid #28a745;
-            margin: 30px 0;
-            font-size: 28px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.2);
+        .highlight-box.primary {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border-left: 4px solid #1a237e;
         }
         
-        .danger {
-            background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
-            padding: 30px 40px;
-            border-left: 5px solid #dc3545;
-            margin: 30px 0;
-            font-size: 28px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(220, 53, 69, 0.2);
+        .highlight-box.success {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            border-left: 4px solid #2e7d32;
         }
         
-        .info {
-            background: linear-gradient(135deg, #d1ecf1 0%, #bee5eb 100%);
-            padding: 30px 40px;
-            border-left: 5px solid #17a2b8;
-            margin: 30px 0;
-            font-size: 28px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(23, 162, 184, 0.2);
+        .highlight-box.warning {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+            border-left: 4px solid #f57c00;
         }
         
-        /* 网格布局 */
+        .highlight-box.info {
+            background: linear-gradient(135deg, #e0f2f1 0%, #b2dfdb 100%);
+            border-left: 4px solid #00695c;
+        }
+        
+        /* ========== 网格布局 ========== */
         .grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
+            gap: 35px;
+            margin: 35px 0;
+        }
+        
+        .grid.three-cols {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        
+        /* ========== 统计数字 ========== */
+        .stat-number {
+            font-size: 72px;
+            font-weight: 700;
+            color: #1a237e;
+            margin: 20px 0;
+            line-height: 1;
+            letter-spacing: -2px;
+        }
+        
+        .stat-label {
+            font-size: 22px;
+            color: #616161;
+            font-weight: 400;
+        }
+        
+        /* ========== 图标网格 ========== */
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 30px;
             margin: 40px 0;
         }
         
-        /* 大数字 */
-        .big-number {
-            font-size: 96px;
-            font-weight: 700;
-            background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin: 30px 0;
-            line-height: 1;
+        .icon-item {
+            text-align: center;
+            padding: 30px 20px;
+            background: #fafafa;
+            border-radius: 12px;
+            transition: all 0.3s ease;
         }
         
-        /* 结束页样式 */
+        .icon-item:hover {
+            background: #f5f5f5;
+            transform: translateY(-3px);
+        }
+        
+        .icon-item .icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .icon-item p {
+            font-size: 20px;
+            color: #424242;
+            margin: 0;
+        }
+        
+        /* ========== 结束页样式 ========== */
         .slide-end {
-            background: linear-gradient(135deg, #28a745 0%, #1e7e34 100%);
-            color: white;
+            background: linear-gradient(135deg, #00695c 0%, #00796b 50%, #00897b 100%);
+            color: #ffffff;
             justify-content: center;
             align-items: center;
             text-align: center;
             position: relative;
-            overflow: hidden;
         }
         
         .slide-end::before {
             content: '';
             position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 40%, rgba(255,255,255,0.03) 0%, transparent 50%),
+                radial-gradient(circle at 70% 60%, rgba(255,255,255,0.03) 0%, transparent 50%);
+            pointer-events: none;
         }
         
         .slide-end .content {
@@ -290,85 +371,95 @@
         }
         
         .slide-end h1 {
-            font-size: 64px;
+            font-size: 58px;
             margin-bottom: 50px;
             font-weight: 700;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            letter-spacing: 2px;
         }
         
-        .slide-end .emoji {
-            font-size: 120px;
-            margin-bottom: 50px;
-            animation: bounce 2s ease-in-out infinite;
+        .slide-end .logo {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 40px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
         }
         
-        .cta {
-            background: rgba(255, 255, 255, 0.2);
+        .cta-box {
+            background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(10px);
-            padding: 40px 60px;
-            border-radius: 15px;
+            padding: 35px 50px;
+            border-radius: 12px;
             margin: 30px 0;
-            font-size: 32px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            font-size: 28px;
+            line-height: 1.6;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
-        /* 幻灯片编号 */
+        /* ========== 页码 ========== */
         .slide-number {
             position: absolute;
-            bottom: 40px;
-            right: 60px;
-            font-size: 20px;
-            color: #999;
+            bottom: 35px;
+            right: 50px;
+            font-size: 18px;
+            color: #9e9e9e;
             font-weight: 500;
             background: rgba(255, 255, 255, 0.9);
-            padding: 10px 20px;
+            padding: 8px 18px;
             border-radius: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
         
-        /* 进度条 */
+        /* ========== 进度条 ========== */
         .progress-bar {
             position: fixed;
             top: 0;
             left: 0;
-            height: 5px;
-            background: linear-gradient(90deg, #0066cc, #28a745);
+            height: 3px;
+            background: linear-gradient(90deg, #1a237e 0%, #00695c 100%);
             transition: width 0.3s ease;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 102, 204, 0.3);
+            box-shadow: 0 0 8px rgba(26, 35, 126, 0.3);
         }
         
-        /* 导航按钮 */
+        /* ========== 导航按钮 ========== */
         .nav {
             position: fixed;
-            bottom: 50px;
+            bottom: 45px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 30px;
+            gap: 25px;
             z-index: 1000;
         }
         
         .nav button {
             background: rgba(255, 255, 255, 0.95);
-            border: none;
-            padding: 18px 40px;
-            font-size: 20px;
-            border-radius: 50px;
+            border: 1px solid #e0e0e0;
+            padding: 15px 35px;
+            font-size: 18px;
+            border-radius: 25px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
             font-weight: 500;
+            color: #424242;
+            font-family: inherit;
         }
         
         .nav button:hover:not(:disabled) {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
             background: white;
+            border-color: #bdbdbd;
         }
         
         .nav button:active:not(:disabled) {
-            transform: translateY(-1px);
+            transform: translateY(0);
         }
         
         .nav button:disabled {
@@ -376,17 +467,31 @@
             cursor: not-allowed;
         }
         
+        /* ========== 响应式优化 ========== */
         @media print {
             .slide {
                 page-break-after: always;
                 display: flex !important;
                 opacity: 1 !important;
             }
-            .nav {
+            .nav, .progress-bar {
                 display: none;
             }
-            .progress-bar {
-                display: none;
+        }
+        
+        /* ========== 动画工具类 ========== */
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
     </style>
@@ -399,9 +504,9 @@
         <!-- 第1页：封面 -->
         <div class="slide slide-cover active">
             <div class="content">
-                <div class="emoji">🦞</div>
+                <div class="logo">🦞</div>
                 <h1>每天省3小时的AI助手</h1>
-                <div class="subtitle">OpenClaw实战分享</div>
+                <div class="subtitle">OpenClaw技术实战分享</div>
                 <div class="meta">
                     <p>分享人：[您的名字]</p>
                     <p>日期：2026-03-17</p>
@@ -412,28 +517,31 @@
         
         <!-- 第2页：破冰问题 -->
         <div class="slide slide-content">
-            <h2>🤔 破冰问题</h2>
+            <h2><span class="icon">🤔</span>破冰问题</h2>
             
-            <p style="font-size: 32px; margin-top: 60px; font-weight: 600;">
-                "在座的各位，你们每天花多少时间做重复工作？"
-            </p>
-            <p style="font-size: 32px; font-weight: 600;">
-                "写报告、整理数据、回复邮件……"
-            </p>
-            <p style="font-size: 32px; font-weight: 600;">
-                "如果有个AI助手能帮你省下3小时，你会用来做什么？"
-            </p>
-            
-            <div class="highlight" style="margin-top: 60px;">
-                <strong>今天要分享的工具，可以让重复工作时间从2小时缩短到5分钟</strong>
+            <div style="margin-top: 80px;">
+                <p style="font-size: 30px; font-weight: 600; color: #1a237e;">
+                    "在座的各位，你们每天花多少时间做重复工作？"
+                </p>
+                <p style="font-size: 30px; font-weight: 600; color: #1a237e;">
+                    "写报告、整理数据、回复邮件……"
+                </p>
+                <p style="font-size: 30px; font-weight: 600; color: #1a237e;">
+                    "如果有个AI助手能帮你省下3小时，你会用来做什么？"
+                </p>
             </div>
-            <p style="font-size: 28px; text-align: center; margin-top: 40px;"><strong>相当于每年多出45天假期</strong></p>
+            
+            <div class="highlight-box primary" style="margin-top: 70px;">
+                <strong>今天要分享的工具，可以让重复工作时间从2小时缩短到5分钟</strong><br>
+                相当于每年多出45天假期
+            </div>
+            
             <div class="slide-number">2 / 12</div>
         </div>
         
         <!-- 第3页：什么是AI -->
         <div class="slide slide-content">
-            <h2>🤖 什么是AI？（3分钟）</h2>
+            <h2><span class="icon">🤖</span>什么是AI？</h2>
             
             <h3>用大白话解释：</h3>
             <ul>
@@ -449,15 +557,16 @@
                 <li><strong>抖音推荐</strong>：AI自动推荐你喜欢的视频</li>
             </ul>
             
-            <div class="info">
+            <div class="highlight-box info">
                 <strong>OpenClaw的AI：</strong>就像Siri、小爱同学，但更强大，可以帮你完成复杂的工作任务
             </div>
+            
             <div class="slide-number">3 / 12</div>
         </div>
         
         <!-- 第4页：OpenClaw是什么 -->
         <div class="slide slide-content">
-            <h2>🦞 OpenClaw是什么？（5分钟）⭐</h2>
+            <h2><span class="icon">🦞</span>OpenClaw是什么？</h2>
             
             <h3>用大白话解释：</h3>
             <p>OpenClaw是一个"AI助手平台"，就像App Store，里面有很多"技能"，每个技能能帮你完成一个任务</p>
@@ -471,154 +580,160 @@
                 <li>技能5：自动生成内容</li>
             </ul>
             
-            <div class="success">
+            <div class="highlight-box success">
                 <strong>核心价值：</strong>一句话就能让AI帮你做事
             </div>
+            
             <div class="slide-number">4 / 12</div>
         </div>
         
         <!-- 第5页：OpenClaw的5个核心特点 -->
         <div class="slide slide-content">
-            <h2>⭐ OpenClaw的5个核心特点</h2>
+            <h2><span class="icon">⭐</span>OpenClaw的5个核心特点</h2>
             
             <div class="grid">
-                <div class="card">
+                <div class="info-card">
                     <h4>1. 开源免费</h4>
                     <p>完全免费，不需要花钱</p>
                     <p>源代码公开，安全可靠</p>
                 </div>
                 
-                <div class="card">
+                <div class="info-card">
                     <h4>2. 本地部署</h4>
                     <p>数据不上传云端</p>
                     <p>完全掌控在自己手里</p>
                 </div>
                 
-                <div class="card">
+                <div class="info-card">
                     <h4>3. 一句话上手</h4>
                     <p>不需要编程知识</p>
                     <p>会说话、会打字就能用</p>
                 </div>
                 
-                <div class="card">
+                <div class="info-card">
                     <h4>4. 丰富的技能生态</h4>
                     <p>ClawHub技能市场</p>
                     <p>100+技能，持续增加</p>
                 </div>
             </div>
             
-            <div class="highlight" style="margin-top: 30px;">
+            <div class="highlight-box primary" style="margin-top: 30px;">
                 <strong>5. 多渠道接入：</strong>微信、飞书、钉钉、Telegram、Discord，随时随地使用
             </div>
+            
             <div class="slide-number">5 / 12</div>
         </div>
         
         <!-- 第6页：企业老板应用场景 -->
         <div class="slide slide-content">
-            <h2>👔 企业老板如何用OpenClaw</h2>
+            <h2><span class="icon">👔</span>企业老板如何用OpenClaw</h2>
             
             <h3>场景1：智能客服系统</h3>
-            <div class="success">
+            <div class="highlight-box success">
                 <strong>效果：</strong>人力成本降低60%，响应速度从38秒→2.3秒<br>
                 <strong>ROI：</strong>每年节省360,000元
             </div>
             
             <h3>场景2：智能营销助手</h3>
-            <div class="success">
+            <div class="highlight-box success">
                 <strong>效果：</strong>内容创作时间从4小时→30分钟，互动率提升70%<br>
                 <strong>ROI：</strong>每年节省76,800元
             </div>
             
             <h3>场景3：智能财务分析</h3>
-            <div class="success">
+            <div class="highlight-box success">
                 <strong>效果：</strong>报表生成时间从1天→1小时，财务风险降低90%
             </div>
+            
             <div class="slide-number">6 / 12</div>
         </div>
         
         <!-- 第7页：管理人员应用场景 -->
         <div class="slide slide-content">
-            <h2>💼 管理人员如何用OpenClaw</h2>
+            <h2><span class="icon">💼</span>管理人员如何用OpenClaw</h2>
             
             <h3>场景1：智能会议助手</h3>
-            <div class="success">
+            <div class="highlight-box success">
                 <strong>效果：</strong>会议纪要时间从1小时→10分钟<br>
                 <strong>节省：</strong>每年120小时（15个工作日）
             </div>
             
             <h3>场景2：智能数据监控</h3>
-            <div class="success">
+            <div class="highlight-box success">
                 <strong>效果：</strong>监控频率从每天1次→每5分钟1次，异常发现率提升95%
             </div>
             
             <h3>场景3：智能报告生成</h3>
-            <div class="success">
+            <div class="highlight-box success">
                 <strong>效果：</strong>报告生成时间从2小时→5分钟<br>
                 <strong>节省：</strong>每年180小时（22.5个工作日）
             </div>
+            
             <div class="slide-number">7 / 12</div>
         </div>
         
         <!-- 第8页：职场人应用场景 -->
         <div class="slide slide-content">
-            <h2>👩‍💻 职场人如何用OpenClaw</h2>
+            <h2><span class="icon">👩‍💻</span>职场人如何用OpenClaw</h2>
             
             <h3>场景1：日常办公自动化</h3>
-            <div class="success">
+            <div class="highlight-box success">
                 <strong>效果：</strong>Excel整理、邮件回复、数据录入<br>
                 <strong>每天节省：3小时</strong>
             </div>
             
             <h3>场景2：知识管理助手</h3>
-            <div class="success">
+            <div class="highlight-box success">
                 <strong>效果：</strong>学习效率提升3倍，查找时间从10分钟→10秒
             </div>
             
             <h3>场景3：求职竞争力提升</h3>
-            <div class="success">
+            <div class="highlight-box success">
                 <strong>效果：</strong>简历质量提升100%，求职成功率提升50%
             </div>
             
-            <div class="highlight" style="margin-top: 40px;">
+            <div class="highlight-box primary" style="margin-top: 40px;">
                 <strong>总结：</strong>每天省3小时，准时下班率从30%→90%
             </div>
+            
             <div class="slide-number">8 / 12</div>
         </div>
         
         <!-- 第9页：真实案例 -->
         <div class="slide slide-content">
-            <h2>📊 真实案例（3分钟）</h2>
+            <h2><span class="icon">📊</span>真实案例</h2>
             
             <h3>案例1：某企业老板的日常自动化</h3>
             <p><strong>背景：</strong>张总，制造业老板，每天花4小时处理重复工作</p>
-            <div class="success">
+            <div class="highlight-box success">
                 <strong>效果：</strong>每天节省4小时，每年节省1,000小时（125个工作日）<br>
                 <strong>相当于多出半年假期</strong>
             </div>
             
             <h3>案例2：某管理人员的会议自动化</h3>
             <p><strong>背景：</strong>李经理，每周5次会议，每次会议纪要1小时</p>
-            <div class="success">
+            <div class="highlight-box success">
                 <strong>效果：</strong>每周节省4小时，每年节省200小时（25个工作日）<br>
                 <strong>相当于多出1个月假期</strong>
             </div>
             
             <h3>案例3：某职场人的日常自动化</h3>
             <p><strong>背景：</strong>小王，职场新人，经常加班到晚上9点</p>
-            <div class="success">
+            <div class="highlight-box success">
                 <strong>效果：</strong>每天节省3小时，准时下班率从30%→90%<br>
                 <strong>生活质量大幅提升</strong>
             </div>
+            
             <div class="slide-number">9 / 12</div>
         </div>
         
         <!-- 第10页：成本与收益 -->
         <div class="slide slide-content">
-            <h2>💰 成本与收益对比</h2>
+            <h2><span class="icon">💰</span>成本与收益对比</h2>
             
             <h3>成本：</h3>
             <ul>
-                <li>OpenClaw：<strong style="color: #28a745; font-size: 32px;">免费</strong>（开源）</li>
+                <li>OpenClaw：<strong style="color: #2e7d32; font-size: 28px;">免费</strong>（开源）</li>
                 <li>学习时间：5分钟</li>
                 <li>部署时间：1小时</li>
                 <li>培训费用：0元</li>
@@ -632,64 +747,73 @@
                 <li>ROI高达217%</li>
             </ul>
             
-            <div class="highlight" style="margin-top: 40px;">
+            <div class="highlight-box warning" style="margin-top: 40px;">
                 <strong>投资回报率：</strong><br>
                 假设月薪10,000元，每天省3小时 = 每天375元<br>
-                <strong style="font-size: 32px; color: #0066cc;">每月节省：7,500元 | 每年节省：90,000元 | ROI：900%</strong>
+                <strong style="font-size: 28px; color: #1a237e;">每月节省：7,500元 | 每年节省：90,000元 | ROI：900%</strong>
             </div>
+            
             <div class="slide-number">10 / 12</div>
         </div>
         
         <!-- 第11页：如何开始 -->
         <div class="slide slide-content">
-            <h2>🚀 如何开始（2分钟）</h2>
+            <h2><span class="icon">🚀</span>如何开始</h2>
             
-            <div class="grid" style="grid-template-columns: 1fr;">
-                <div class="card">
+            <div class="grid">
+                <div class="info-card">
                     <h4>步骤1：访问官网</h4>
-                    <p style="font-size: 32px;"><strong>openclaw.ai</strong> - 5分钟了解</p>
+                    <p style="font-size: 26px;"><strong style="color: #1a237e;">openclaw.ai</strong></p>
+                    <p>5分钟了解</p>
                 </div>
                 
-                <div class="card">
+                <div class="info-card">
                     <h4>步骤2：下载安装</h4>
-                    <p style="font-size: 32px;">5分钟完成，不需要技术背景</p>
+                    <p>5分钟完成</p>
+                    <p>不需要技术背景</p>
                 </div>
                 
-                <div class="card">
+                <div class="info-card">
                     <h4>步骤3：一句话试用</h4>
-                    <p style="font-size: 32px;">让AI帮你做第一个任务，比如生成一份工作报告</p>
+                    <p>让AI帮你做第一个任务</p>
+                    <p>比如生成一份工作报告</p>
                 </div>
                 
-                <div class="card">
+                <div class="info-card">
                     <h4>步骤4：逐步自动化</h4>
-                    <p style="font-size: 32px;">先从简单任务开始，逐步扩展到更多工作</p>
+                    <p>先从简单任务开始</p>
+                    <p>逐步扩展到更多工作</p>
                 </div>
             </div>
             
-            <div class="success" style="margin-top: 40px;">
-                <strong>支持：</strong>提供免费培训 • 提供技术支持 • 提供定制服务
+            <div class="highlight-box success" style="margin-top: 40px;">
+                <strong>支持：</strong><br>
+                • 提供免费培训<br>
+                • 提供技术支持<br>
+                • 提供定制服务
             </div>
+            
             <div class="slide-number">11 / 12</div>
         </div>
         
         <!-- 第12页：结尾 -->
         <div class="slide slide-end">
             <div class="content">
-                <div class="emoji">🦞</div>
+                <div class="logo">🦞</div>
                 <h1>试试养虾，让AI帮你打工</h1>
                 
-                <div class="cta">
+                <div class="cta-box">
                     <strong>每天省3小时，每年多出45天假期</strong>
                 </div>
                 
-                <div style="font-size: 32px; margin-top: 50px;">
+                <div style="font-size: 28px; margin-top: 50px;">
                     <p><strong>总结3个核心价值：</strong></p>
                     <p>1. 每天省3小时，聚焦真正重要的事</p>
                     <p>2. 成本降低60-75%，ROI高达217%</p>
                     <p>3. 效率提升97%，工作更轻松</p>
                 </div>
                 
-                <div class="cta" style="margin-top: 50px; background: rgba(255, 255, 255, 0.3);">
+                <div class="cta-box" style="margin-top: 50px; background: rgba(255, 255, 255, 0.2);">
                     <strong>行动号召：</strong><br>
                     🎯 现场体验：扫码加入体验群<br>
                     🎁 限时福利：现场注册送专属技能包<br>
