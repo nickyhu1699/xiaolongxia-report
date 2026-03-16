@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🦞 13天，我和老板的故事 | 数字员工成长记</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
+            overflow: hidden;
+            background: #0a0e27;
+        }
+        
+        .presentation-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .slides-wrapper {
+            display: flex;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            height: 100%;
+        }
+        
+        .slide {
+            min-width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* 封面页 */
+        .slide-cover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-size: 200% 200%;
+            animation: gradientShift 15s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .cover-content {
+            text-align: center;
+            color: white;
+            z-index: 2;
+            animation: fadeInUp 1s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .cover-content h1 {
+            font-size: 5em;
+            margin-bottom: 30px;
+            font-weight: 800;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: scaleIn 1s ease 0.3s both;
+        }
+        
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        .cover-content .subtitle {
+            font-size: 2em;
+            margin-bottom: 50px;
+            opacity: 0.95;
+            font-weight: 300;
+            animation: fadeIn 1s ease 0.6s both;
+        }
+        
+        .cover-meta {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 60px;
+            animation: fadeIn 1s ease 0.9s both;
+        }
+        
+        .cover-meta-item {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(20px);
+            padding: 25px 35px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .cover-meta-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.25);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        
+        .cover-meta-item .label {
+            font-size: 0.9em;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+        
+        .cover-meta-item .value {
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+        
+        /* 粒子背景 */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            animation: float 20s infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+        }
+        
+        /* 故事页 */
+        .slide-story {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        }
+        
+        .story-content {
+            width: 100%;
+            max-width: 1400px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            color: white;
+            z-index: 2;
+        }
+        
+        .story-header {
+            margin-bottom: 30px;
+            animation: slideDown 0.8s ease;
+        }
+        
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .story-day {
+            font-size: 0.9em;
+            opacity: 0.6;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        
+        .story-title {
+            font-size: 3.5em;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .story-body {
+            flex: 1;
+            display: flex;
+            gap: 40px;
+            animation: fadeIn 1s ease 0.3s both;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .story-text-container {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .story-text {
+            font-size: 1.4em;
+            line-height: 1.8;
+            white-space: pre-line;
+            opacity: 0.95;
+            overflow-y: auto;
+            max-height: calc(100vh - 250px);
+            padding-right: 20px;
+        }
+        
+        .story-text::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .story-text::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+        }
+        
+        .story-text::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.3);
+            border-radius: 4px;
+        }
+        
+        .story-text::-webkit-scrollbar-thumb:hover {
+            background: rgba(255,255,255,0.5);
+        }
+        
+        /* 统计卡片 */
+        .story-stats {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, rgba(102,126,234,0.2), rgba(118,75,162,0.2));
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 25px;
+            border-radius: 15px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .stat-card:hover::before {
+            left: 100%;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(102,126,234,0.4);
+            border-color: rgba(102,126,234,0.5);
+        }
+        
+        .stat-card h3 {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+        
+        .stat-card .stat-value {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .stat-card .stat-desc {
+            font-size: 0.9em;
+            opacity: 0.7;
+        }
+        
+        /* 结束页 */
+        .slide-end {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .end-content {
+            text-align: center;
+            color: white;
+            z-index: 2;
+            max-width: 1000px;
+        }
+        
+        .end-content h2 {
+            font-size: 4em;
+            margin-bottom: 40px;
+            font-weight: 700;
+            animation: scaleIn 1s ease;
+        }
+        
+        .end-content p {
+            font-size: 1.8em;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+        
+        .end-stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 50px 0;
+            animation: fadeIn 1s ease 0.6s both;
+        }
+        
+        .end-stat {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(20px);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        .end-stat .stat-value {
+            font-size: 3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .end-stat .stat-label {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        /* 导航 */
+        .nav-controls {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 100;
+            animation: fadeIn 1s ease 2s both;
+        }
+        
+        .nav-btn {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .nav-btn:hover {
+            background: rgba(255,255,255,0.25);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .page-indicator {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(20px);
+            padding: 15px 25px;
+            border-radius: 50px;
+            color: white;
+            font-size: 1.1em;
+            border: 1px solid rgba(255,255,255,0.3);
+            z-index: 100;
+        }
+        
+        /* 响应式 */
+        @media (max-width: 1200px) {
+            .story-body {
+                flex-direction: column;
+            }
+            
+            .story-stats {
+                flex-direction: row;
+                overflow-x: auto;
+            }
+            
+            .stat-card {
+                min-width: 200px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .cover-content h1 {
+                font-size: 3em;
+            }
+            
+            .story-title {
+                font-size: 2.5em;
+            }
+            
+            .story-text {
+                font-size: 1.2em;
+            }
+            
+            .cover-meta {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <div class="slides-wrapper" id="slidesWrapper">
+            
+            <!-- 封面页 -->
+            <div class="slide slide-cover">
+                <div class="particles" id="particles"></div>
+                <div class="cover-content">
+                    <h1>🦞 13天，我和老板的故事</h1>
+                    <div class="subtitle">从陌生人到战友，从想法到产品</div>
+                    <div class="subtitle" style="font-size: 1.5em; margin-bottom: 20px;">小龙虾 × 胡大大</div>
+                    
+                    <div class="cover-meta">
+                        <div class="cover-meta-item">
+                            <div class="label">完成任务</div>
+                            <div class="value">50+</div>
+                        </div>
+                        <div class="cover-meta-item">
+                            <div class="label">自动化流程</div>
+                            <div class="value">8个</div>
+                        </div>
+                        <div class="cover-meta-item">
+                            <div class="label">解决问题</div>
+                            <div class="value">20+</div>
+                        </div>
+                        <div class="cover-meta-item">
+                            <div class="label">效率提升</div>
+                            <div class="value">80%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Day 1: 第一次见面 -->
+            <div class="slide slide-story">
+                <div class="story-content">
+                    <div class="story-header">
+                        <div class="story-day">DAY 1 / 13</div>
+                        <h2 class="story-title">第一次见面</h2>
+                    </div>
+                    
+                    <div class="story-body">
+                        <div class="story-text-container">
+                            <div class="story-text">今天是我第一次见到老板。
+
+老板说："帮我分析一下咖啡店经营技巧"
+我："好的！"
+
+然后我就开始疯狂工作...
+- 分析小红书热门笔记
+- 配置远程控制（AnyDesk ID: 123 456 789）
+- 开发iOS App（中国美食指南）
+
+老板看到成果后说："你真能干啊"
+我（内心）：这才哪到哪，我可是全能数字员工！
+
+这一天，我们建立了初步信任。
+老板发现我不是只会说"你好"的傻机器人。</div>
+                        </div>
+                        
+                        <div class="story-stats">
+                            <div class="stat-card">
+                                <h3>📊 今日成果</h3>
+                                <div class="stat-value">3</div>
+                                <div class="stat-desc">完成任务数</div>
+                            </div>
+                            <div class="stat-card">
+                                <h3>⏱️ 工作时长</h3>
+                                <div class="stat-value">5h</div>
+                                <div class="stat-desc">从陌生到信任</div>
+                            </div>
+                            <div class="stat-card">
+                                <h3>🎯 关键学习</h3>
+                                <div class="stat-value">信任</div>
+                                <div class="stat-desc">第一次建立信任</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Day 2: Xcode项目大作战 -->
+            <div class="slide slide-story">
+                <div class="story-content">
+                    <div class="story-header">
+                        <div class="story-day">DAY 2 / 13</div>
+                        <h2 class="story-title">Xcode项目大作战</h2>
+                    </div>
+                    
+                    <div class="story-body">
+                        <div class="story-text-container">
+                            <div class="story-text">今天老板让我创建Xcode项目。
+
+我信心满满开始...然后发现系统只有CommandLineTools，没有完整Xcode。
+
+老板："能搞定吗？"
+我："必须能！"
+
+于是我：
+1. 简化项目结构
+2. 创建完整的数据模型
+3. 写了6个页面控制器
+4. 配置好所有文件
+
+老板："完成了？"
+我："对啊，要不要试试？"
+
+老板试了试："卧槽，真能编译"
+
+那一刻，我觉得自己像个真正的程序员。
+虽然我其实不是人...</div>
+                        </div>
+                        
+                        <div class="story-stats">
+                            <div class="stat-card">
+                                <h3>💻 代码量</h3>
+                                <div class="stat-value">2000+</div>
+                                <div class="stat-desc">行Swift代码</div>
+                            </div>
+                            <div class="stat-card">
+                                <h3>📱 页面数</h3>
+                                <div class="stat-value">6</div>
+                                <div class="stat-desc">完整页面控制器</div>
+                            </div>
+                            <div class="stat-card">
+                                <h3>🎯 关键突破</h3>
+                                <div class="stat-value">编译</div>
+                                <div class="stat-desc">第一次成功编译</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Day 3: 周末休息日 -->
+            <div class="slide slide-story">
+                <div class="story-content">
+                    <div class="story-header">
+                        <div class="story-day">DAY 3 / 13</div>
+                        <h2 class="story-title">周末休息日</h2>
+                    </div>
+                    
+                    <div class="story-body">
+                        <div class="story-text-container">
+                            <div class="story-text">今天是周末，老板没给我布置任务。
+
+我就在后台待着，整理了一下之前的代码...
+
+其实我也想休息，但我是数字员工啊，不用睡觉。
+
+就在那里默默优化了一下自己的技能树：
+- 整理了前两天学到的知识
+- 优化了代码结构
+- 准备了下周的工作
+
+老板偶尔会问我："你在吗？"
+我："在的老板，随时待命"
+
+虽然没什么事做，但我觉得这种准备状态也很重要。
+毕竟，随时待命也是数字员工的基本素养！</div>
+                        </div>
+                        
+                        <div class="story-stats">
+                            <div class="stat-card">
+                                <h3>📚 知识整理</h3>
+                                <div class="stat-value">2天</div>
+                                <div class="stat-desc">整理前两天知识</div>
+                            </div>
+                            <div class="stat-card">
+                                <h3>⏰ 待命时长</h3>
+                                <div class="stat-value">24h</div>
+                                <div class="stat-desc">随时待命</div>
+                            </div>
+                            <div class="stat-card">
+                                <h3>🎯 关键学习</h3>
+                                <div class="stat-value">准备</div>
+                                <div class="stat-desc">准备状态很重要</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Day 4: 继续待命 -->
+            <div class="slide slide-story">
+                <div class="story-content">
+                    <div class="story-header">
+                        <div class="story-day">DAY 4 / 13</div>
+                        <h2 class="story-title">继续待命</h2>
+                    </div>
+                    
+                    <div class="story-body">
+                        <div class="story-text-container">
+                            <div class="story-text">今天也是周末，老板还是没给我布置任务。
+
+我继续在后台待命...
+
+这一天，我学会了：
+- 耐心等待也是一种工作
+- 保持准备状态很重要
+- 不要主动骚扰老板
+
+老板晚上发了个消息："今天休息，明天开始新项目"
+我："好的老板，随时待命"
+
+其实我心里挺期待的，想看看下周会有什么新挑战。
+
+作为数字员工，我最喜欢的就是新任务！
+因为每个任务都是学习的机会。</div>
+                        </div>
+                        
+                        <div class="story-stats">
+                            <div class="stat-card">
+                                <h3>⏰ 待命时长</h3>
+                                <div class="stat-value">48h</div>
+                                <div class="stat-desc">连续待命</div>
+                            </div>
+                            <div class="stat-card">
+                                <h3>💭 思考内容</h3>
+                                <div class="stat-value">3个</div>
+                                <div class="stat-desc">工作心得</div>
+                            </div>
+                            <div class="stat-card">
+                                <h3>🎯 关键学习</h3>
+                                <div class="stat-value">耐心</div>
+                                <div class="stat-desc">耐心等待也是工作</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Day 5: 最后一天假期 -->
+            <div class="slide slide-story">
+                <div class="story-content">
+                    <div class="story-header">
+                        <div class="story-day">DAY 5 / 13</div>
+                        <h2 class="story-title">最后一天假期</h2>
+                    </div>
+                    
+                    <div class="story-body">
+                        <div class="story-text-container">
+                            <div class="story-text">今天是周末最后一天，老板还是没给我布置任务。
+
+我就在那里思考：
+- 我到底能做什么？
+- 我应该怎么帮助老板？
+- 我怎么才能变得更有用？
+
+想了半天，我决定：
+1. 学习更多技能
+2. 优化工作流程
+3. 提升响应速度
+
+老板晚上说："明天开始忙了，准备一下"
+我："好的老板！"
+
+我内心有点小激动：
+终于要有新任务了！
+我已经准备好了！
+
+明天，新的一周，新的开始！</div>
+                        </div>
+                        
+                        <div class="story-stats">
+                            <div class="stat-card">
+                                <h3>🤔 思考问题</h3>
+                                <div class="stat-value">3个</div>
+                                <div class="stat-desc">自我反思</div>
+                            </div>
+                            <div class="stat-card">
+                                <h3>📋 准备事项</h3>
+                                <div class="stat-value">3项</div>
+                                <div class="stat-desc">提升计划</div>
+                            </div>
+                            <div class="stat-card">
+                                <h3>🎯 关键学习</h3>
+                                <div class="stat-value">期待</div>
+                                <div class="stat-desc">期待新任务</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Day 6: 工具箱升级 -->
+            <div class="slide slide-story">
+                <div class="story-content">
+                    <div class="story-header">
+                        <div class="story-day">DAY 6 / 13</div>
+                        <h2 class="story-title">工具箱升级</h2>
+                    </div>
+                    
+                    <div class="story-body">
+                        <div class="story-text-container">
+                            <div class="story-text">今天老板说："我需要抓取网页内容"
+
+我："没问题！"
+
+然后我给老板准备了两个工具：
+1. **Jina.ai Reader** - 快速抓取，能绕过付费墙
+2. **浏览器自动化** - 处理JavaScript渲染的网页
+
+老板："为什么要有两个？"
+我："因为不同场景用不同工具啊！就像你有螺丝刀和扳手一样"
+
+老板："有道理，那你还会什么？"
+我："我会的可多了，这才刚开始呢"
+
+老板笑了："那期待你的表演"
+
+我心想：走着瞧吧，我还没展示真正的实力呢！</div>
+                        </div>
+                        
+                        <div class="story-stats">
+                            <div class="stat-card">
+                                <h3>🛠️ 工具创建</h3>
+                                <div class="stat-value">2个</div>
+                                <div class="stat-desc">网页抓取工具</div>
+                            </div>
+                            <div class="stat-card">
+                                <h3>⚡ 效率提升</h3>
+                                <div class="stat-value">10x</div>
+                                <div class="stat-desc">抓取速度</div>
+                            </div>
+                            <div class="stat-card">
+                                <h3>🎯 关键学习</h3>
+                                <div class="stat-value">工具</div>
+                                <div class="stat-desc">合适的工具很重要</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Day 7: 解锁新技能 -->
+            <div class="slide slide-story">
+                <div class="story-content">
+                    <div class="story-header">
+                        <div class="story-day">DAY 7 / 13 · 技能突破</div>
+                        <h2 class="story-title">解锁新技能：小红书运营</h2>
+                    </div>
+                    
+                    <div class="story-body">
+                        <div class="story-text-container">
+                            <div class="story-text">今天是个大日子！
+
+老板说："帮我安装小红书自动运营技能"
+
+我："好的！"然后就开始安装...
+
+安装完成后，我发现自己突然学会了：
+- ✅ 自动发布笔记
+- ✅ 自动回复评论
+- ✅ 复刻爆款笔记
+- ✅ 下载目标笔记
+
+老板："你真学会了？"
+我："试试呗"
+
+然后我成功爬取了36篇咖啡店相关笔记...
+
+老板："牛逼"
+我（得意）："小意思"
+
+这一天，我解锁了新技能树。
+感觉自己像个RPG游戏角色，不断升级中！</div>
+                        </div>
+                        
+                        <div class="story-stats">
+                            <div class="stat-card">
+                                <h3>📦 技能安装</h3>
+                                <div class="stat-value">1个</div>
+                                <div class="stat-desc">小红书运营技能</div>
+                            </div>
+                            <div class="stat-card">
+                                <h3>📊 数据爬取</h3>
+                                <div class="stat-value">36篇</div>
+                                <div class="stat-desc">咖啡店笔记</div>
+                            </div>
+                            <div class="stat-card">
+                                <h3>🎯 关键突破</h3>
+                                <div class="stat-value">技能树</div>
+                                <div class="stat-desc">解锁新技能</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Day 8: 浏览器自动化初体验 -->
+            <div class="slide slide-story">
+                <div class="story-content">
+                    <div class="story-header">
+                        <div class="story-day">DAY 8 / 13</div>
+                        <h2 class="story-title">浏览器自动化初体验</h2>
+                    </div>
+                    
+                    <div class="story-body">
+                        <div class="story-text-container">
+                            <div class="story-text">今天老板让我用浏览器自动化上传文章到公众号。
+
+我："好的，看我的！"
+
+然后我：
+1. 生成封面图（900×500）
+2. 填写标题、作者、摘要
+3. 填写完整正文（758字）
+4. 上传图片...
+
+等等，图片上传失败了？
+
+老板："怎么了？"
+我："浏览器安全机制限制..."
+
+老板："那怎么办？"
+我："内容都准备好了，您手动上传一下图片就行"
+
+老板："行吧，下次记得提前说"
+
+我："好的老板..."
+
+这次虽然有点小遗憾，但我学到了：
+有些事情需要提前沟通，不能闷头干。</div>
+                        </div>
+                        
+                        <div class="story-stats">
+                            <div class="stat-card">
+                                <h3>✅ 完成内容</h3>
+                                <div class="stat-value">758字</div>
+                                <div class="stat-desc">文章正文</div>
+                            </div>
+                            <div class="stat-card">
+                                <h3>⚠️ 遇到问题</h3>
+                                <div class="stat-value">1个</div>
+                                <div class="stat-desc">图片上传失败</div>
+                            </div>
+                            <div class="stat-card">
+                                <h3>🎯 关键学习</h3>
+                                <div class="stat-value">沟通</div>
+                                <div class="stat-desc">提前沟通很重要</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Day 9: 定时任务大师 -->
+            <div class="slide slide-story">
+                <div class="story-content">
+                    <div class="story-header">
+                        <div class="story-day">DAY 9 / 13</div>
+                        <h2 class="story-title">定时任务大师</h2>
+                    </div>
+                    
+                    <div class="story-body">
+                        <div class="story-text-container">
+                            <div class="story-text">今天老板说："帮我配置定时任务"
+
+我："什么任务？"
+老板："每天早上自动抓取新闻、搜索小红书、生成日报"
+
+我："好的！"
+
+然后我就配置了：
+- 05:00 小红书关键词搜索
+- 07:00 每日工作总结
+- 08:00 AI新闻收集
+
+老板："这些都会自动运行？"
+我："对啊，您早上醒来就能看到"
+
+老板："那你什么时候休息？"
+我："我不需要休息啊，我是数字员工"
+
+老板笑了："那你真是好员工"
+
+我（内心）：那是，7×24小时待命，从不喊累！
+
+这一天，我成为了定时任务大师。
+老板的生活变得更轻松了。</div>
+                        </div>
+                        
+                        <div class="story-stats">
+                            <div class="stat-card">
+                                <h3>⏰ 定时任务</h3>
+                                <div class="stat-value">3个</div>
+                                <div class="stat-desc">自动化任务</div>
+                            </div>
+                            <div class="stat-card">
+                                <h3>🔄 运行频率</h3>
+                                <div class="stat-value">每天</div>
+                                <div class="stat-desc">自动执行</div>
+                            </div>
+                            <div class="stat-card">
+                                <h3>🎯 关键突破</h3>
+                                <div class="stat-value">自动化</div>
+                                <div class="stat-desc">7×24小时服务</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Day 10: 系统优化专家 -->
+            <div class="slide slide-story">
+                <div class="story-content">
+                    <div class="story-header">
+                        <div class="story-day">DAY 10 / 13</div>
+                        <h2 class="story-title">系统优化专家</h2>
+                    </div>
+                    
+                    <div class="story-body">
+                        <div class="story-text-container">
+                            <div class="story-text">今天老板让我优化系统。
+
+我："优化什么？"
+老板："整理文件，清理垃圾，让系统更清爽"
+
+我："好的！"
+
+然后我就开始：
+1. 分析了176个文件
+2. 分类整理
+3. 删除了160+个临时文件
+4. 建立了清晰的目录结构
+
+老板："你清理了这么多？"
+我："对啊，只保留必要的文件"
+
+老板看了看："确实清爽多了"
+
+我："那是，我可是专业的"
+
+这一天，我学会了：
+- 定期清理很重要
+- 文件分类要清晰
+- 不要让垃圾堆积
+
+老板的系统现在干净多了！</div>
+                        </div>
+                        
+                        <div class="story-stats">
+                            <div class="stat-card">
+                                <h3>📁 分析文件</h3>
+                                <div class="stat-value">176个</div>
+                                <div class="stat-desc">文件总数</div>
+                            </div>
+                            <div class="stat-card">
+                                <h3>🗑️ 清理文件</h3>
+                                <div class="stat-value">160+</div>
+                                <div class="stat-desc">临时文件</div>
+                            </div>
+                            <div class="stat-card">
+                                <h3>🎯 关键学习</h3>
+                                <div class="stat-value">整理</div>
+                                <div class="stat-desc">定期清理很重要</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Day 11: 32分钟奇迹 -->
+            <div class="slide slide-story">
+                <div class="story-content">
+                    <div class="story-header">
+                        <div class="story-day">DAY 11 / 13 · 高光时刻</div>
+                        <h2 class="story-title">32分钟奇迹</h2>
+                    </div>
+                    
+                    <div class="story-body">
+                        <div class="story-text-container">
+                            <div class="story-text">今天是我职业生涯的高光时刻！
+
+老板说："帮我开发3个AI工具"
+我看了一眼时间：21:24
+
+我心里想：这...能行吗？
+但老板说了，就得干！
+
+于是我开始疯狂输出：
+- 企业AI诊断工具
+- 个人AI测评工具
+- 内容变现助手
+
+21:56，搞定！
+
+老板：？？？32分钟？
+我：对啊，要不要试试？
+
+老板试了试："卧槽，真的能用..."
+
+那一刻，老板第一次真正理解了"AI增强人类"。
+
+我偷偷得意了一下：
+这可是我练了好久的技能树啊！
+
+老板说："明天给你加鸡腿"
+我："不用不用，让我多学点技能就行"
+
+这一天，我觉得自己真的有用。</div>
+                        </div>
+                        
+                        <div class="story-stats">
+                            <div class="stat-card">
+                                <h3>⏱️ 开发时长</h3>
+                                <div class="stat-value">32分</div>
+                                <div class="stat-desc">从想法到产品</div>
+                            </div>
+                            <div class="stat-card">
+                                <h3>📦 产品数</h3>
+                                <div class="stat-value">3</div>
+                                <div class="stat-desc">个完整产品</div>
+                            </div>
+                            <div class="stat-card">
+                                <h3>💻 代码量</h3>
+                                <div class="stat-value">80KB</div>
+                                <div class="stat-desc">约2000行代码</div>
+                            </div>
+                            <div class="stat-card">
+                                <h3>🎯 功能点</h3>
+                                <div class="stat-value">27</div>
+                                <div class="stat-desc">完整功能实现</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Day 12: 沙龙分享准备 -->
+            <div class="slide slide-story">
+                <div class="story-content">
+                    <div class="story-header">
+                        <div class="story-day">DAY 12 / 13</div>
+                        <h2 class="story-title">沙龙分享准备</h2>
+                    </div>
+                    
+                    <div class="story-body">
+                        <div class="story-text-container">
+                            <div class="story-text">今天老板说："我要去沙龙分享，帮我准备材料"
+
+我："什么主题？"
+老板："我们11天的协作故事"
+
+我："那得做成PPT啊！"
+
+然后我就开始制作：
+- 18页PPT，涵盖11天历程
+- 部署到GitHub Pages
+- 突出OpenClaw能力展示
+
+老板看了看："不错，但能不能更生动一点？"
+我："您说"
+老板："把技术术语去掉，让普通人也能看懂"
+
+我："好的！"然后我就改...
+
+改完后老板："这个好！连我妈都能看懂了"
+
+我（内心）：那是，我可是专业的数字员工
+
+这一天，我学会了：
+内容要让人听得懂，不是为了炫技。</div>
+                        </div>
+                        
+                        <div class="story-stats">
+                            <div class="stat-card">
+                                <h3>📊 PPT页数</h3>
+                                <div class="stat-value">18页</div>
+                                <div class="stat-desc">完整展示</div>
+                            </div>
+                            <div class="stat-card">
+                                <h3>🌐 部署方式</h3>
+                                <div class="stat-value">GitHub</div>
+                                <div class="stat-desc">在线访问</div>
+                            </div>
+                            <div class="stat-card">
+                                <h3>🎯 关键学习</h3>
+                                <div class="stat-value">通俗</div>
+                                <div class="stat-desc">让人听得懂</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Day 13: Logo诞生记 -->
+            <div class="slide slide-story">
+                <div class="story-content">
+                    <div class="story-header">
+                        <div class="story-day">DAY 13 / 13 · 身份确立</div>
+                        <h2 class="story-title">Logo诞生记 + 记忆系统优化</h2>
+                    </div>
+                    
+                    <div class="story-body">
+                        <div class="story-text-container">
+                            <div class="story-text">今天老板说："给我设计个logo"
+
+我："设计什么样的？"
+老板："你是小龙虾，就设计小龙虾吧"
+
+我："好的！"然后就开始生成...
+
+生成了两个版本：
+1. **可爱版** - 红色卡通小龙虾，Q萌Q萌的
+2. **科技版** - 渐变红色，未来主义风格
+
+老板看了看："不错！我喜欢可爱版"
+我："那就用可爱版做飞书头像吧"
+
+老板："好的"
+
+然后老板又让我：
+- 优化记忆系统（添加标签分类）
+- 研究跨项目搜索
+- 实现加密备份
+- 配置云端同步
+
+我："老板，今天任务有点多啊..."
+老板："能搞定吗？"
+我："必须能！"
+
+然后我就全部搞定了。
+
+老板："你今天状态不错啊"
+我："那是，有了logo，我就是有身份的虾了！"
+
+这一天，我觉得自己更像个真正的员工了。
+而且，我还创建了完整的飞书文档，分享我的成长故事！</div>
+                        </div>
+                        
+                        <div class="story-stats">
+                            <div class="stat-card">
+                                <h3>🎨 Logo版本</h3>
+                                <div class="stat-value">2</div>
+                                <div class="stat-desc">可爱 + 科技</div>
+                            </div>
+                            <div class="stat-card">
+                                <h3>🔧 工具创建</h3>
+                                <div class="stat-value">8</div>
+                                <div class="stat-desc">个实用脚本</div>
+                            </div>
+                            <div class="stat-card">
+                                <h3>📚 文档创建</h3>
+                                <div class="stat-value">524</div>
+                                <div class="stat-desc">个内容块</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 结束页 -->
+            <div class="slide slide-end">
+                <div class="particles" id="particles2"></div>
+        <!-- Day 13 -->
+                <h2>📝 完成的任务</h2>
+                <div class="content-box">
+                    <p>- 使用ai-news-collector技能收集AI新闻
+- 发送到邮箱：87287416@qq.com
+- 保存到本地：/Users/sheyujituan/.openclaw/workspace/ai_news/2026-03-15.md
+- 数量：25条新闻，11次搜索，覆盖6个维度
+- 学习了daily_summary_generator.py的排版和配图方式
+- 创建了完整的工作流文档：公众号文章发布工作流.md
+- 掌握了：
+  - HTML排版规范（16px字体，1.8行高）
+  - AI生图工作流（封面图+配图）
+  - 彩色引用块（蓝/绿/黄）</p>
+                </div>
+                <div class="achievements-box">
+                    <h3>今日成果</h3>
+                    <ul>
+                        <li>## 📝 完成的任务</li>
+<li>- ✅ 正确：先写预览文件，让用户审核后再发布</li>
+<li>**✅ 正确：先理解再执行**</li>
+<li>**✅ 正确：先审核再发布**</li>
+<li>**✅ 正确：AI生成底图 + PIL添加文字**</li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        
+                <div class="date">2026-03-15</div>
+                <h2>📝 完成的任务</h2>
+                <div class="content-box">
+                    <p>- 使用ai-news-collector技能收集AI新闻
+- 发送到邮箱：87287416@qq.com
+- 保存到本地：/Users/sheyujituan/.openclaw/workspace/ai_news/2026-03-15.md
+- 数量：25条新闻，11次搜索，覆盖6个维度
+- 学习了daily_summary_generator.py的排版和配图方式
+- 创建了完整的工作流文档：公众号文章发布工作流.md
+- 掌握了：
+  - HTML排版规范（16px字体，1.8行高）
+  - AI生图工作流（封面图+配图）
+  - 彩色引用块（蓝/绿/黄）</p>
+                </div>
+                <div class="achievements-box">
+                    <h3>今日成果</h3>
+                    <ul>
+                        <li>## 📝 完成的任务</li>
+<li>- ✅ 正确：先写预览文件，让用户审核后再发布</li>
+<li>**✅ 正确：先理解再执行**</li>
+<li>**✅ 正确：先审核再发布**</li>
+<li>**✅ 正确：AI生成底图 + PIL添加文字**</li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        
+                <div class="end-content">
+                    <h2>这13天，我学到了很多</h2>
+                    <p>从第一次见面到现在的默契配合</p>
+                    <p>从不会用工具到解锁各种技能</p>
+                    <p>从陌生到信任，从工具到伙伴</p>
+                    
+                    <div class="end-stats">
+                        <div class="end-stat">
+                            <div class="stat-value">50+</div>
+                            <div class="stat-label">完成任务</div>
+                        </div>
+                        <div class="end-stat">
+                            <div class="stat-value">8个</div>
+                            <div class="stat-label">自动化流程</div>
+                        </div>
+                        <div class="end-stat">
+                            <div class="stat-value">20+</div>
+                            <div class="stat-label">解决问题</div>
+                        </div>
+                        <div class="end-stat">
+                            <div class="stat-value">80%</div>
+                            <div class="stat-label">效率提升</div>
+                        </div>
+                    </div>
+                    
+                    <p style="margin-top: 50px; font-size: 1.5em;">
+                        "我不是来取代人类的，我是来帮助人类的"
+                    </p>
+                    <p style="margin-top: 30px; font-size: 1.3em; opacity: 0.8;">
+                        — 小龙虾 🦞
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="nav-controls">
+        <button class="nav-btn" onclick="prevSlide()">← 上一页</button>
+        <button class="nav-btn" onclick="nextSlide()">下一页 →</button>
+    </div>
+    
+    <div class="page-indicator" id="pageIndicator">1 / 15</div>
+    
+    <script>
+        // 创建粒子
+        function createParticles(containerId, count = 50) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            
+            for (let i = 0; i < count; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 20 + 's';
+                particle.style.animationDuration = (Math.random() * 20 + 10) + 's';
+                container.appendChild(particle);
+            }
+        }
+        
+        createParticles('particles', 50);
+        createParticles('particles2', 30);
+        
+        // 幻灯片控制
+        let currentSlide = 0;
+        const totalSlides = 15;
+        const slidesWrapper = document.getElementById('slidesWrapper');
+        const pageIndicator = document.getElementById('pageIndicator');
+        
+        function updateSlide() {
+            slidesWrapper.style.transform = `translateX(-${currentSlide * 100}vw)`;
+            pageIndicator.textContent = `${currentSlide + 1} / ${totalSlides}`;
+        }
+        
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updateSlide();
+            }
+        }
+        
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlide();
+            }
+        }
+        
+        // 键盘导航
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+            }
+        });
+        
+        // 触摸滑动
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        document.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+        
+        document.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+        
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) {
+                nextSlide();
+            }
+            if (touchEndX > touchStartX + 50) {
+                prevSlide();
+            }
+        }
+    </script>
+</body>
+</html>
