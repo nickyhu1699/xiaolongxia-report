@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>珠海新闻速递 | 2026年3月17日</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.8;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        /* 头部 */
+        .header {
+            background: linear-gradient(135deg, #00b4db 0%, #0083b0 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            font-weight: 800;
+            text-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+        
+        .header .date {
+            font-size: 1.5em;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+        
+        .header .weather {
+            display: inline-block;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(20px);
+            padding: 15px 30px;
+            border-radius: 25px;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        /* 内容区 */
+        .content {
+            padding: 50px 40px;
+        }
+        
+        /* 分类标题 */
+        .section-title {
+            font-size: 2em;
+            font-weight: 800;
+            margin: 50px 0 30px 0;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .section-title::before {
+            content: '';
+            width: 5px;
+            height: 40px;
+            background: linear-gradient(135deg, #00b4db 0%, #0083b0 100%);
+            border-radius: 3px;
+        }
+        
+        /* 新闻卡片 */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .news-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            border-left: 5px solid #00b4db;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .news-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0,180,219,0.05) 0%, rgba(0,131,176,0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .news-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 15px 40px rgba(0,180,219,0.2);
+        }
+        
+        .news-card:hover::before {
+            opacity: 1;
+        }
+        
+        .news-card.featured {
+            border-left-color: #ff6b6b;
+            background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%);
+        }
+        
+        .news-card.featured::before {
+            background: linear-gradient(135deg, rgba(255,107,107,0.05) 0%, rgba(255,107,107,0.05) 100%);
+        }
+        
+        .news-tag {
+            display: inline-block;
+            background: #00b4db;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .news-tag.hot {
+            background: #ff6b6b;
+        }
+        
+        .news-title {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+        
+        .news-meta {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 15px;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .news-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .news-summary {
+            font-size: 1.05em;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .news-highlight {
+            background: #e7f3ff;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 3px solid #0066cc;
+            margin: 15px 0;
+        }
+        
+        .news-highlight strong {
+            color: #0066cc;
+        }
+        
+        /* 统计卡片 */
+        .stats-section {
+            background: linear-gradient(135deg, #00b4db 0%, #0083b0 100%);
+            color: white;
+            padding: 50px;
+            border-radius: 15px;
+            margin: 50px 0;
+            text-align: center;
+        }
+        
+        .stats-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .stat-card {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(20px);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        .stat-card .number {
+            font-size: 3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .stat-card .label {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        /* 时间线 */
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+            margin: 40px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, #00b4db 0%, #0083b0 100%);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -32px;
+            top: 25px;
+            width: 12px;
+            height: 12px;
+            background: #00b4db;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px #00b4db;
+        }
+        
+        .timeline-date {
+            font-size: 0.85em;
+            color: #999;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-title {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-content {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* 页脚 */
+        .footer {
+            background: #333;
+            color: white;
+            padding: 40px;
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        .footer p {
+            margin: 10px 0;
+        }
+        
+        .footer a {
+            color: #00b4db;
+            text-decoration: none;
+        }
+        
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <div class="header">
+            <h1>🌊 珠海新闻速递</h1>
+            <div class="date">2026年3月17日 · 星期一 · 第11期</div>
+            <div class="weather">
+                ☀️ 晴转多云 | 20-26°C | 森林火险橙色预警生效中
+            </div>
+        </div>
+        
+        <!-- 内容区 -->
+        <div class="content">
+            
+            <!-- 重点新闻 -->
+            <h2 class="section-title">🔥 重点新闻</h2>
+            <div class="news-grid">
+                
+                <div class="news-card featured">
+                    <span class="news-tag hot">重磅</span>
+                    <div class="news-title">超100亿！珠海重点项目集中签约</div>
+                    <div class="news-meta">
+                        <span>📅 3月10日</span>
+                        <span>📍 珠海市</span>
+                        <span>💰 投资100亿+</span>
+                    </div>
+                    <div class="news-summary">
+                        近日，一批批重点项目在珠海集中签约，计划总投资超100亿元。涉及多个领域：
+                    </div>
+                    <div class="news-highlight">
+                        <strong>重点项目包括：</strong><br>
+                        • 经纬力合必达AI-SOD合成总部大厦<br>
+                        • 百诺集团总部及机器人关节电机生产基地<br>
+                        • 石景山旅游中心<br>
+                        • 凤凰山桐阳里等产业及文旅项目
+                    </div>
+                </div>
+                
+                <div class="news-card featured">
+                    <span class="news-tag hot">重大项目</span>
+                    <div class="news-title">香洲区86亿项目集中签约</div>
+                    <div class="news-meta">
+                        <span>📅 3月9日</span>
+                        <span>📍 香洲区</span>
+                        <span>💰 投资86亿</span>
+                    </div>
+                    <div class="news-summary">
+                        在2026年香洲区高质量发展大会上，10个重点项目与香洲区政府集中签约。
+                    </div>
+                    <div class="news-highlight">
+                        <strong>签约项目：</strong><br>
+                        • 石景山旅游中心<br>
+                        • 经纬力合必达<br>
+                        • 武测智能无人机机场综合管理平台<br>
+                        • <strong>计划总投资超86亿元</strong>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <!-- 经济发展 -->
+            <h2 class="section-title">💼 经济发展</h2>
+            <div class="news-grid">
+                
+                <div class="news-card">
+                    <span class="news-tag">基建</span>
+                    <div class="news-title">珠海中心站（鹤洲）枢纽工程启动</div>
+                    <div class="news-meta">
+                        <span>📅 近期</span>
+                        <span>📍 鹤洲</span>
+                        <span>🏗️ 建筑面积61万㎡</span>
+                    </div>
+                    <div class="news-summary">
+                        根据《珠海市2026年市政府投资项目计划》，珠海中心站（鹤洲）枢纽站城一体工程项目总建筑面积61万平方米，分两期建设。
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <span class="news-tag">产业</span>
+                    <div class="news-title">刘强东创立游艇品牌，珠海建制造基地</div>
+                    <div class="news-meta">
+                        <span>📅 2月24日</span>
+                        <span>📍 珠海</span>
+                        <span>🚢 游艇产业</span>
+                    </div>
+                    <div class="news-summary">
+                        刘强东近日创立独立游艇品牌Sea Expandary，计划在珠海投资建设游艇制造基地，全产业链布局游艇产业。
+                    </div>
+                    <div class="news-highlight">
+                        <strong>布局包括：</strong>游艇制造基地、研发创新中心、游艇运营服务中心、保税维修中心等
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <span class="news-tag">创新</span>
+                    <div class="news-title">高新区校地合作联席会议召开</div>
+                    <div class="news-meta">
+                        <span>📅 3月11日</span>
+                        <span>📍 高新区</span>
+                        <span>🎓 校企合作</span>
+                    </div>
+                    <div class="news-summary">
+                        珠海高新区2026年度第一次校地合作联席会议召开，聚焦"打通高校链接五大创新中心""共建校企联合实验室"等议题。
+                    </div>
+                </div>
+                
+            </div>
+            
+            <!-- 横琴动态 -->
+            <h2 class="section-title">🏝️ 横琴粤澳深度合作区</h2>
+            <div class="news-grid">
+                
+                <div class="news-card">
+                    <span class="news-tag">政策</span>
+                    <div class="news-title">文旅产业发展扶持办法发布</div>
+                    <div class="news-meta">
+                        <span>📅 近期</span>
+                        <span>📍 横琴</span>
+                        <span>📜 政策文件</span>
+                    </div>
+                    <div class="news-summary">
+                        横琴粤澳深度合作区发布《文旅产业发展扶持办法》，支持澳门世界旅游休闲中心建设，促进合作区文旅产业高质量发展。
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <span class="news-tag">旅游</span>
+                    <div class="news-title">横琴创新方游玩攻略发布</div>
+                    <div class="news-meta">
+                        <span>📅 近期</span>
+                        <span>📍 横琴</span>
+                        <span>🎢 文旅项目</span>
+                    </div>
+                    <div class="news-summary">
+                        珠海横琴创新方位於横琴粤澳深度合作区，项目分两期开发，一期已于2019年开业，主打国际IP主题体验。
+                    </div>
+                    <div class="news-highlight">
+                        <strong>核心设施：</strong>全球首座狮门娱乐天地、国家地理探险家中心等
+                    </div>
+                </div>
+                
+            </div>
+            
+            <!-- 数据统计 -->
+            <div class="stats-section">
+                <h2>📊 珠海发展数据</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="number">100亿+</div>
+                        <div class="label">重点项目总投资</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="number">61万㎡</div>
+                        <div class="label">鹤洲枢纽建筑面积</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="number">86亿</div>
+                        <div class="label">香洲区签约投资</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="number">10个</div>
+                        <div class="label">重点项目数量</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 时间线 -->
+            <h2 class="section-title">📅 近期事件时间线</h2>
+            <div class="timeline">
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2026年3月15日</div>
+                    <div class="timeline-title">森林火险橙色预警生效</div>
+                    <div class="timeline-content">
+                        珠海市气象台发布森林火险橙色预警信号，预计未来几天干燥天气持续，森林火险气象等级高。
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2026年3月11日</div>
+                    <div class="timeline-title">高新区校地合作联席会议</div>
+                    <div class="timeline-content">
+                        珠海高新区2026年度第一次校地合作联席会议召开，聚焦"打通高校链接五大创新中心""共建校企联合实验室"等议题。
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2026年3月10日</div>
+                    <div class="timeline-title">重点项目集中签约</div>
+                    <div class="timeline-content">
+                        一批批重点项目在珠海集中签约，计划总投资超100亿元，涉及AI-SOD合成总部、机器人生产基地、文旅项目等。
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2026年3月9日</div>
+                    <div class="timeline-title">香洲区高质量发展大会</div>
+                    <div class="timeline-content">
+                        在2026年香洲区高质量发展大会上，10个重点项目集中签约，计划总投资超86亿元。
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+        
+        <!-- 页脚 -->
+        <div class="footer">
+            <p>🌊 珠海新闻速递 | 让您第一时间了解珠海动态</p>
+            <p>📅 更新时间：2026年3月17日 08:00</p>
+            <p>🦞 由小龙虾AI助手自动生成 | <a href="https://nickyhu1699.github.io/xiaolongxia-report/">查看更多项目</a></p>
+        </div>
+    </div>
+</body>
+</html>
