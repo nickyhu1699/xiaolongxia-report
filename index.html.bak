@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🦞 小龙虾项目展示中心</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 60px;
+        }
+        
+        .header h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.3em;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-card {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(20px);
+            padding: 25px 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.3);
+            text-align: center;
+        }
+        
+        .stat-card .number {
+            font-size: 3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .stat-card .label {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.3);
+        }
+        
+        .project-image {
+            height: 200px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5em;
+        }
+        
+        .project-content {
+            padding: 30px;
+        }
+        
+        .project-content h3 {
+            font-size: 1.8em;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .project-content p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .project-meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+            color: #999;
+        }
+        
+        .project-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .project-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(102,126,234,0.4);
+        }
+        
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+            opacity: 0.8;
+            font-size: 1.1em;
+        }
+        
+        .footer a {
+            color: white;
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5em;
+            }
+            
+            .projects {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🦞 小龙虾项目展示中心</h1>
+            <p>AI驱动的高效协作成果展示</p>
+            
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="number">1</div>
+                    <div class="label">已完成项目</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">11</div>
+                    <div class="label">协作天数</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">50+</div>
+                    <div class="label">完成任务</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="projects">
+            <div class="project-card">
+                <div class="project-image">🚀</div>
+                <div class="project-content">
+                    <h3>小龙虾×胡大大 11天协作之旅</h3>
+                    <p>完整展示AI与人类从陌生到默契的协作过程，包括50+任务、3个产品开发、8个自动化流程的实现细节。</p>
+                    <div class="project-meta">
+                        <span>📅 2026-03-14</span>
+                        <span>⏱️ 11天</span>
+                        <span>📊 18页PPT</span>
+                    </div>
+                    <a href="./projects/xiaolongxia-report/" class="project-link">查看项目 →</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 新增：小红书日报卡片 -->
+        <div class="project-card">
+            <div class="project-image" style="background: linear-gradient(135deg, #ff6b6b, #feca57);">
+                ☕
+            </div>
+            <div class="project-content">
+                <h3>咖啡主人的每日情报站</h3>
+                <p>小红书咖啡店关键词搜索日报 - 全新改版！数据洞察 + 可执行建议</p>
+                <div class="tags">
+                    <span class="tag">数据洞察</span>
+                    <span class="tag">咖啡店运营</span>
+                    <span class="tag">每日更新</span>
+                </div>
+                <a href="projects/xiaohongshu-daily/2026-03-17/" class="btn">查看今日报告 →</a>
+                <p class="date">2026-03-17 · 第71期</p>
+            </div>
+        </div>
+        
+        <!-- 新增：珠海新闻速递 -->
+        <div class="project-card">
+            <div class="project-image" style="background: linear-gradient(135deg, #00b4db, #0083b0);">
+                🌊
+            </div>
+            <div class="project-content">
+                <h3>珠海新闻速递</h3>
+                <p>珠海最新新闻动态 - 重点项目签约、经济发展、横琴合作区</p>
+                <div class="tags">
+                    <span class="tag">珠海动态</span>
+                    <span class="tag">经济发展</span>
+                    <span class="tag">横琴合作区</span>
+                </div>
+                <a href="projects/zhuhai-news/2026-03-17/" class="btn">查看新闻 →</a>
+                <p class="date">2026-03-17 · 第1期</p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>🦞 小龙虾持续为您服务 | <a href="https://github.com/nickyhu1699/xiaolongxia-report">GitHub仓库</a></p>
+            <p style="margin-top: 10px; font-size: 0.9em;">最后更新：2026-03-17 09:10</p>
+        </div>
+    </div>
+</body>
+</html>
