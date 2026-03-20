@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billionaire Lighting - 公司介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        .presentation {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            padding: 60px 80px;
+            background: white;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            opacity: 1;
+        }
+
+        /* 封面页 */
+        .cover-slide {
+            background: linear-gradient(135deg, #0066cc 0%, #004499 100%);
+            color: white;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .cover-slide h1 {
+            font-size: 64px;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .cover-slide .subtitle {
+            font-size: 28px;
+            margin-bottom: 60px;
+            opacity: 0.9;
+        }
+
+        .cover-slide .stats {
+            display: flex;
+            gap: 60px;
+            margin-top: 60px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: #ffd700;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            margin-top: 10px;
+            opacity: 0.8;
+        }
+
+        /* 通用幻灯片样式 */
+        .slide-header {
+            margin-bottom: 40px;
+        }
+
+        .slide-header h2 {
+            font-size: 42px;
+            color: #0066cc;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .slide-header .subtitle {
+            font-size: 18px;
+            color: #666;
+        }
+
+        .slide-content {
+            flex: 1;
+            display: flex;
+            gap: 40px;
+        }
+
+        /* 三栏布局 */
+        .three-columns {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .column {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 4px solid #0066cc;
+        }
+
+        .column h3 {
+            font-size: 24px;
+            color: #0066cc;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .column ul {
+            list-style: none;
+        }
+
+        .column li {
+            padding: 8px 0;
+            font-size: 16px;
+            color: #333;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .column li:last-child {
+            border-bottom: none;
+        }
+
+        .highlight-box {
+            background: #fff3cd;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 40px;
+            font-size: 18px;
+            color: #856404;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        /* 时间轴 */
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 60px;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: #0066cc;
+        }
+
+        .timeline-item {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            flex: 1;
+        }
+
+        .timeline-year {
+            width: 80px;
+            height: 80px;
+            background: #0066cc;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+
+        .timeline-content h4 {
+            font-size: 18px;
+            color: #0066cc;
+            margin-bottom: 10px;
+        }
+
+        .timeline-content p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* 四象限布局 */
+        .four-quadrants {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .quadrant {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            border-top: 4px solid;
+        }
+
+        .quadrant.research { border-color: #0066cc; }
+        .quadrant.production { border-color: #28a745; }
+        .quadrant.quality { border-color: #ffc107; }
+        .quadrant.service { border-color: #dc3545; }
+
+        .quadrant h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .quadrant .team-count {
+            font-size: 32px;
+            font-weight: 700;
+            color: #0066cc;
+        }
+
+        .quadrant ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .quadrant li {
+            padding: 8px 0;
+            font-size: 15px;
+            color: #555;
+        }
+
+        /* 左右分栏 */
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .left-column, .right-column {
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 12px;
+        }
+
+        .right-column {
+            background: white;
+            border: 2px solid #0066cc;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .feature-item:last-child {
+            border-bottom: none;
+        }
+
+        .feature-icon {
+            font-size: 24px;
+        }
+
+        .case-study {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
+
+        .case-study h4 {
+            font-size: 20px;
+            color: #0066cc;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .case-study .industry {
+            font-size: 14px;
+            color: #666;
+            font-weight: normal;
+        }
+
+        .case-study p {
+            font-size: 15px;
+            color: #555;
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        .case-study strong {
+            color: #0066cc;
+        }
+
+        /* 客户logo墙 */
+        .logo-wall {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .logo-item {
+            height: 80px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #666;
+            font-weight: 600;
+        }
+
+        /* 认证展示 */
+        .certifications {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .cert-category {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 12px;
+        }
+
+        .cert-category h4 {
+            font-size: 20px;
+            color: #0066cc;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cert-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 0;
+            font-size: 15px;
+            color: #555;
+        }
+
+        /* 联系页面 */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .contact-info, .company-locations {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 12px;
+        }
+
+        .contact-item {
+            margin-bottom: 30px;
+        }
+
+        .contact-item h4 {
+            font-size: 18px;
+            color: #0066cc;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .contact-item p {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .qr-code {
+            width: 150px;
+            height: 150px;
+            background: #333;
+            margin: 20px 0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8e53 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .cta-box h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .cta-box p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        /* 导航 */
+        .nav-controls {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            display: flex;
+            gap: 20px;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            background: white;
+            border: 2px solid #0066cc;
+            color: #0066cc;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: #0066cc;
+            color: white;
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .slide-counter {
+            position: fixed;
+            bottom: 40px;
+            left: 40px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 16px;
+            z-index: 1000;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .slide {
+                padding: 40px 30px;
+            }
+
+            .cover-slide h1 {
+                font-size: 36px;
+            }
+
+            .three-columns {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .four-quadrants {
+                grid-template-columns: 1fr;
+            }
+
+            .two-columns {
+                grid-template-columns: 1fr;
+            }
+
+            .logo-wall {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .certifications {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation">
+        <!-- Slide 1: Cover -->
+        <div class="slide cover-slide active">
+            <h1>Billionaire Lighting Co., Ltd.</h1>
+            <p class="subtitle">全球领先的健康照明解决方案提供商</p>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">385</div>
+                    <div class="stat-label">专业团队</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">500万+</div>
+                    <div class="stat-label">年产能（套）</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">60+</div>
+                    <div class="stat-label">服务国家</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">10年</div>
+                    <div class="stat-label">行业经验</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: Why Choose Us -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>为什么选择我们？</h2>
+                <p class="subtitle">三大核心竞争力，成为全球客户首选</p>
+            </div>
+            <div class="three-columns">
+                <div class="column">
+                    <h3>🔬 10年行业深耕</h3>
+                    <ul>
+                        <li>385人专业团队</li>
+                        <li>自主研发，50+核心专利</li>
+                        <li>年产能500万套</li>
+                        <li>服务60+国家</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>✅ 品质保障</h3>
+                    <ul>
+                        <li>ISO9001认证</li>
+                        <li>良品率99.8%</li>
+                        <li>3年质保承诺</li>
+                        <li>24小时技术支持</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>🌍 全球服务</h3>
+                    <ul>
+                        <li>服务60+国家</li>
+                        <li>24小时响应</li>
+                        <li>本地化技术支持</li>
+                        <li>多语言服务团队</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="highlight-box">
+                💡 这就是为什么全球1000+客户选择我们
+            </div>
+        </div>
+
+        <!-- Slide 3: Company History -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>从2015到2025，专注健康照明10年</h2>
+                <p class="subtitle">持续创新，引领行业发展</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">2015</div>
+                    <div class="timeline-content">
+                        <h4>公司成立</h4>
+                        <p>Terry & Rose 联合创立<br>专注LED护眼照明</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2018</div>
+                    <div class="timeline-content">
+                        <h4>技术突破</h4>
+                        <p>获得50项核心专利<br>通过ISO9001认证</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2021</div>
+                    <div class="timeline-content">
+                        <h4>规模扩张</h4>
+                        <p>团队扩张至385人<br>年产能突破500万套</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2024</div>
+                    <div class="timeline-content">
+                        <h4>全球布局</h4>
+                        <p>服务60+国家<br>合作客户1000+</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Core Team -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>385人专业团队，平均行业经验8年</h2>
+                <p class="subtitle">专业分工，高效协作</p>
+            </div>
+            <div class="four-quadrants">
+                <div class="quadrant research">
+                    <h3>研发团队 <span class="team-count">120人</span></h3>
+                    <ul>
+                        <li>✓ 平均经验10年</li>
+                        <li>✓ 50+核心专利</li>
+                        <li>✓ 年研发投入占比15%</li>
+                    </ul>
+                </div>
+                <div class="quadrant production">
+                    <h3>生产团队 <span class="team-count">180人</span></h3>
+                    <ul>
+                        <li>✓ 自动化生产线</li>
+                        <li>✓ 日产能1.5万套</li>
+                        <li>✓ 良品率99.8%</li>
+                    </ul>
+                </div>
+                <div class="quadrant quality">
+                    <h3>质量团队 <span class="team-count">50人</span></h3>
+                    <ul>
+                        <li>✓ 全流程质检</li>
+                        <li>✓ ISO9001体系</li>
+                        <li>✓ 3年质保</li>
+                    </ul>
+                </div>
+                <div class="quadrant service">
+                    <h3>服务团队 <span class="team-count">35人</span></h3>
+                    <ul>
+                        <li>✓ 24小时响应</li>
+                        <li>✓ 多语言支持</li>
+                        <li>✓ 本地化服务</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: R&D -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>自主研发，50+核心专利，引领行业创新</h2>
+                <p class="subtitle">技术创新是我们的核心竞争力</p>
+            </div>
+            <div class="two-columns">
+                <div class="left-column">
+                    <h3 style="color: #0066cc; margin-bottom: 20px;">📊 研发实力</h3>
+                    <div class="feature-item">
+                        <span class="feature-icon">💰</span>
+                        <div>
+                            <strong>研发投入</strong><br>
+                            年营收的15%
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">📜</span>
+                        <div>
+                            <strong>专利数量</strong><br>
+                            50+核心专利
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">👨‍🔬</span>
+                        <div>
+                            <strong>研发团队</strong><br>
+                            120人
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🎓</span>
+                        <div>
+                            <strong>合作院校</strong><br>
+                            5所知名高校
+                        </div>
+                    </div>
+                </div>
+                <div class="right-column">
+                    <h3 style="color: #0066cc; margin-bottom: 20px;">💡 核心技术</h3>
+                    <div class="feature-item">
+                        <span class="feature-icon">👁️</span>
+                        <div>
+                            <strong>护眼技术</strong><br>
+                            无频闪、防蓝光
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🌟</span>
+                        <div>
+                            <strong>智能调光</strong><br>
+                            自动调节亮度
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">⚡</span>
+                        <div>
+                            <strong>节能技术</strong><br>
+                            节能40%
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🌡️</span>
+                        <div>
+                            <strong>散热技术</strong><br>
+                            延长寿命30%
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="highlight-box">
+                🎯 通过技术创新，我们为客户降低40%能耗，延长30%产品寿命
+            </div>
+        </div>
+
+        <!-- Slide 6: Innovation & Cost Reduction -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>创新驱动，降本增效</h2>
+                <p class="subtitle">通过技术创新，为客户创造实实在在的价值</p>
+            </div>
+            <div class="two-columns">
+                <div class="left-column">
+                    <h3 style="color: #28a745; margin-bottom: 20px;">💰 成本降低</h3>
+                    <div class="feature-item">
+                        <span class="feature-icon">📉</span>
+                        <div>
+                            <strong>能耗降低40%</strong><br>
+                            年节省电费$36,000（1000套）
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">⏰</span>
+                        <div>
+                            <strong>寿命延长30%</strong><br>
+                            从5年延长至6.5年
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🔧</span>
+                        <div>
+                            <strong>维护成本降低50%</strong><br>
+                            更少更换，更少维修
+                        </div>
+                    </div>
+                </div>
+                <div class="right-column">
+                    <h3 style="color: #0066cc; margin-bottom: 20px;">🚀 效率提升</h3>
+                    <div class="feature-item">
+                        <span class="feature-icon">⚡</span>
+                        <div>
+                            <strong>安装效率提升60%</strong><br>
+                            模块化设计
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🎯</span>
+                        <div>
+                            <strong>良品率99.8%</strong><br>
+                            减少返工和浪费
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">📦</span>
+                        <div>
+                            <strong>交货周期30天</strong><br>
+                            快速响应客户需求
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Quality -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>ISO9001认证，良品率99.8%</h2>
+                <p class="subtitle">4步全流程质量管控，确保每件产品完美交付</p>
+            </div>
+            <div class="slide-content">
+                <div style="flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                    <div class="three-columns" style="margin-top: 0;">
+                        <div class="column">
+                            <h3>1️⃣ 来料检验</h3>
+                            <ul>
+                                <li>供应商资质审核</li>
+                                <li>原材料100%检测</li>
+                                <li>不合格立即退回</li>
+                            </ul>
+                        </div>
+                        <div class="column">
+                            <h3>2️⃣ 生产管控</h3>
+                            <ul>
+                                <li>实时在线监测</li>
+                                <li>关键节点100%检测</li>
+                                <li>数据自动记录</li>
+                            </ul>
+                        </div>
+                        <div class="column">
+                            <h3>3️⃣ 成品检验</h3>
+                            <ul>
+                                <li>全功能测试</li>
+                                <li>老化测试72小时</li>
+                                <li>外观100%检查</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="highlight-box" style="background: #d4edda; color: #155724;">
+                        ✅ 4️⃣ 出货检验 → 确保每件产品完美交付
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Production -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>日产能1.5万套，30天交货</h2>
+                <p class="subtitle">现代化生产基地，高效供应链体系</p>
+            </div>
+            <div class="four-quadrants">
+                <div class="quadrant research">
+                    <h3>🏭 生产能力</h3>
+                    <ul>
+                        <li>✓ 日产能1.5万套</li>
+                        <li>✓ 年产能500万套</li>
+                        <li>✓ 10条自动化生产线</li>
+                        <li>✓ 柔性生产，快速切换</li>
+                    </ul>
+                </div>
+                <div class="quadrant production">
+                    <h3>📦 交货保障</h3>
+                    <ul>
+                        <li>✓ 标准产品30天交货</li>
+                        <li>✓ 定制产品45天交货</li>
+                        <li>✓ 紧急订单15天交货</li>
+                        <li>✓ 准时交货率98%</li>
+                    </ul>
+                </div>
+                <div class="quadrant quality">
+                    <h3>🚚 物流网络</h3>
+                    <ul>
+                        <li>✓ 全球60+国家</li>
+                        <li>✓ 海陆空多种方式</li>
+                        <li>✓ 合作物流50+家</li>
+                        <li>✓ 实时物流跟踪</li>
+                    </ul>
+                </div>
+                <div class="quadrant service">
+                    <h3>📦 库存管理</h3>
+                    <ul>
+                        <li>✓ 常规产品现货</li>
+                        <li>✓ 安全库存3个月</li>
+                        <li>✓ 智能补货系统</li>
+                        <li>✓ 降低客户库存压力</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: Case Studies -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>真实案例，数据说话</h2>
+                <p class="subtitle">1000+客户的成功验证</p>
+            </div>
+            <div class="slide-content">
+                <div style="flex: 1; display: flex; flex-direction: column; gap: 20px;">
+                    <div class="case-study">
+                        <h4>连锁酒店项目 <span class="industry">| 酒店行业</span></h4>
+                        <p><strong>客户需求：</strong>500间客房护眼照明，节能降耗</p>
+                        <p><strong>解决方案：</strong>智能调光系统 + 无频闪护眼灯</p>
+                        <p><strong>效果：</strong>年节省电费<strong> $37,500</strong>，客户满意度提升<strong> 25%</strong></p>
+                    </div>
+                    <div class="case-study">
+                        <h4>办公楼项目 <span class="industry">| 办公行业</span></h4>
+                        <p><strong>客户需求：</strong>2000平米办公区，护眼节能</p>
+                        <p><strong>解决方案：</strong>全护眼照明系统 + 智能控制</p>
+                        <p><strong>效果：</strong>员工眼疲劳投诉降低<strong> 60%</strong>，能耗降低<strong> 40%</strong></p>
+                    </div>
+                    <div class="case-study">
+                        <h4>零售门店项目 <span class="industry">| 零售行业</span></h4>
+                        <p><strong>客户需求：</strong>50家连锁店，突出商品节能</p>
+                        <p><strong>解决方案：</strong>高显色指数射灯 + 智能调光</p>
+                        <p><strong>效果：</strong>销售额提升<strong> 12%</strong>，能耗降低<strong> 35%</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: Clients -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>他们都在用Billionaire Lighting</h2>
+                <p class="subtitle">1000+客户的选择，就是最好的证明</p>
+            </div>
+            <div class="slide-content">
+                <div style="flex: 1;">
+                    <div class="logo-wall">
+                        <div class="logo-item">希尔顿酒店</div>
+                        <div class="logo-item">万豪酒店</div>
+                        <div class="logo-item">腾讯</div>
+                        <div class="logo-item">阿里巴巴</div>
+                        <div class="logo-item">字节跳动</div>
+                        <div class="logo-item">华为</div>
+                        <div class="logo-item">富士康</div>
+                        <div class="logo-item">比亚迪</div>
+                        <div class="logo-item">优衣库</div>
+                        <div class="logo-item">ZARA</div>
+                        <div class="logo-item">星巴克</div>
+                        <div class="logo-item">麦当劳</div>
+                    </div>
+                    <div class="highlight-box">
+                        💡 1000+客户遍布酒店、办公、零售、工业等多个行业
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 11: Certifications -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>国际认证，品质保障</h2>
+                <p class="subtitle">多项国际权威认证，品质值得信赖</p>
+            </div>
+            <div class="certifications">
+                <div class="cert-category">
+                    <h4>🌍 国际认证</h4>
+                    <div class="cert-item">✅ ISO9001质量管理体系</div>
+                    <div class="cert-item">✅ CE认证（欧盟）</div>
+                    <div class="cert-item">✅ RoHS认证（环保）</div>
+                    <div class="cert-item">✅ UL认证（美国安全）</div>
+                    <div class="cert-item">✅ FCC认证（美国电磁兼容）</div>
+                </div>
+                <div class="cert-category">
+                    <h4>🏆 行业荣誉</h4>
+                    <div class="cert-item">✅ 中国照明行业百强企业</div>
+                    <div class="cert-item">✅ 广东省高新技术企业</div>
+                    <div class="cert-item">✅ 深圳市专精特新企业</div>
+                    <div class="cert-item">✅ LED照明行业十大品牌</div>
+                    <div class="cert-item">✅ 节能产品认证</div>
+                </div>
+                <div class="cert-category">
+                    <h4>📜 专利证书</h4>
+                    <div class="cert-item">✅ 发明专利：15项</div>
+                    <div class="cert-item">✅ 实用新型专利：35项</div>
+                    <div class="cert-item">✅ 外观专利：20项</div>
+                    <div class="cert-item">✅ 核心专利：50+项</div>
+                    <div class="cert-item">✅ 专利增长率：20%/年</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 12: Contact -->
+        <div class="slide">
+            <div class="slide-header">
+                <h2>携手Billionaire Lighting，共创光明未来</h2>
+                <p class="subtitle">立即联系我们，获取专属照明方案</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h4>📧 邮箱</h4>
+                        <p>销售：sales@billionaire-lighting.com</p>
+                        <p>技术：tech@billionaire-lighting.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <h4>📱 电话</h4>
+                        <p>中国：+86 755 8888 8888</p>
+                        <p>国际：+1 213 888 8888</p>
+                    </div>
+                    <div class="contact-item">
+                        <h4>🌐 网站</h4>
+                        <p>www.billionaire-lighting.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <h4>💬 微信</h4>
+                        <div class="qr-code">扫码添加<br>客服微信</div>
+                    </div>
+                </div>
+                <div class="company-locations">
+                    <div class="contact-item">
+                        <h4>📍 总部</h4>
+                        <p>中国深圳市南山区科技园</p>
+                        <p>Billionaire大厦</p>
+                    </div>
+                    <div class="contact-item">
+                        <h4>🌍 海外办公室</h4>
+                        <p>🇺🇸 美国：洛杉矶</p>
+                        <p>🇩🇪 欧洲：德国汉堡</p>
+                    </div>
+                </div>
+            </div>
+            <div class="cta-box">
+                <h3>🚀 立即联系我们，获取专属照明方案</h3>
+                <p>30分钟内回复，24小时出方案</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide-counter">
+        <span id="currentSlide">1</span> / <span id="totalSlides">12</span>
+    </div>
+
+    <div class="nav-controls">
+        <button class="nav-btn" id="prevBtn" onclick="prevSlide()">←</button>
+        <button class="nav-btn" id="nextBtn" onclick="nextSlide()">→</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            
+            document.getElementById('currentSlide').textContent = currentSlide + 1;
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+            }
+        });
+
+        // Initialize
+        document.getElementById('totalSlides').textContent = totalSlides;
+        showSlide(0);
+    </script>
+</body>
+</html>
