@@ -4,87 +4,91 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,sans-serif;background:#f5f5f5;color:#333}
-.header{background:#FF6B6B;color:#fff;padding:12px 16px;position:sticky;top:0;font-size:18px;font-weight:bold;z-index:10}
-.search{padding:8px 16px;background:#fff;border-bottom:1px solid #eee}
-.search input{width:100%;padding:10px 16px;border:1px solid #ddd;border-radius:8px;font-size:15px;box-sizing:border-box}
-.items{padding:8px}
-.item{display:flex;align-items:center;padding:14px 16px;background:#fff;margin-bottom:4px;border-radius:8px;text-decoration:none;color:#333;cursor:pointer}
-.item:active{background:#f0f0f0}
-.icon{font-size:22px;margin-right:12px}
-.name{font-size:15px;font-weight:500}
-.meta{font-size:12px;color:#999;margin-top:2px}
-.back{display:inline-block;padding:8px 16px;margin:8px;background:#FF6B6B;color:#fff;border-radius:8px;text-decoration:none;font-size:14px;cursor:pointer}
+.hdr{background:#FF6B6B;color:#fff;padding:12px 16px;position:sticky;top:0;font-size:18px;font-weight:bold;z-index:10}
+.sb{padding:8px 16px;background:#fff;border-bottom:1px solid #eee}
+.sb input{width:100%;padding:10px 16px;border:1px solid #ddd;border-radius:8px;font-size:15px;box-sizing:border-box}
+.ls{padding:8px}
+.it{display:flex;align-items:center;padding:14px 16px;background:#fff;margin-bottom:4px;border-radius:8px;cursor:pointer}
+.it:active{background:#f0f0f0}
+.ic{font-size:22px;margin-right:12px}
+.nm{font-size:15px;font-weight:500}
+.mt{font-size:12px;color:#999;margin-top:2px}
+.bk{display:inline-block;padding:8px 16px;margin:8px;background:#FF6B6B;color:#fff;border-radius:8px;text-decoration:none;font-size:14px;cursor:pointer}
 pre{white-space:pre-wrap;word-wrap:break-word;padding:16px;font-size:14px;line-height:1.6;background:#1e1e1e;color:#d4d4d4;min-height:80vh;border-radius:8px;margin:8px;overflow-x:auto}
-.md{padding:12px 16px;line-height:1.8;font-size:15px}
-.md h1{font-size:22px;margin:16px 0 8px;color:#FF6B6B}
-.md h2{font-size:18px;margin:14px 0 6px}
-.md h3{font-size:16px;margin:12px 0 4px}
-.md p{margin:8px 0}
-.md ul,.md ol{margin:8px 0 8px 20px}
-.md li{margin:4px 0}
-.md code{background:#f0f0f0;padding:2px 6px;border-radius:4px;font-size:13px}
-.md pre{background:#1e1e1e;color:#d4d4d4;padding:12px;border-radius:8px;overflow-x:auto;margin:8px 0}
-.md blockquote{border-left:4px solid #FF6B6B;padding:8px 16px;margin:8px 0;background:#fff5f5;border-radius:0 8px 8px 0}
-.md strong{color:#FF6B6B}
-.md table{border-collapse:collapse;width:100%;margin:8px 0}
-.md th,.md td{border:1px solid #ddd;padding:8px;text-align:left;font-size:14px}
-.md th{background:#f8f8f8}
-.empty{text-align:center;padding:40px;color:#999}
-.notice{text-align:center;padding:10px;background:#fff3cd;color:#856404;font-size:13px}
+.mc{padding:12px 16px;line-height:1.8;font-size:15px}
+.mc h1{font-size:22px;margin:16px 0 8px;color:#FF6B6B}
+.mc h2{font-size:18px;margin:14px 0 6px}
+.mc h3{font-size:16px;margin:12px 0 4px}
+.mc p{margin:8px 0}
+.mc strong{color:#FF6B6B}
+.mc code{background:#f0f0f0;padding:2px 6px;border-radius:4px;font-size:13px}
+.mc pre{background:#1e1e1e;color:#d4d4d4;padding:12px;border-radius:8px;overflow-x:auto;margin:8px 0}
+.mc pre code{background:none;padding:0;color:inherit}
+.mc blockquote{border-left:4px solid #FF6B6B;padding:8px 16px;margin:8px 0;background:#fff5f5;border-radius:0 8px 8px 0}
+.em{text-align:center;padding:40px;color:#999}
+.nt{text-align:center;padding:10px;background:#fff3cd;color:#856404;font-size:13px}
 </style></head><body>
-<div class="header">🦞 小龙虾工作台</div>
-<div class="notice">📌 最后更新：2026-03-22 13:25</div>
-<div class="search"><input type="text" id="q" placeholder="🔍 搜索文件名..."></div>
+<div class="hdr">🦞 小龙虾工作台</div>
+<div class="nt">📌 最后更新：2026-03-22 13:30</div>
+<div class="sb"><input type="text" id="q" placeholder="🔍 搜索文件名..."></div>
 <div id="app"></div>
 <script src="data.js"></script>
 <script>
-function getChildren(path){
-  var depth=path?path.split("/").length+1:1;
-  return FILES.filter(function(f){
-    if(f.path.split("/").length!==depth)return false;
-    if(!path)return true;
-    return f.path.indexOf(path+"/")===0;
+function getChildren(path) {
+  var depth = path ? path.split("/").length + 1 : 1;
+  return FILES.filter(function(f) {
+    var d = f.path.split("/").length;
+    if (d !== depth) return false;
+    if (!path) return true;
+    return f.path.indexOf(path + "/") === 0;
   });
 }
-function showDir(path){
-  var items=getChildren(path);
-  if(path)items.unshift({name:"..",type:"dir",path:path.split("/").slice(0,-1).join("/")});
-  var h="";
-  items.forEach(function(f){
-    var icon=f.type==="dir"?"📁":"📄";
-    var meta=f.type==="dir"?"文件夹":f.name.split(".").pop()+" 文件";
-    var act=f.type==="dir"?'showDir("'+f.path+'")':'showFile("'+f.path+'")';
-    h+='<div class="item" onclick="'+act+'"><div class="icon">'+icon+'</div><div><div class="name">'+f.name+'</div><div class="meta">'+meta+'</div></div></div>';
-  });
-  document.getElementById("app").innerHTML=h?'<div class="items">'+h+"</div>":'<div class="empty">空目录</div>';
+function showDir(path) {
+  var items = getChildren(path);
+  if (path) items.unshift({name: "..", type: "dir", path: path.split("/").slice(0, -1).join("/")});
+  var h = "";
+  for (var i = 0; i < items.length; i++) {
+    var f = items[i];
+    var icon = f.type === "dir" ? "📁" : "📄";
+    var meta = f.type === "dir" ? "文件夹" : f.name.split(".").pop() + " 文件";
+    var act = f.type === "dir" ? "showDir('" + f.path + "')" : "showFile('" + f.path + "')";
+    h += '<div class="it" onclick="' + act + '"><div class="ic">' + icon + '</div><div><div class="nm">' + f.name + '</div><div class="mt">' + meta + '</div></div></div>';
+  }
+  document.getElementById("app").innerHTML = h ? '<div class="ls">' + h + '</div>' : '<div class="em">空目录</div>';
 }
-function showFile(path){
-  fetch("files/"+path).then(function(r){return r.text()}).then(function(text){
-    var ext=path.split(".").pop().toLowerCase();
-    var body=ext==="md"?'<div class="md">'+simpleMD(text)+"</div>":"<pre>"+text.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")+"</pre>";
-    document.getElementById("app").innerHTML='<div class="back" onclick="showDir('')">🏠 首页</div>'+body;
-    window.scrollTo(0,0);
+function showFile(path) {
+  fetch("files/" + path).then(function(r) { return r.text(); }).then(function(text) {
+    var ext = path.split(".").pop().toLowerCase();
+    var body;
+    if (ext === "md") {
+      body = '<div class="mc">' + md(text) + '</div>';
+    } else {
+      body = '<pre>' + text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;") + '</pre>';
+    }
+    document.getElementById("app").innerHTML = '<div class="bk" onclick="showDir(\'\')">🏠 首页</div>' + body;
+    window.scrollTo(0, 0);
   });
 }
-function simpleMD(t){
-  return t.replace(/^### (.+)$/gm,"<h3>$1</h3>")
-    .replace(/^## (.+)$/gm,"<h2>$1</h2>")
-    .replace(/^# (.+)$/gm,"<h1>$1</h1>")
-    .replace(/^> (.+)$/gm,"<blockquote>$1</blockquote>")
-    .replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>")
-    .replace(/`(.+?)`/g,"<code>$1</code>")
-    .replace(/^- (.+)$/gm,"<li>$1</li>")
-    .replace(/^\d+\. (.+)$/gm,"<li>$1</li>");
+function md(t) {
+  return t
+    .replace(/^### (.+)$/gm, "<h3>$1</h3>")
+    .replace(/^## (.+)$/gm, "<h2>$1</h2>")
+    .replace(/^# (.+)$/gm, "<h1>$1</h1>")
+    .replace(/^> (.+)$/gm, "<blockquote>$1</blockquote>")
+    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+    .replace(/`(.+?)`/g, "<code>$1</code>")
+    .replace(/^- (.+)$/gm, "<li>$1</li>")
+    .replace(/^\d+\. (.+)$/gm, "<li>$1</li>");
 }
-document.getElementById("q").addEventListener("input",function(e){
-  var q=e.target.value.toLowerCase();
-  if(!q){showDir("");return;}
-  var r=FILES.filter(function(f){return f.type==="file"&&f.name.toLowerCase().indexOf(q)>=0});
-  var h="";
-  r.forEach(function(f){
-    h+='<div class="item" onclick="showFile(\''+f.path+"\')"><div class="icon">📄</div><div><div class="name">"+f.name+"</div><div class="meta">"+f.path+"</div></div></div>";
-  });
-  document.getElementById("app").innerHTML="<div class="items">"+(h||'<div class="empty">无匹配</div>')+"</div>";
+document.getElementById("q").addEventListener("input", function(e) {
+  var q = e.target.value.toLowerCase();
+  if (!q) { showDir(""); return; }
+  var r = FILES.filter(function(f) { return f.type === "file" && f.name.toLowerCase().indexOf(q) >= 0; });
+  var h = "";
+  for (var i = 0; i < r.length; i++) {
+    h += '<div class="it" onclick="showFile(\'' + r[i].path + '\')"><div class="ic">📄</div><div><div class="nm">' + r[i].name + '</div><div class="mt">' + r[i].path + '</div></div></div>';
+  }
+  document.getElementById("app").innerHTML = '<div class="ls">' + (h || '<div class="em">无匹配</div>') + '</div>';
 });
 showDir("");
 </script></body></html>
