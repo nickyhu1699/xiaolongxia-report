@@ -78,7 +78,7 @@ OpenClaw有3个核心特点：
 
 但OpenClaw不一样。它会记住你的邮箱、你的偏好、你正在做的项目。
 
-比如，我的AI员工"小龙虾"，它记得我的邮箱是87287416@qq.com，记得我在做咖啡店相关的项目，记得我们配置的每个定时任务。
+比如，我的AI员工"小龙虾"，它记得我的邮箱是8****@qq.com，记得我在做咖啡店相关的项目，记得我们配置的每个定时任务。
 
 （停顿）
 
@@ -675,7 +675,7 @@ openclaw gateway start
 
 - Discord: discord.com/invite/clawd
 - ClawHub: clawhub.com
-- 我的邮箱：87287416@qq.com
+- 我的邮箱：8****@qq.com
 
 遇到问题，随时问。
 

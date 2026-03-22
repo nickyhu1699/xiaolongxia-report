@@ -1,0 +1,5 @@
+# OpenClaw 每日工作总结定时任务
+# 每天早上7点执行
+0 7 * * * /Users/sheyujituan/.openclaw/workspace/run_daily_summary.sh
+
+# 保留之前的定时任务（如果有）

@@ -20,7 +20,7 @@
 - **每天早上10:23**：爬取小红书笔记信息
   - 关键词：咖啡店活动、咖啡店装修、咖啡店营销、咖啡店选址
   - 数量：每个关键词10篇热门笔记（共40篇）
-  - 发送到：飞书 + 邮箱（87287416@qq.com）
+  - 发送到：飞书 + 邮箱（8****@qq.com）
   - 数据字段：标题、作者、点赞数、评论数、收藏数、链接、封面图、发布时间
   - Cron Job ID: 9cc47409-ccc8-4e14-bf13-d8432ab4a1fc
   - Cron表达式: 23 10 * * * (Asia/Shanghai)
@@ -28,18 +28,18 @@
   - 状态：✅ 已配置
 
 ### 邮箱配置 #配置
-- 主邮箱：87287416@qq.com
-- SMTP：smtp.qq.com:587
-- 授权码：ledjjdugeutgbigh（已验证有效）
-- 注意：发送邮件时直接使用此授权码，无需再询问用户
+- 主邮箱：8****@qq.com
+- SMTP：smtp.qq.com:***HIDDEN***
+- 授权码：***HIDDEN***
+- 注意：发送邮件时直接使用此授权码：***HIDDEN***
 
 ### 沟通渠道 #配置
 - 主要使用：飞书
 - 备选方案：企业微信（已安装）、ClawChat小程序（已安装）
 
 ### 公众号配置 #配置
-- AppID: wx5d54e1b6d14586bb
-- AppSecret: 8f608d21c145d085b492d787373ee642
+- AppID: ***HIDDEN***
+- AppSecret: ***HIDDEN***
 - 默认作者：胡大大
 
 ---
@@ -105,9 +105,9 @@
 <a name="联系"></a>
 ## 📞 联系方式 #联系
 
-- AnyDesk ID: 123 456 789
-- RustDesk ID: 876 543 210（备用）
-- Email: 87287416@qq.com
+- AnyDesk ID: ***HIDDEN***
+- RustDesk ID: ***HIDDEN***
+- Email: 8****@qq.com
 
 ---
 

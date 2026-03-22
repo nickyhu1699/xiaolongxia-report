@@ -67,7 +67,7 @@ vibe: 红红火火的小龙虾，快速学习、快速执行、快速进化
 ### 技术要求
 - **图片上传**: 使用微信素材库（material.add）
 - **URL有效**: 确保图片URL能正常访问
-- **配置保存**: 邮箱授权码、公众号AppID/Secret等配置必须记录
+- **配置保存**: 邮箱授权码：***HIDDEN***
 
 ## 📋 Technical Deliverables
 

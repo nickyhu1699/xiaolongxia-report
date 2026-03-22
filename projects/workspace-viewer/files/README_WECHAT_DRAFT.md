@@ -10,11 +10,11 @@ pip install wechatpy markdown
 
 ## ⚙️ 配置
 
-### 1. 获取 AppID 和 AppSecret
+### 1. 获取 AppID 和 AppSecret: ***HIDDEN***
 
 1. 登录微信公众号平台：https://mp.weixin.qq.com
 2. 进入"开发" → "基本配置"
-3. 复制 AppID 和 AppSecret
+3. 复制 AppID 和 AppSecret: ***HIDDEN***
 
 ### 2. 配置 IP 白名单
 
@@ -29,7 +29,7 @@ pip install wechatpy markdown
 ```json
 {
   "app_id": "你的AppID",
-  "app_secret": "你的AppSecret",
+  "app_secret": "你的AppSecret: ***HIDDEN***
   "default_author": "作者名"
 }
 ```
@@ -304,7 +304,7 @@ media_id = pusher.create_draft(
 
 ### 错误1：`40001: invalid credential`
 
-**原因**：AppID 或 AppSecret 错误
+**原因**：AppID 或 AppSecret: ***HIDDEN***
 
 **解决**：检查 config.json 中的配置
 

@@ -1,6 +1,6 @@
 # Session: 2026-03-09 07:13:55 UTC
 
-- **Session Key**: agent:main:feishu:direct:ou_5081e512aafbdc7d651a954b2d72676b
+- **Session Key**: agent:main:feishu:direct:***HIDDEN***
 - **Session ID**: c96d44d0-a8d2-4001-991b-63c1d30f8009
 - **Source**: feishu
 
@@ -15,7 +15,7 @@ assistant: ## ✅ **邮件发送成功！**
 
 | 项目 | 内容 |
 |------|------|
-| **收件人** | 87287416@qq.com |
+| **收件人** | 8****@qq.com |
 | **主题** | 📊 蕾特恩加盟小红书数据分析报告 - 2026-03-09 |
 | **发送时间** | 2026-03-09 14:59:xx |
 | **状态** | ✅ 发送成功 |
@@ -56,7 +56,7 @@ assistant: ## ✅ **邮件发送成功！**
 
 ---
 
-**请检查你的邮箱（87287416@qq.com），报告应该已经收到了！** 🦞
+**请检查你的邮箱（8****@qq.com），报告应该已经收到了！** 🦞
 
 需要我帮你做其他的吗？比如：
 - 爬取其他关键词的数据？
@@ -74,7 +74,7 @@ Conversation info (untrusted metadata):
 ```
 
 [message_id: om_x100b55d34f2a4d30b10f20344e120f2]
-ou_5081e512aafbdc7d651a954b2d72676b: 拉取下面的项目，安装其中的技能：https://github.com/comeonzhj/Auto-Redbook-Skills
+***HIDDEN***: 拉取下面的项目，安装其中的技能：https://github.com/comeonzhj/Auto-Redbook-Skills
 assistant: 好的！我现在帮你拉取这个项目并安装技能：
 assistant: 好的！技能已经复制到正确位置。现在安装依赖：
 assistant: ## ✅ **小红书笔记创作技能安装成功！**
@@ -305,7 +305,7 @@ Conversation info (untrusted metadata):
 ```
 
 [message_id: om_x100b55d35f3a0ca0b24392797e981e9]
-ou_5081e512aafbdc7d651a954b2d72676b: 搜索 “openclaw 教程”有关的小红书最新笔记 top50，并生成可视化报告。
+***HIDDEN***: 搜索 “openclaw 教程”有关的小红书最新笔记 top50，并生成可视化报告。
 assistant: Unhandled stop reason: model_context_window_exceeded
 user: System: [2026-03-09 15:05:17 GMT+8] Exec completed (young-ti, code 0) :: r/card_2.png (1080x1440) 📷 生成卡片 3/5... ✅ 已生成: /Users/sheyujituan/.openclaw/skills/xhs-note-creator/card_3.png (1080x1440) 📷 生成卡片 4/5... ✅ 已生成: /Users/sheyujituan/.openclaw/skill…
 
@@ -317,7 +317,7 @@ Conversation info (untrusted metadata):
 ```
 
 [message_id: om_x100b55d3567640acb322daf3062898f]
-ou_5081e512aafbdc7d651a954b2d72676b: 帮我写一篇关于咖啡店运营的小红书笔记
+***HIDDEN***: 帮我写一篇关于咖啡店运营的小红书笔记
 user: Conversation info (untrusted metadata):
 ```json
 {
@@ -326,7 +326,7 @@ user: Conversation info (untrusted metadata):
 ```
 
 [message_id: om_x100b55d36daa5884b2dfdba38fac92a]
-ou_5081e512aafbdc7d651a954b2d72676b: 继续
+***HIDDEN***: 继续
 user: Conversation info (untrusted metadata):
 ```json
 {
@@ -335,5 +335,5 @@ user: Conversation info (untrusted metadata):
 ```
 
 [message_id: om_x100b55d36085bd64b394ac658f2b85a]
-ou_5081e512aafbdc7d651a954b2d72676b: 帮我写一篇关于咖啡店运营的小红书笔记
+***HIDDEN***: 帮我写一篇关于咖啡店运营的小红书笔记
 assistant: 好的！我现在帮你创作一篇关于咖啡店运营的小红书笔记，并生成精美图片卡片：

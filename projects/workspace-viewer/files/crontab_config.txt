@@ -1,0 +1,12 @@
+SHELL=/bin/bash
+PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/homebrew/bin
+LANG=zh_CN.UTF-8
+
+# 每日工作总结 - 每天早上7:00
+0 7 * * * /Users/sheyujituan/.openclaw/workspace/run_daily_summary.sh
+
+# AI新闻收集 - 每天早上8:00
+0 8 * * * /Users/sheyujituan/.openclaw/workspace/run_ai_news_collector.sh
+
+# 小红书笔记爬取 - 每天早上10:23
+23 10 * * * /Users/sheyujituan/.openclaw/workspace/run_xiaohongshu_crawler.sh

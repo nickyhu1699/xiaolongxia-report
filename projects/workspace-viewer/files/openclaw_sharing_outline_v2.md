@@ -540,7 +540,7 @@ openclaw skill install feishu-bot
 3. **加入社区**（1分钟）
    - Discord: discord.com/invite/clawd
    - ClawHub: clawhub.com
-   - 我的邮箱：87287416@qq.com
+   - 我的邮箱：8****@qq.com
 
 ---
 
@@ -600,7 +600,7 @@ openclaw gateway start
 
 ### 联系方式
 
-- **邮箱**：87287416@qq.com
+- **邮箱**：8****@qq.com
 - **小龙虾**：随时在线 🦞
 
 ---

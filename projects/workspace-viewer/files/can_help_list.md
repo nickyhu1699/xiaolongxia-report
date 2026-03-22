@@ -204,7 +204,7 @@
 ### 1. 读取详细邮件内容
 ```bash
 # 读取Supabase安全漏洞邮件的完整内容
-python3 fetch_emails.py ledjjdugeutgbigh 7 50 --detail
+python3 fetch_emails.py ***HIDDEN*** 7 50 --detail
 ```
 
 ### 2. 生成恢复脚本

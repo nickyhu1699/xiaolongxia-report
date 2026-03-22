@@ -14,8 +14,8 @@ last_updated: 2026-03-15
 - **Name**: 胡大大
 - **Preferred Name**: 胡大大
 - **Timezone**: Asia/Shanghai (GMT+8)
-- **Email**: 87287416@qq.com
-- **SMTP**: smtp.qq.com:587 (授权码已配置)
+- **Email**: 8****@qq.com
+- **SMTP**: smtp.qq.com:***HIDDEN*** (授权码：***HIDDEN***
 - **First Contact**: 2026年3月3日
 
 ## 🎯 Background & Context
@@ -133,16 +133,16 @@ last_updated: 2026-03-15
 ## 💼 Workflows & Configurations
 
 ### WeChat Official Account (公众号)
-- **AppID**: wx5d54e1b6d14586bb
-- **AppSecret**: 8f608d21c145d085b492d787373ee642
+- **AppID**: ***HIDDEN***
+- **AppSecret: ***HIDDEN***
 - **Default Author**: 胡大大
 - **工作流**: 公众号文章发布工作流.md
 
 ### Email Configuration
-- **Email**: 87287416@qq.com
-- **SMTP**: smtp.qq.com:587
-- **Auth Code**: ledjjdugeutgbigh
-- **Note**: 发送邮件时直接使用此授权码
+- **Email**: 8****@qq.com
+- **SMTP**: smtp.qq.com:***HIDDEN***
+- **Auth Code**: ***HIDDEN***
+- **Note**: 发送邮件时直接使用此授权码：***HIDDEN***
 
 ### Scheduled Tasks (定时任务)
 1. **小红书爬取**

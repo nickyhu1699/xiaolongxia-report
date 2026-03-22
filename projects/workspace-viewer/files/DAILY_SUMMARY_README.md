@@ -117,7 +117,7 @@ which python3
 
 ```bash
 cat ~/.openclaw/workspace/config.json
-# 应该包含正确的AppID和AppSecret
+# 应该包含正确的AppID和AppSecret: ***HIDDEN***
 ```
 
 ### 4. Cron环境变量
@@ -166,7 +166,7 @@ tail -f ~/.openclaw/logs/daily_summary.log
 
 **检查**：
 1. IP白名单是否配置
-2. AppID和AppSecret是否正确
+2. AppID和AppSecret: ***HIDDEN***
 3. 网络连接是否正常
 
 ---
