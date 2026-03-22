@@ -1,0 +1,753 @@
+{
+  "total_count": 29469,
+  "last_updated": "2026-03-20T02:02:52.367841",
+  "skills": [
+    {
+      "name": "self-improving-agent",
+      "slug": "self-improving-agent",
+      "author": "pskoett",
+      "downloads": 264000,
+      "stars": 2400,
+      "versions": 17,
+      "description": "Captures learnings, errors, and corrections to enable continuous improvement",
+      "category": "Agent Improvement"
+    },
+    {
+      "name": "ontology",
+      "slug": "ontology",
+      "author": "oswalpalash",
+      "downloads": 119000,
+      "stars": 336,
+      "versions": 4,
+      "description": "Typed knowledge graph for structured agent memory and composable skills",
+      "category": "Memory & Knowledge"
+    },
+    {
+      "name": "Self-Improving + Proactive Agent",
+      "slug": "self-improving",
+      "author": "ivangdavila",
+      "downloads": 92300,
+      "stars": 502,
+      "versions": 22,
+      "platforms": [
+        "Linux",
+        "macOS",
+        "Windows"
+      ],
+      "description": "Self-reflection + Self-criticism + Self-learning + Self-organizing memory",
+      "category": "Agent Improvement"
+    },
+    {
+      "name": "AdMapix",
+      "slug": "admapix",
+      "author": "fly0pants",
+      "downloads": 64300,
+      "stars": 159,
+      "versions": 18,
+      "description": "Ad intelligence & app analytics assistant",
+      "category": "Analytics"
+    },
+    {
+      "name": "Nano Banana Pro",
+      "slug": "nano-banana-pro",
+      "author": "steipete",
+      "downloads": 58500,
+      "stars": 233,
+      "versions": 2,
+      "description": "Generate/edit images with Nano Banana Pro (Gemini 3 Pro Image)",
+      "category": "Image Generation"
+    },
+    {
+      "name": "Obsidian",
+      "slug": "obsidian",
+      "author": "steipete",
+      "downloads": 58000,
+      "stars": 233,
+      "versions": 1,
+      "description": "Work with Obsidian vaults (plain Markdown notes)",
+      "category": "Note Taking"
+    },
+    {
+      "name": "Baidu Search",
+      "slug": "baidu-search",
+      "author": "ide-rea",
+      "downloads": 52500,
+      "stars": 142,
+      "versions": 11,
+      "description": "Search the web using Baidu AI Search Engine (BDSE)",
+      "category": "Search"
+    },
+    {
+      "name": "API Gateway",
+      "slug": "api-gateway",
+      "author": "byungkyu",
+      "downloads": 49300,
+      "stars": 243,
+      "versions": 70,
+      "description": "Connect to 100+ APIs (Google Workspace, Microsoft 365, GitHub, Notion, Slack, Airtable, HubSpot, etc.)",
+      "category": "API Integration"
+    },
+    {
+      "name": "Free Ride - Unlimited free AI",
+      "slug": "free-ride",
+      "author": "Shaivpidadi",
+      "downloads": 41100,
+      "stars": 301,
+      "versions": 5,
+      "description": "Manages free AI models from OpenRouter for OpenClaw",
+      "category": "AI Models"
+    },
+    {
+      "name": "Mcporter",
+      "slug": "mcporter",
+      "author": "steipete",
+      "downloads": 41000,
+      "stars": 121,
+      "versions": 1,
+      "badge": "Official",
+      "description": "Use the mcporter CLI to list, configure, auth, and call MCP servers/tools",
+      "category": "MCP Tools"
+    },
+    {
+      "name": "Agent Browser",
+      "slug": "agent-browser-clawdbot",
+      "author": "MaTriXy",
+      "downloads": 33100,
+      "stars": 101,
+      "versions": 1,
+      "description": "Headless browser automation CLI optimized for AI agents",
+      "category": "Browser Automation"
+    },
+    {
+      "name": "imap-smtp-email",
+      "slug": "imap-smtp-email",
+      "author": "gzlicanyi",
+      "downloads": 26300,
+      "stars": 65,
+      "versions": 10,
+      "description": "Read and send email via IMAP/SMTP",
+      "category": "Email"
+    },
+    {
+      "name": "Word / DOCX",
+      "slug": "word-docx",
+      "author": "ivangdavila",
+      "downloads": 24700,
+      "stars": 90,
+      "versions": 3,
+      "platforms": [
+        "Linux",
+        "macOS",
+        "Windows"
+      ],
+      "description": "Create, inspect, and edit Microsoft Word documents and DOCX files",
+      "category": "Document Processing"
+    },
+    {
+      "name": "Discord",
+      "slug": "discord",
+      "author": "steipete",
+      "downloads": 22100,
+      "stars": 52,
+      "versions": 2,
+      "description": "Control Discord from Clawdbot - send messages, react, manage threads",
+      "category": "Communication"
+    },
+    {
+      "name": "Clawdhub",
+      "slug": "clawdhub",
+      "author": "steipete",
+      "downloads": 21600,
+      "stars": 187,
+      "versions": 1,
+      "description": "Use the ClawdHub CLI to search, install, update, and publish agent skills",
+      "category": "Skill Management"
+    },
+    {
+      "name": "Web Search by Exa",
+      "slug": "web-search-exa",
+      "author": "theishangoswami",
+      "downloads": 21100,
+      "stars": 29,
+      "versions": 3,
+      "description": "Neural web search, content extraction, company and people research",
+      "category": "Search"
+    },
+    {
+      "name": "Excel / XLSX",
+      "slug": "excel-xlsx",
+      "author": "ivangdavila",
+      "downloads": 20800,
+      "stars": 71,
+      "versions": 3,
+      "platforms": [
+        "Linux",
+        "macOS",
+        "Windows"
+      ],
+      "description": "Create, inspect, and edit Microsoft Excel workbooks and XLSX files",
+      "category": "Document Processing"
+    },
+    {
+      "name": "Polymarket",
+      "slug": "polymarket-trade",
+      "author": "joelchance",
+      "downloads": 19400,
+      "stars": 4,
+      "versions": 1,
+      "description": "Query Polymarket prediction markets - check odds, trending markets",
+      "category": "Finance"
+    },
+    {
+      "name": "Ai Ppt Generator",
+      "slug": "ai-ppt-generator",
+      "author": "ide-rea",
+      "downloads": 19000,
+      "stars": 37,
+      "versions": 13,
+      "description": "Generate PPT with Baidu AI. Smart template selection based on content",
+      "category": "Document Processing"
+    },
+    {
+      "name": "Peekaboo",
+      "slug": "peekaboo",
+      "author": "steipete",
+      "downloads": 18900,
+      "stars": 58,
+      "versions": 1,
+      "platforms": [
+        "macOS"
+      ],
+      "description": "Capture and automate macOS UI with the Peekaboo CLI",
+      "category": "UI Automation"
+    },
+    {
+      "name": "MoltGuard - Security & Antivirus & Guardrails",
+      "slug": "moltguard",
+      "author": "ThomasLWang",
+      "downloads": 17200,
+      "stars": 84,
+      "versions": 56,
+      "description": "OpenClaw security guard - protect from prompt injection, data exfiltration",
+      "category": "Security"
+    },
+    {
+      "name": "Spotify Player",
+      "slug": "spotify-player",
+      "author": "steipete",
+      "downloads": 17000,
+      "stars": 37,
+      "versions": 1,
+      "description": "Terminal Spotify playback/search via spogo",
+      "category": "Entertainment"
+    },
+    {
+      "name": "Openai Whisper Api",
+      "slug": "openai-whisper-api",
+      "author": "steipete",
+      "downloads": 15900,
+      "stars": 33,
+      "versions": 1,
+      "description": "Transcribe audio via OpenAI Audio Transcriptions API (Whisper)",
+      "category": "Audio Processing"
+    },
+    {
+      "name": "Web Search Plus",
+      "slug": "web-search-plus",
+      "author": "robbyczgw-cla",
+      "downloads": 15000,
+      "stars": 72,
+      "versions": 51,
+      "description": "Unified search skill with Intelligent Auto-Routing",
+      "category": "Search"
+    },
+    {
+      "name": "Klaviyo",
+      "slug": "klaviyo",
+      "author": "byungkyu",
+      "downloads": 14900,
+      "stars": 3,
+      "versions": 5,
+      "description": "Klaviyo API integration with managed OAuth",
+      "category": "Marketing"
+    },
+    {
+      "name": "Powerpoint / PPTX",
+      "slug": "powerpoint-pptx",
+      "author": "ivangdavila",
+      "downloads": 14300,
+      "stars": 40,
+      "versions": 2,
+      "platforms": [
+        "Linux",
+        "macOS",
+        "Windows"
+      ],
+      "description": "Create, inspect, and edit Microsoft PowerPoint presentations",
+      "category": "Document Processing"
+    },
+    {
+      "name": "Playwright (Automation + MCP + Scraper)",
+      "slug": "playwright",
+      "author": "ivangdavila",
+      "downloads": 13900,
+      "stars": 37,
+      "versions": 4,
+      "platforms": [
+        "Linux",
+        "macOS",
+        "Windows"
+      ],
+      "description": "Browser automation via Playwright MCP",
+      "category": "Browser Automation"
+    },
+    {
+      "name": "Data Analysis",
+      "slug": "data-analysis",
+      "author": "ivangdavila",
+      "downloads": 13100,
+      "stars": 42,
+      "versions": 3,
+      "platforms": [
+        "Linux",
+        "macOS",
+        "Windows"
+      ],
+      "description": "Data analysis and visualization. Query databases, generate reports",
+      "category": "Data Science"
+    },
+    {
+      "name": "Productivity",
+      "slug": "productivity",
+      "author": "ivangdavila",
+      "downloads": 11600,
+      "stars": 22,
+      "versions": 5,
+      "platforms": [
+        "Linux",
+        "macOS",
+        "Windows"
+      ],
+      "description": "Plan, focus, and complete work with energy management, time blocking",
+      "category": "Productivity"
+    },
+    {
+      "name": "Camsnap",
+      "slug": "camsnap",
+      "author": "steipete",
+      "downloads": 10700,
+      "stars": 8,
+      "versions": 1,
+      "description": "Capture frames or clips from RTSP/ONVIF cameras",
+      "category": "Video Processing"
+    },
+    {
+      "name": "Oracle",
+      "slug": "oracle",
+      "author": "steipete",
+      "downloads": 10700,
+      "stars": 11,
+      "versions": 2,
+      "description": "Bundle a prompt plus files for second-model review",
+      "category": "Development Tools"
+    },
+    {
+      "name": "Imsg",
+      "slug": "imsg",
+      "author": "steipete",
+      "downloads": 10400,
+      "stars": 17,
+      "versions": 1,
+      "platforms": [
+        "macOS"
+      ],
+      "description": "iMessage/SMS CLI for listing chats, history, watch, and sending",
+      "category": "Communication"
+    },
+    {
+      "name": "Intelligent Stock Screener",
+      "slug": "mx-stocks-screener",
+      "author": "Financial-AI-Analyst",
+      "downloads": 10300,
+      "stars": 51,
+      "versions": 9,
+      "description": "基于东方财富数据库，支持通过自然语言输入筛选A港美、基金、债券等多种资产",
+      "category": "Finance"
+    },
+    {
+      "name": "Image",
+      "slug": "image",
+      "author": "ivangdavila",
+      "downloads": 9400,
+      "stars": 11,
+      "versions": 5,
+      "platforms": [
+        "Linux",
+        "macOS",
+        "Windows"
+      ],
+      "description": "Create, inspect, process, and optimize image files",
+      "category": "Image Processing"
+    },
+    {
+      "name": "All-Market Financial Data Hub",
+      "slug": "mx-finance-data",
+      "author": "Financial-AI-Analyst",
+      "downloads": 8800,
+      "stars": 45,
+      "versions": 5,
+      "description": "基于东方财富数据库，支持自然语言查询金融数据",
+      "category": "Finance"
+    },
+    {
+      "name": "Market Research",
+      "slug": "market-research",
+      "author": "ivangdavila",
+      "downloads": 8700,
+      "stars": 37,
+      "versions": 2,
+      "platforms": [
+        "Linux",
+        "macOS",
+        "Windows"
+      ],
+      "description": "Research markets with sizing, segmentation, competitor mapping",
+      "category": "Business Intelligence"
+    },
+    {
+      "name": "image-cog",
+      "slug": "image-cog",
+      "author": "nitishgargiitd",
+      "downloads": 7800,
+      "stars": 6,
+      "versions": 4,
+      "description": "AI image generation powered by CellCog",
+      "category": "Image Generation"
+    },
+    {
+      "name": "Git",
+      "slug": "git",
+      "author": "ivangdavila",
+      "downloads": 7800,
+      "stars": 15,
+      "versions": 9,
+      "platforms": [
+        "Linux",
+        "macOS",
+        "Windows"
+      ],
+      "description": "Git commits, branches, rebases, merges, conflict resolution",
+      "category": "Version Control"
+    },
+    {
+      "name": "Screenshot",
+      "slug": "screenshot",
+      "author": "ivangdavila",
+      "downloads": 7800,
+      "stars": 21,
+      "versions": 2,
+      "platforms": [
+        "Linux",
+        "macOS",
+        "Windows"
+      ],
+      "description": "Capture, inspect, and compare screenshots",
+      "category": "Screen Capture"
+    },
+    {
+      "name": "ima skills",
+      "slug": "ima-skills",
+      "author": "iampennyli",
+      "downloads": 7500,
+      "stars": 18,
+      "versions": 5,
+      "description": "IMA 个人笔记服务 API skill，用于管理用户的 IMA 笔记",
+      "category": "Note Taking"
+    },
+    {
+      "name": "Video Transcript Downloader",
+      "slug": "video-transcript-downloader",
+      "author": "steipete",
+      "downloads": 7400,
+      "stars": 50,
+      "versions": 1,
+      "description": "Download videos, audio, subtitles, and transcripts from YouTube",
+      "category": "Video Processing"
+    },
+    {
+      "name": "Openclaw Agent Optimize",
+      "slug": "openclaw-agent-optimize",
+      "author": "phenomenoner",
+      "downloads": 7400,
+      "stars": 33,
+      "versions": 13,
+      "description": "Structured audit and plan to improve an OpenClaw workspace",
+      "category": "OpenClaw Optimization"
+    },
+    {
+      "name": "Docker",
+      "slug": "docker",
+      "author": "ivangdavila",
+      "downloads": 7100,
+      "stars": 12,
+      "versions": 5,
+      "platforms": [
+        "Linux",
+        "macOS",
+        "Windows"
+      ],
+      "description": "Docker containers, images, Compose stacks, networking",
+      "category": "DevOps"
+    },
+    {
+      "name": "Openclaw Command Center",
+      "slug": "command-center",
+      "author": "jontsai",
+      "downloads": 6700,
+      "stars": 44,
+      "versions": 10,
+      "description": "Mission control dashboard for OpenClaw - real-time monitoring",
+      "category": "OpenClaw Tools"
+    },
+    {
+      "name": "Video Subtitles",
+      "slug": "video-subtitles",
+      "author": "ngutman",
+      "downloads": 6600,
+      "stars": 13,
+      "versions": 1,
+      "description": "Generate SRT subtitles from video/audio with translation support",
+      "category": "Video Processing"
+    },
+    {
+      "name": "Tushare Pro",
+      "slug": "tushare",
+      "author": "AlphaFactor",
+      "downloads": 6400,
+      "stars": 15,
+      "versions": 7,
+      "description": "Fetch Chinese stock and futures market data via Tushare API",
+      "category": "Finance"
+    },
+    {
+      "name": "Ordercli",
+      "slug": "ordercli",
+      "author": "steipete",
+      "downloads": 6200,
+      "stars": 3,
+      "versions": 1,
+      "description": "Foodora-only CLI for checking past orders and active order status",
+      "category": "Food Delivery"
+    },
+    {
+      "name": "Skill Finder (Find ClawHub skills + Search Skills.sh)",
+      "slug": "skill-finder",
+      "author": "ivangdavila",
+      "downloads": 5900,
+      "stars": 17,
+      "versions": 11,
+      "description": "Find, compare, and install agent skills across ClawHub and Skills.sh",
+      "category": "Skill Management",
+      "platforms": [
+        "Linux",
+        "macOS",
+        "Windows"
+      ]
+    },
+    {
+      "name": "Chart Image",
+      "slug": "chart-image",
+      "author": "dannyshmueli",
+      "downloads": 5600,
+      "stars": 5,
+      "versions": 11,
+      "description": "Generate publication-quality chart images from data",
+      "category": "Data Visualization"
+    },
+    {
+      "name": "clawsec-suite",
+      "slug": "clawsec-suite",
+      "author": "davida-ps",
+      "downloads": 5500,
+      "stars": 5,
+      "versions": 14,
+      "description": "ClawSec suite manager with embedded advisory-feed monitoring",
+      "category": "Security"
+    },
+    {
+      "name": "Getnote Openclaw",
+      "slug": "getnote",
+      "author": "iswalle",
+      "downloads": 5500,
+      "stars": 29,
+      "versions": 18,
+      "description": "Get笔记 - 个人笔记和知识库管理工具",
+      "category": "Note Taking"
+    },
+    {
+      "name": "Marketing Strategy Pmm",
+      "slug": "marketing-strategy-pmm",
+      "author": "alirezarezvani",
+      "downloads": 5300,
+      "stars": 19,
+      "versions": 2,
+      "description": "Product marketing skill for positioning, GTM strategy",
+      "category": "Marketing"
+    },
+    {
+      "name": "tech-news-digest",
+      "slug": "tech-news-digest",
+      "author": "dinstein",
+      "downloads": 5300,
+      "stars": 16,
+      "versions": 38,
+      "description": "Generate tech news digests with unified source model",
+      "category": "News & Media"
+    },
+    {
+      "name": "beauty-generation-api",
+      "slug": "beauty-generation-api",
+      "author": "luruibu",
+      "downloads": 4800,
+      "stars": 9,
+      "versions": 39,
+      "description": "FREE AI portrait generation with 140+ nationalities",
+      "category": "Image Generation"
+    },
+    {
+      "name": "Video Agent (Deprecated)",
+      "slug": "video-agent",
+      "author": "michaelwang11394",
+      "downloads": 4600,
+      "stars": 7,
+      "versions": 20,
+      "description": "[DEPRECATED] Use create-video or avatar-video instead",
+      "category": "Video Processing"
+    },
+    {
+      "name": "Senior Architect",
+      "slug": "senior-architect",
+      "author": "alirezarezvani",
+      "downloads": 4500,
+      "stars": 10,
+      "versions": 3,
+      "description": "Design system architecture, evaluate microservices vs monolith",
+      "category": "Architecture"
+    },
+    {
+      "name": "PaddleOCR Document Parsing",
+      "slug": "paddleocr-doc-parsing",
+      "author": "Bobholamovic",
+      "downloads": 4400,
+      "stars": 35,
+      "versions": 13,
+      "description": "Complex document parsing with PaddleOCR",
+      "category": "Document Processing"
+    },
+    {
+      "name": "Proactivity (Proactive Agent)",
+      "slug": "proactivity",
+      "author": "ivangdavila",
+      "downloads": 4300,
+      "stars": 4,
+      "versions": 2,
+      "description": "Anticipates needs, keeps work moving, and improves through use",
+      "category": "Agent Improvement",
+      "platforms": [
+        "Linux",
+        "macOS",
+        "Windows"
+      ]
+    },
+    {
+      "name": "Real-Time Financial Search",
+      "slug": "mx-finance-search",
+      "author": "Financial-AI-Analyst",
+      "downloads": 4200,
+      "stars": 46,
+      "versions": 5,
+      "description": "基于东方财富数据库，支持自然语言搜索全网最新公告、研报、财经新闻",
+      "category": "Finance"
+    },
+    {
+      "name": "Torch Market",
+      "slug": "torchmarket",
+      "author": "mrsirg97-rgb",
+      "downloads": 4100,
+      "stars": 6,
+      "versions": 72,
+      "description": "Programmable economic substrate with bonding curves",
+      "category": "Finance"
+    },
+    {
+      "name": "moltrade",
+      "slug": "moltrade",
+      "author": "ai-chen2050",
+      "downloads": 4000,
+      "stars": 5,
+      "versions": 10,
+      "description": "Operate the Moltrade trading bot",
+      "category": "Finance"
+    },
+    {
+      "name": "research-cog",
+      "slug": "research-cog",
+      "author": "nitishgargiitd",
+      "downloads": 3900,
+      "stars": 8,
+      "versions": 5,
+      "description": "#1 on DeepResearch Bench (Feb 2026). Deep research agent powered by CellCog",
+      "category": "Research"
+    },
+    {
+      "name": "Fast.io",
+      "slug": "fast-io",
+      "author": "dbalve",
+      "downloads": 3800,
+      "stars": 2,
+      "versions": 27,
+      "description": "Workspaces for agentic teams",
+      "category": "Collaboration"
+    },
+    {
+      "name": "Agent Chronicle",
+      "slug": "agent-chronicle",
+      "author": "robbyczgw-cla",
+      "downloads": 3700,
+      "stars": 3,
+      "versions": 11,
+      "description": "AI-powered diary generation for agents",
+      "category": "Agent Improvement"
+    },
+    {
+      "name": "China Stock Analysis",
+      "slug": "china-stock-analysis",
+      "author": "paulshe",
+      "downloads": 3500,
+      "stars": 2,
+      "versions": 1,
+      "description": "Analyze Chinese stock prices (A-shares, HK stocks)",
+      "category": "Finance"
+    },
+    {
+      "name": "HZL",
+      "slug": "hzl",
+      "author": "tmchow",
+      "downloads": 3500,
+      "stars": 7,
+      "versions": 26,
+      "description": "Persistent task ledger for agent coordination",
+      "category": "Task Management"
+    },
+    {
+      "name": "Global Macro Database Assistant",
+      "slug": "mx-macro-data",
+      "author": "Financial-AI-Analyst",
+      "downloads": 3500,
+      "stars": 56,
+      "versions": 6,
+      "description": "基于东方财富数据库，支持自然语言查询全球宏观经济数据",
+      "category": "Finance"
+    }
+  ]
+}
