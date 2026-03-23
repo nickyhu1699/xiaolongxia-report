@@ -1266,6 +1266,34 @@
         <div class="slide slide-day21">
             <div class="slide-content">
                 <div class="day-badge">Day 21</div>
+        <!-- Day 21 -->
+        <div class="slide slide-day21">
+            <div class="slide-content">
+                <div class="day-badge">Day 21</div>
+                <div class="date">2026-03-23</div>
+                <h2>DashScope ASR 正确调用流程（已验证）</h2>
+                <div class="content-box">
+                    <p>DashScope的OpenAI兼容接口没有audio/transcriptions端点，不能像SiliconFlow那样直接传文件。需要走异步转写流程。
+1. **上传文件到DashScope** → 拿到 `file_id`
+   - POST `https://dashscope.aliyuncs.com/api/v1/files`，multipart/form-data
+2. **查询文件信息** → 拿到 OSS 预签名 `url`
+   - GET `https://dashscope.aliyuncs.com/api/v1/files/{file_id}`
+   - 返回的 `data.url` 是OSS预签名链接（http开头，dashscope://file协议不行）
+3. **提交异步转写任务** → 拿到 `task_id`
+   - POST `https://dashscope.aliyuncs.com/api/v1/services/audio/asr/transcription`
+   - Header需加 `X-DashScope-Async: enable`</p>
+                </div>
+                <div class="achievements-box">
+                    <h3>今日成果</h3>
+                    <ul>
+                        <li>- ✅ 上传文件获取OSS URL → 异步Transcription → 成功</li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        
                 <div class="date">2026-03-23</div>
                 <h2>DashScope ASR 正确调用流程（已验证）</h2>
                 <div class="content-box">
