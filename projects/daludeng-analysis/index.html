@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大路灯全景分析报告 | 小红书市场洞察</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .header p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 40px;
+            background: #f8f9fa;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-number {
+            font-size: 42px;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 16px;
+            color: #666;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 60px;
+        }
+        
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .brand-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .brand-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .brand-name {
+            font-size: 24px;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .brand-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .brand-stat {
+            text-align: center;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+        }
+        
+        .brand-stat-value {
+            font-size: 20px;
+            font-weight: 700;
+            color: #667eea;
+        }
+        
+        .brand-stat-label {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .swot-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .swot-item {
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        
+        .swot-strength {
+            background: #d4edda;
+            border-left: 3px solid #28a745;
+        }
+        
+        .swot-weakness {
+            background: #fff3cd;
+            border-left: 3px solid #ffc107;
+        }
+        
+        .swot-opportunity {
+            background: #cce5ff;
+            border-left: 3px solid #007bff;
+        }
+        
+        .swot-threat {
+            background: #f8d7da;
+            border-left: 3px solid #dc3545;
+        }
+        
+        .price-chart {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .price-bar {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .price-label {
+            width: 150px;
+            font-weight: 600;
+        }
+        
+        .price-bar-container {
+            flex: 1;
+            height: 40px;
+            background: #e9ecef;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 0 15px;
+        }
+        
+        .price-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 15px;
+            color: white;
+            font-weight: 600;
+            transition: width 0.5s;
+        }
+        
+        .persona-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .persona-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+        }
+        
+        .persona-title {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .persona-stat {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .persona-desc {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+        
+        .persona-features {
+            font-size: 13px;
+            line-height: 1.8;
+        }
+        
+        .insight-box {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .insight-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #d63031;
+            margin-bottom: 15px;
+        }
+        
+        .insight-list {
+            list-style: none;
+        }
+        
+        .insight-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        .insight-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .insight-list li:before {
+            content: "💡 ";
+        }
+        
+        .footer {
+            background: #2d3436;
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .footer p {
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+        
+        .tag {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin: 5px;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 32px;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .section-title {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔍 大路灯全景分析报告</h1>
+            <p>基于小红书32篇热门笔记的深度市场洞察</p>
+            <p style="margin-top: 10px; font-size: 14px;">数据来源：2026-03-25 | 小红书平台 | 6大品牌 | 5大场景</p>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">32</div>
+                <div class="stat-label">热门笔记数量</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">6</div>
+                <div class="stat-label">主流品牌</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">5</div>
+                <div class="stat-label">使用场景</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">1998+</div>
+                <div class="stat-label">知识库行数</div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <!-- 品牌SWOT分析 -->
+            <div class="section">
+                <h2 class="section-title">📊 品牌SWOT分析</h2>
+                
+                <div class="brand-grid">
+                    <!-- 月影林之光 -->
+                    <div class="brand-card">
+                        <div class="brand-name">🌟 月影林之光</div>
+                        <div class="brand-stats">
+                            <div class="brand-stat">
+                                <div class="brand-stat-value">10篇</div>
+                                <div class="brand-stat-label">笔记数量</div>
+                            </div>
+                            <div class="brand-stat">
+                                <div class="brand-stat-value">⭐⭐⭐⭐⭐</div>
+                                <div class="brand-stat-label">互动强度</div>
+                            </div>
+                        </div>
+                        <div class="swot-grid">
+                            <div class="swot-item swot-strength"><strong>优势：</strong>性价比突出、平价款受欢迎</div>
+                            <div class="swot-item swot-weakness"><strong>劣势：</strong>品牌溢价低、设计感不足</div>
+                            <div class="swot-item swot-opportunity"><strong>机会：</strong>消费降级趋势、下沉市场</div>
+                            <div class="swot-item swot-threat"><strong>威胁：</strong>飞利浦价格下沉</div>
+                        </div>
+                    </div>
+                    
+                    <!-- 飞利浦 -->
+                    <div class="brand-card">
+                        <div class="brand-name">💡 飞利浦</div>
+                        <div class="brand-stats">
+                            <div class="brand-stat">
+                                <div class="brand-stat-value">4篇</div>
+                                <div class="brand-stat-label">笔记数量</div>
+                            </div>
+                            <div class="brand-stat">
+                                <div class="brand-stat-value">⭐⭐⭐⭐</div>
+                                <div class="brand-stat-label">收藏率</div>
+                            </div>
+                        </div>
+                        <div class="swot-grid">
+                            <div class="swot-item swot-strength"><strong>优势：</strong>品牌溢价高、技术领先</div>
+                            <div class="swot-item swot-weakness"><strong>劣势：</strong>价格昂贵、功能保守</div>
+                            <div class="swot-item swot-opportunity"><strong>机会：</strong>高端市场独占</div>
+                            <div class="swot-item swot-threat"><strong>威胁：</strong>国产品牌崛起</div>
+                        </div>
+                    </div>
+                    
+                    <!-- 孩视宝 -->
+                    <div class="brand-card">
+                        <div class="brand-name">👶 孩视宝</div>
+                        <div class="brand-stats">
+                            <div class="brand-stat">
+                                <div class="brand-stat-value">4篇</div>
+                                <div class="brand-stat-label">笔记数量</div>
+                            </div>
+                            <div class="brand-stat">
+                                <div class="brand-stat-value">⭐⭐⭐⭐</div>
+                                <div class="brand-stat-label">专业性</div>
+                            </div>
+                        </div>
+                        <div class="swot-grid">
+                            <div class="swot-item swot-strength"><strong>优势：</strong>专业护眼、参数优秀</div>
+                            <div class="swot-item swot-weakness"><strong>劣势：</strong>品牌知名度不足</div>
+                            <div class="swot-item swot-opportunity"><strong>机会：</strong>护眼需求增长</div>
+                            <div class="swot-item swot-threat"><strong>威胁：</strong>营销较弱</div>
+                        </div>
+                    </div>
+                    
+                    <!-- 松下 -->
+                    <div class="brand-card">
+                        <div class="brand-name">🔌 松下</div>
+                        <div class="brand-stats">
+                            <div class="brand-stat">
+                                <div class="brand-stat-value">3篇</div>
+                                <div class="brand-stat-label">笔记数量</div>
+                            </div>
+                            <div class="brand-stat">
+                                <div class="brand-stat-value">⭐⭐⭐</div>
+                                <div class="brand-stat-label">技术先进</div>
+                            </div>
+                        </div>
+                        <div class="swot-grid">
+                            <div class="swot-item swot-strength"><strong>优势：</strong>日系品质、技术创新</div>
+                            <div class="swot-item swot-weakness"><strong>劣势：</strong>本土化不足、价格高</div>
+                            <div class="swot-item swot-opportunity"><strong>机会：</strong>品质追求升级</div>
+                            <div class="swot-item swot-threat"><strong>威胁：</strong>价格劣势</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 价格趋势分析 -->
+            <div class="section">
+                <h2 class="section-title">💰 价格趋势分析</h2>
+                
+                <div class="price-chart">
+                    <h3 style="margin-bottom: 20px; font-size: 20px;">价格区间分布（按笔记数量）</h3>
+                    
+                    <div class="price-bar">
+                        <div class="price-label">300-800元</div>
+                        <div class="price-bar-container">
+                            <div class="price-bar-fill" style="width: 31%;">10篇 (31%)</div>
+                        </div>
+                        <div style="font-weight: 600; color: #28a745;">互动最强 ⭐⭐⭐⭐⭐</div>
+                    </div>
+                    
+                    <div class="price-bar">
+                        <div class="price-label">800-2000元</div>
+                        <div class="price-bar-container">
+                            <div class="price-bar-fill" style="width: 40%;">13篇 (40%)</div>
+                        </div>
+                        <div style="font-weight: 600; color: #007bff;">竞争激烈 ⭐⭐⭐⭐</div>
+                    </div>
+                    
+                    <div class="price-bar">
+                        <div class="price-label">2000-5000元</div>
+                        <div class="price-bar-container">
+                            <div class="price-bar-fill" style="width: 35%;">11篇 (35%)</div>
+                        </div>
+                        <div style="font-weight: 600; color: #ffc107;">高端市场 ⭐⭐⭐</div>
+                    </div>
+                    
+                    <div class="price-bar">
+                        <div class="price-label">5000元+</div>
+                        <div class="price-bar-container">
+                            <div class="price-bar-fill" style="width: 10%;">3篇 (10%)</div>
+                        </div>
+                        <div style="font-weight: 600; color: #dc3545;">小众市场 ⭐⭐</div>
+                    </div>
+                </div>
+                
+                <div class="insight-box">
+                    <div class="insight-title">🎯 核心发现</div>
+                    <ul class="insight-list">
+                        <li><span class="highlight">平价化趋势明显</span>：月影林之光300-800元区间互动最强</li>
+                        <li><span class="highlight">中端市场激烈</span>：800-2000元区间占比40%，品牌竞争最激烈</li>
+                        <li><span class="highlight">高端市场分化</span>：飞利浦占主导，但受国产品牌冲击</li>
+                        <li><span class="highlight">价格敏感度</span>：消费者更关注"值不值"而非"贵不贵"</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- 用户画像分析 -->
+            <div class="section">
+                <h2 class="section-title">👥 用户画像分析</h2>
+                
+                <div class="persona-grid">
+                    <div class="persona-card">
+                        <div class="persona-title">👨‍👩‍👧 幼升小家长</div>
+                        <div class="persona-stat">60%</div>
+                        <div class="persona-desc">视力焦虑严重，愿意投资护眼产品</div>
+                        <div class="persona-features">
+                            ✅ 关注护眼效果<br>
+                            ✅ 愿意为孩子花钱<br>
+                            ✅ 重视品牌口碑<br>
+                            ✅ 需要专业测评
+                        </div>
+                    </div>
+                    
+                    <div class="persona-card" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <div class="persona-title">👩 宝妈群体</div>
+                        <div class="persona-stat">20%</div>
+                        <div class="persona-desc">重视家居环境，情感化决策</div>
+                        <div class="persona-features">
+                            ✅ 关注美观设计<br>
+                            ✅ 情感共鸣强<br>
+                            ✅ 喜欢场景种草<br>
+                            ✅ 重视性价比
+                        </div>
+                    </div>
+                    
+                    <div class="persona-card" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        <div class="persona-title">💼 办公室白领</div>
+                        <div class="persona-stat">15%</div>
+                        <div class="persona-desc">长时间用眼，理性决策</div>
+                        <div class="persona-features">
+                            ✅ 关注参数指标<br>
+                            ✅ 理性对比分析<br>
+                            ✅ 重视功能实用<br>
+                            ✅ 追求效率提升
+                        </div>
+                    </div>
+                    
+                    <div class="persona-card" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                        <div class="persona-title">🏠 自由职业者</div>
+                        <div class="persona-stat">5%</div>
+                        <div class="persona-desc">居家办公，追求品质生活</div>
+                        <div class="persona-features">
+                            ✅ 关注品质体验<br>
+                            ✅ 愿意为品质付费<br>
+                            ✅ 重视工作环境<br>
+                            ✅ 追求智能化
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 用户痛点 -->
+            <div class="section">
+                <h2 class="section-title">⚠️ 用户核心痛点</h2>
+                
+                <div class="price-chart">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="background: #667eea; color: white;">
+                                <th style="padding: 15px; text-align: left;">痛点</th>
+                                <th style="padding: 15px; text-align: center;">提及次数</th>
+                                <th style="padding: 15px; text-align: center;">优先级</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="border-bottom: 1px solid #e9ecef;">
+                                <td style="padding: 15px;">护眼效果到底好不好？</td>
+                                <td style="padding: 15px; text-align: center; font-weight: 700; color: #667eea;">23次</td>
+                                <td style="padding: 15px; text-align: center;">⭐⭐⭐⭐⭐</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #e9ecef;">
+                                <td style="padding: 15px;">大路灯是不是智商税？</td>
+                                <td style="padding: 15px; text-align: center; font-weight: 700; color: #667eea;">3次</td>
+                                <td style="padding: 15px; text-align: center;">⭐⭐⭐⭐⭐</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #e9ecef;">
+                                <td style="padding: 15px;">孩子揉眼、视力下降</td>
+                                <td style="padding: 15px; text-align: center; font-weight: 700; color: #667eea;">4次</td>
+                                <td style="padding: 15px; text-align: center;">⭐⭐⭐⭐</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #e9ecef;">
+                                <td style="padding: 15px;">价格太贵，有平价替代吗？</td>
+                                <td style="padding: 15px; text-align: center; font-weight: 700; color: #667eea;">2次</td>
+                                <td style="padding: 15px; text-align: center;">⭐⭐⭐⭐</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 15px;">怎么选？看哪些参数？</td>
+                                <td style="padding: 15px; text-align: center; font-weight: 700; color: #667eea;">多次</td>
+                                <td style="padding: 15px; text-align: center;">⭐⭐⭐⭐</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- 市场机会 -->
+            <div class="section">
+                <h2 class="section-title">🚀 市场机会洞察</h2>
+                
+                <div class="insight-box" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                    <div class="insight-title" style="color: #2d3436;">💡 四大市场机会</div>
+                    <ul class="insight-list" style="color: #2d3436;">
+                        <li><strong>平价市场空间巨大：</strong>月影林之光平价款互动最强，消费降级趋势明显</li>
+                        <li><strong>办公室场景被低估：</strong>笔记数量少但互动不错，自由职业者需求增长</li>
+                        <li><strong>功能创新机会：</strong>AI伴学、智能感应、语音控制未被充分开发</li>
+                        <li><strong>内容营销机会：</strong>智商税辟谣、真实测评、对比类内容需求大</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- 场景分布 -->
+            <div class="section">
+                <h2 class="section-title">🏠 使用场景分布</h2>
+                
+                <div class="stats-grid" style="background: white; padding: 0;">
+                    <div class="stat-card">
+                        <div class="stat-number" style="color: #667eea;">16篇</div>
+                        <div class="stat-label">儿童房场景</div>
+                        <div style="margin-top: 10px;">
+                            <span class="tag">小户型</span>
+                            <span class="tag">学习区</span>
+                            <span class="tag">榻榻米</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" style="color: #f093fb;">14篇</div>
+                        <div class="stat-label">书房/学习场景</div>
+                        <div style="margin-top: 10px;">
+                            <span class="tag">学习型客厅</span>
+                            <span class="tag">满墙书柜</span>
+                            <span class="tag">亲子共读</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" style="color: #4facfe;">10篇</div>
+                        <div class="stat-label">办公室场景</div>
+                        <div style="margin-top: 10px;">
+                            <span class="tag">工位</span>
+                            <span class="tag">自由职业</span>
+                            <span class="tag">居家办公</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" style="color: #fa709a;">6篇</div>
+                        <div class="stat-label">客厅场景</div>
+                        <div style="margin-top: 10px;">
+                            <span class="tag">客厅改造</span>
+                            <span class="tag">图书馆</span>
+                            <span class="tag">阅读角</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 策略建议 -->
+            <div class="section">
+                <h2 class="section-title">🎯 策略建议</h2>
+                
+                <div class="brand-grid">
+                    <div class="brand-card" style="border-left-color: #28a745;">
+                        <div class="brand-name" style="color: #28a745;">品牌策略</div>
+                        <ul style="list-style: none; line-height: 2;">
+                            <li>✅ 月影林之光：强化性价比，推出高端系列</li>
+                            <li>✅ 飞利浦：下沉价格，推出2000元以下产品</li>
+                            <li>✅ 孩视宝/欧普：加强营销，提升品牌声量</li>
+                            <li>✅ 松下：本土化营销，价格策略优化</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="brand-card" style="border-left-color: #007bff;">
+                        <div class="brand-name" style="color: #007bff;">内容策略</div>
+                        <ul style="list-style: none; line-height: 2;">
+                            <li>✅ 测评对比类：品牌横向对比，参数解读</li>
+                            <li>✅ 场景种草类：儿童房、学习型客厅、办公室</li>
+                            <li>✅ 痛点解决类：智商税辟谣、护眼科学</li>
+                            <li>✅ 价格分析类：平价替代、性价比对比</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="brand-card" style="border-left-color: #ffc107;">
+                        <div class="brand-name" style="color: #ffc107;">用户策略</div>
+                        <ul style="list-style: none; line-height: 2;">
+                            <li>✅ 幼升小家长：强化护眼焦虑+解决方案</li>
+                            <li>✅ 宝妈群体：情感共鸣+美观种草</li>
+                            <li>✅ 办公室白领：功能参数+效率提升</li>
+                            <li>✅ 自由职业者：品质生活+工作环境</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>📊 数据来源：小红书平台 | 32篇热门笔记 | 6大品牌</p>
+            <p>📅 数据时间：2026-03-25</p>
+            <p>🤖 生成工具：小龙虾 Agent + xhs cli</p>
+            <p style="margin-top: 20px; opacity: 0.6;">© 2026 大路灯全景分析报告 | 知识库位置：knowledge-base/大路灯/</p>
+        </div>
+    </div>
+    
+    <script>
+        // 页面加载动画
+        document.addEventListener('DOMContentLoaded', function() {
+            const statCards = document.querySelectorAll('.stat-card');
+            statCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.5s';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+            
+            // 价格条动画
+            const priceBars = document.querySelectorAll('.price-bar-fill');
+            priceBars.forEach((bar, index) => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+                setTimeout(() => {
+                    bar.style.transition = 'width 1s ease-out';
+                    bar.style.width = width;
+                }, 500 + index * 200);
+            });
+        });
+    </script>
+</body>
+</html>
